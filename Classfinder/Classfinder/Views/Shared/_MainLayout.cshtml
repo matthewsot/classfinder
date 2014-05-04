@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/_TopNav.cshtml";
+}
+
+@section Head {
+    @RenderSection("Head", false)
+}
+
+@section Nav {
+    <ul class="navList" id="mainNavList">
+        <li><a href="~/Account/Settings">settings</a></li>
+        <li><a href="~/Account/Classes">manage classes</a></li>
+        <li style="border-right:1px solid"><a href="~/Account/Logout">logout</a></li>
+    </ul>
+}
+
+@RenderBody()

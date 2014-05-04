@@ -1,0 +1,167 @@
+﻿@using Classfinder.Database;
+@{
+    ViewBag.Title = "Classes";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    int offset;
+    ICollection<Class> FirstSem;
+    ICollection<Class> SecSem;
+    string[] Teachers;
+    string[] ClassNames;
+    using(CfDb db = new CfDb()) { //TODO: move this stuff into a model and handle it in the controller
+        var usr = db.Users.Where(u => u.Username == WebSecurity.CurrentUserName).Select(u => new { SchoolId = u.School.Id, u.School.PeriodOffset, u.FirstSem, u.SecondSem }).First();
+        offset = usr.PeriodOffset;
+        FirstSem = usr.FirstSem;
+        SecSem = usr.SecondSem;
+        Teachers = db.Classes.Where(c=> c.ClassSchool.Id == usr.SchoolId).Select(c => c.Teacher).Distinct().ToArray();
+        for(var i = 0;i<Teachers.Length;i++)
+        {
+            Teachers[i] = Server.HtmlEncode(Teachers[i]);
+        }
+        ClassNames = db.Classes.Where(c => c.ClassSchool.Id == usr.SchoolId).Select(c => c.Name).Distinct().ToArray();
+        for (var i = 0; i < ClassNames.Length; i++)
+        {
+            ClassNames[i] = Server.HtmlEncode(ClassNames[i]);
+        }
+    }
+}
+
+@section Head {
+    <script src="~/Scripts/jQuery/jquery.signalR-1.1.1.min.js" type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="~/Styles/Account/Classes/default.css" type="text/css" />
+    <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css" />
+}
+
+<h1>Please enter class and teacher information exactly as it appears on your schedule!</h1>
+<div id="firstSem">
+    <h1>First Semester</h1>
+    @for (var i = (0 + offset); i < (7 + offset); i++)
+    {
+        var thisClass = FirstSem.FirstOrDefault(c => c.Period == i);
+        @Html.Raw(i + "<div class=\"periodDiv\">")
+        @("Class ")
+        if(thisClass == null) {
+        <input class="inputter" ast="class" type="text" id="first@(i)" />
+        }
+        else
+        {
+        <input class="inputter" ast="class" type="text" id="first@(i)" value="@thisClass.Name" />
+        }
+        <br/>@Html.Raw("Teacher ")
+        if (thisClass == null)
+        {
+            <input class="inputter" type="text" ast="teacher" id="first@(i)Teacher" />
+        }
+        else
+        {
+            <input class="inputter" type="text" ast="teacher" id="first@(i)Teacher" value="@thisClass.Teacher" />
+        }<br />
+        @Html.Raw("</div>")
+    }
+</div>
+<div id="secondSem">
+    <h1>Second Semester</h1>
+    @for (var i = (0 + offset); i < (7 + offset); i++)
+    {
+        var thisClass = SecSem.FirstOrDefault(c => c.Period == i);
+        @Html.Raw(i + "<div class=\"periodDiv\">")
+        @("Class ")
+    if(thisClass == null)
+    {
+        <input class="inputter" ast="class" type="text" id="second@(i)" />
+    }
+    else
+    {
+        <input class="inputter" ast="class" type="text" id="second@(i)" value="@thisClass.Name" />
+    }
+    <br/>@Html.Raw("Teacher ")
+    if(thisClass == null) {
+        <input class="inputter" ast="teacher" type="text" id="second@(i)Teacher" />
+    }
+    else {
+        <input class="inputter" ast="teacher" type="text" id="second@(i)Teacher" value="@thisClass.Teacher" />
+    }<br />
+        @Html.Raw("</div>")
+        }
+</div>
+<div id="options" style="position:fixed;top:50%;left:45%;">
+    <button id="subBtn" class="optBtn">Save</button><br />
+    <button id="copyRight" class="optBtn">Copy &gt;&gt;</button><br />
+    <button id="copyLeft" class="optBtn">&lt;&lt; Copy</button>
+</div>
+<script src="~/signalr/hubs" type="text/javascript"></script>
+<script type="text/javascript">
+    var PdOffset = @Html.Raw(offset.ToString())
+
+    /* <SignalR stuff> */
+    classes = $.connection.classes;
+    $.connection.hub.start();
+    /* </SignalR stuff> */
+    var NameSource = [
+        "@Html.Raw(string.Join("\",\r\n\"", ClassNames))"
+    ]
+    var TeacherSource = [
+        "@Html.Raw(string.Join("\",\r\n\"", Teachers))"        
+    ]
+
+    $('[ast="class"]').autocomplete({
+        source: NameSource
+    });
+
+    $('[ast="teacher"]').autocomplete({
+        source: TeacherSource
+    });
+
+    $("#subBtn").click(function () {
+        var FirstSched = new Array();
+        var SecondSched = new Array();
+        for (var i = (0 + PdOffset) ; i < (7 + PdOffset) ; i++) {
+            var FirstClass = $("#first" + i).val().replace(",", "COMMA");
+            var FirstTeacher = $("#first" + i + "Teacher").val().replace(",", "COMMA");
+            if (FirstClass != "") {
+                if (FirstTeacher == "") {
+                    FirstTeacher = "N/A";
+                }
+                FirstSched[i] = i + "," + FirstClass + "," + FirstTeacher;
+            }
+            else {
+                FirstSched[i] = i;
+            }
+
+            var SecondClass = $("#second" + i).val().replace(",", "COMMA");
+            var SecondTeacher = $("#second" + i + "Teacher").val().replace(",", "COMMA");
+            if (SecondClass != "") {
+                if (SecondTeacher == "") {
+                    SecondTeacher = "N/A";
+                }
+                SecondSched[i] = i + "," + SecondClass + "," + SecondTeacher;
+            }
+            else {
+                SecondSched[i] = i;
+            }
+        }
+        classes.server.updateClasses(FirstSched, SecondSched, Username, Challenge).done(function (didWork) {
+            if (didWork == "true") {
+                alert("Saved!");
+            }
+            else {
+                alert("Sorry, something went wrong");
+                console.log(didWork);
+            }
+        });
+    });
+
+    $("#copyRight").click(function () { //first to second
+        for (var i = (0 + PdOffset) ; i < (7 + PdOffset) ; i++) {
+            $("#second" + i).val($("#first" + i).val());
+            $("#second" + i + "Teacher").val($("#first" + i + "Teacher").val());
+        }
+    });
+
+    $("#copyLeft").click(function () { //second to first
+        for (var i = (0 + PdOffset) ; i < (7 + PdOffset) ; i++) {
+            $("#first" + i).val($("#second" + i).val());
+            $("#first" + i + "Teacher").val($("#second" + i + "Teacher").val());
+        }
+    });
+</script>

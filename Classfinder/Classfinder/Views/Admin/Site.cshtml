@@ -1,0 +1,127 @@
+﻿@{
+    ViewBag.Title = "Site";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section Head {
+    <script src="~/Scripts/jQuery/jquery.signalR-1.1.1.min.js" type="text/javascript"></script>
+}
+<a href="#NewSchool" id="newSchoolToggle" class="toggleBtn">New School</a>
+<div id="newSchoolDiv" style="display:none;">
+    <input id="schoolName" placeholder="school name" class="inputter" /><br />
+    <input id="schoolCode" placeholder="school code" class="inputter" /><br />
+    <input id="schoolLocks" placeholder="school locks" class="inputter" /><br />
+    <input id="schoolOffset" placeholder="period offset (0 for 0-6 period, 1 for 1-7, etc.)" class="inputter" /><br />
+    <button id="newSchoolBtn" class="inputter">create school</button>
+</div>
+
+<br />
+
+<a href="#CreateUser" id="createUserToggle" class="toggleBtn">Create User</a>
+<div id="createUserDiv" style="display:none;">
+    <input class="inputter" id="cuUsername" type="text" placeholder="username" /><br />
+    <input class="inputter" id="cuPassword" type="password" placeholder="password" /><br />
+    <input class="inputter" id="cuName" type="text" placeholder="real name" /><br />
+    <input class="inputter" id="cuEmail" type="text" placeholder="email" /><br />
+    <input class="inputter" id="cuPermissions" type="text" placeholder="permissions" /><br />
+    <input id="suCode" type="text" placeholder="school code" />
+    <select id="suGrade">
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+    </select>
+    <br />
+    <button class="inputter" id="cuBtn">create user</button>
+</div>
+
+<br />
+
+<a href="#PermissionList" id="listPermsToggle" class="toggleBtn">List Permissions</a>
+<div id="listPermsDiv" style="display:none;">
+    @foreach (var perm in Roles.GetAllRoles())
+    {
+        <span>@perm</span><br />
+    }
+</div>
+
+<br />
+
+<a href="#UserPermissions" id="userPermToggle" class="toggleBtn">User Permissions</a>
+<div id="userPermDiv" style="display:none;">
+    <input type="text" placeholder="username" class="inputter" id="permsUsername" /><br />
+    <input type="text" placeholder="permissions" class="inputter" id="perms" /><br />
+    <button class="inputter" id="loadPerms">load</button><br />
+    <button class="inputter" id="setPerms">set</button>
+</div>
+<br />
+
+<script src="~/signalr/hubs" type="text/javascript"></script>
+<script type="text/javascript">
+    /* <SignalR stuff> */
+    siteAdmin = $.connection.siteAdmin;
+    $.connection.hub.start().done(function () {
+        siteAdmin.server.combineClasses(Username, Challenge).done(function (resp) {
+            console.log(resp);
+            var y = resp;
+        });
+    });
+    /* </SignalR stuff> */
+
+    $('.toggleBtn').click(function () {
+        var divId = $(this).attr("id").split("Toggle")[0] + "Div";
+        $("#" + divId).slideToggle();
+    });
+
+    function SeperateCommas(toSep) {
+        var toResp = toSep.split(',');
+        $.each(toResp, function (index, value) {
+            toResp[index] = $.trim(value);
+        });
+        return toResp;
+    }
+
+    $("#newSchoolBtn").click(function () {
+        var name = $("#schoolName").val();
+        var code = $("#schoolCode").val();
+        var locks = $("#schoolLocks").val();
+        var Offset = parseInt($("#schoolOffset").val());
+        siteAdmin.server.newSchool(name, code, locks, Offset, Username, Challenge).done(function (DidWork) {
+            if (DidWork) {
+                alert("Done!");
+                $("#schoolName").val("");
+                $("#schoolCode").val("");
+                $("#schoolLocks").val("");
+                $("#schoolOffset").val("");
+            }
+            else {
+                alert("Something went wrong.");
+            }
+        });
+    });
+
+    $("#cuBtn").click(function () {
+        var usernm = $("#cuUsername").val();
+        var pass = $("#cuPassword").val();
+        var name = $("#cuName").val();
+        var email = $("#cuEmail").val();
+        var permissions = $("#cuPermissions").val();
+        var schoolCode = $("#suCode").val();
+        var grade = $("#suGrade").val();
+        siteAdmin.server.createUser(usernm, pass, name, email, permissions, schoolCode, grade, Username, Challenge).done(function () {
+        });
+    });
+
+    $("#loadPerms").click(function () {
+        var usernm = $("#permsUsername").val();
+        siteAdmin.server.getPerms(usernm, Username, Challenge).done(function (Perms) {
+            $('#perms').val(Perms);
+        });
+    });
+
+    $("#setPerms").click(function () {
+        var usernm = $("#permsUsername").val();
+        var perms = $('#perms').val();
+        siteAdmin.server.setPerms(usernm, perms, Username, Challenge).done(function () {
+        });
+    });
+</script>

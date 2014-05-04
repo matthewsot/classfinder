@@ -1,0 +1,31 @@
+﻿.mainBox {
+    background-color:#DDD;
+    text-align:left;
+    height:500px;
+    position:absolute;
+    width:48%;
+}
+
+    .mainBox h1, p {
+        margin-left:20px;
+        margin-top:5px;
+    }
+
+.peerItem {
+    color:#0094ff;
+    cursor:pointer;
+}
+
+#firstSem {
+    position:absolute;
+    float:left;
+    left:10px;
+    top:30px;
+}
+
+#secondSem {
+    position:absolute;
+    float:right;
+    right:10px;
+    top:30px;
+}

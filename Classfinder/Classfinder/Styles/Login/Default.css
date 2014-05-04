@@ -1,0 +1,58 @@
+﻿#LoginBox {
+    background-color:#FF6060;
+    margin-top:0px;
+    width: 230px;
+    height: 210px;
+}
+
+#SignupBox {
+    background-color:#61B6FF;
+    width: 230px;
+    height: 300px;
+    margin-top:20px;
+}
+
+#InfoBox {
+    background-color:#A9FFB1;
+    position:absolute;
+    top:0px;
+    margin-left:270px;
+    width:700px;
+    height:550px;
+    padding-top:0px;
+    text-align:center;
+}
+
+.BoxTitle {
+    font-size:30px;
+    color:#fff;
+}
+
+#logInBtn {
+    margin-top:10px;
+}
+
+.ColorBox {
+    padding-top:10px;
+}
+
+#suCode {
+    margin-bottom:0px;
+    width:176px;
+    height:30px;
+    border-style:none;
+}
+
+#suGrade {
+    height:30px;
+    border-style:none;
+    margin-bottom:10px;
+}
+
+#MainBody {
+    width:950px;
+}
+
+#TopCont {
+    width:950px;
+}

@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var user = Classfinder.Database.User.GetFromUsername(WebSecurity.CurrentUserName);
+}
+
+@section Head {
+    <script src="~/Scripts/jQuery/jquery.signalR-1.1.1.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/Shared/Scaler.js"></script>
+    <script src="Scripts/jQuery/jquery.signalR-1.1.1.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/Flauntly/Wedge/Core.js" type="text/javascript"></script>
+    <link href="~/Styles/Account/Settings/Default.css" type="text/css" rel="stylesheet" />    
+}
+
+Username: <input type="text" id="username" class="editable" value="@user.Username" /><br />
+Real name: <input type="text" id="realname" class="editable" value="@user.Realname" /><br />
+Email: <input type="text" id="email" class="editable" value="@user.Email" style="width:400px;" /><br />
+<button class="inputter" id="saveMain">save changes</button>
+<br/>
+<a href="#Password" onclick="initWedge('passDiv', 'Passwords', 'div');">change password...</a><br />
+<a href="#Info" onclick="initWedge('infoDiv', 'Extra Info', 'div');">extra information...</a>
+
+<div id="passDiv" class="WedgeDiv">
+    To change your password, you'll need to know your current password.<br />
+    <input type="password" id="currPass" class="inputter" placeholder="current password" /><br />
+    <input type="password" id="newPass" class="inputter" placeholder="new password" /><br />
+    <input type="password" id="newPassConf" class="inputter" placeholder="confirm new password" /><br />
+    <button class="inputter" id="passBtn">change password</button>
+</div>
+
+<div id="infoDiv" class="WedgeDiv">
+    NOTE - some information here can be used to hijack your account.<br />
+    DO NOT SHARE IT!<br /><br />
+    Account Created: @user.JoinDate.ToString()<br />
+    Challenge: @user.Challenge
+</div>
+<script src="~/signalr/hubs" type="text/javascript"></script>
+<script type="text/javascript">
+    /* <SignalR stuff> */
+    account = $.connection.account;
+    $.connection.hub.start();
+    /* </SignalR stuff> */
+
+    $("#saveMain").click(function () {
+        account.server.updateInfo($("#username").val(), $("#realname").val(), $("#email").val(), Username, Challenge).done(function (didwork) {
+            if (didwork == "BAAAAD") {
+                alert("Sorry, something went wrong :(");
+            }
+            if (didwork != "" && didwork != "UNM") {
+                if (didwork.indexOf("USR") !== -1) {
+                    alert("Sorry, someone else already has that username!");
+                }
+                if (didwork.indexOf("RNM") !== -1) {
+                    alert("Please enter a real name");
+                }
+                if (didwork.indexOf("EML") !== -1) {
+                    alert("Please enter an email");
+                }
+            }
+            if (didwork == "UNM") {
+                alert('You\'ve updated your username, please login with username "' + $("#username").val() + '"');
+                window.location.href = "/Account/Logout";
+            }
+            else {
+                window.location.reload(true);
+            }
+        });
+    });
+
+    $("#passBtn").click(function () {
+        var newPass = $('#newPass').val();
+        if (newPass == $('#newPassConf').val()) {
+            account.server.changePassword($("#currPass").val(), newPass, Username, Challenge).done(function (didwork) {
+                if (!didwork) {
+                    alert("Sorry, you entered your current password in wrong");
+                }
+                else {
+                    alert("Password changed!");
+                    $("#lightOverlay").click();
+                }
+            });;
+        }
+        else {
+            alert("Sorry, the password didn't match the confirmation");
+        }
+    });
+</script>

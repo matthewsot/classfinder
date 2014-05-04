@@ -1,0 +1,236 @@
+﻿@{
+    ViewBag.Title = "Welcome";
+    //Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classfinder.me</title>
+    <link rel="shortcut icon" href="/Images/favicon.ico" />
+    <script src="~/Scripts/Shared/Scaler.js"></script>
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <link href="~/Styles/TopNav/Default.css" type="text/css" rel="stylesheet" />
+    <script src="~/Scripts/jQuery/jquery_placeholder.js" type="text/javascript"></script>
+    <script src="Scripts/jQuery/jquery.signalR-1.1.1.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/Flauntly/Wedge/Core.js" type="text/javascript"></script>
+    <meta name="viewport" content="width=300px, initial-scale=1, maximum-scale=1">
+    <style type="text/css">
+        .bubble-div {
+            width: 200px;
+            height: 200px;
+            /*line-height: 200px;*/
+            border-radius: 100px;
+
+            background: #fff;
+            border: 2px solid #408CFE;
+        }
+        .bubble-img {
+            height:150px;
+            margin-top:20px;
+        }
+        /* Thanks :D http://stackoverflow.com/questions/8437790/horizontal-inline-list-in-html-css-with-divs */
+        #bubbles li {
+            display: inline-block;
+            list-style-type: none;
+            padding-right: 20px;
+        }
+        .inputter {
+            border-color: #001dff;
+            border-style: solid;
+            width:300px;
+        }
+            .inputter:focus {
+                border-color: #00d0ff;
+            }
+        #LoginBox {
+            position:absolute;
+            left:0px;
+        }
+        #SignupBox {
+            position:absolute;
+            right:0px;
+        }
+        #MainBody {
+            margin-top:130px;
+        }
+    </style>
+</head>
+<body>
+    <div id="TopNav" style="background-color: #fff; border-bottom: 3px solid #1271FE;height:110px;">
+        <div id="TopCont" style="text-align:center;">
+            <a href="~/"><img id="Logo" style="float:none;" src="~/Images/Logo/Pretty.png" alt="classfinder.me" height="60" /></a>
+            <br/>Search, find, and discover friends in your classes for the upcoming school year.
+        </div>
+    </div>
+    <div id="MainBody" style="background-color: #F5F5F5;">
+        <ul id="bubbles">
+            <li>
+                <div class="bubble-div">
+                    <img class="bubble-img" src="/Images/Bubbles/SignUp.png" />
+                </div>
+            </li>
+            <li>
+                <div class="bubble-div">
+                    <img class="bubble-img" src="/Images/Bubbles/SetUp.png" />
+                </div>
+            </li>
+            <li>
+                <div class="bubble-div">
+                    <img class="bubble-img" src="/Images/Bubbles/Discover.png" />
+                </div>
+            </li>
+        </ul>
+        <div id="LoginBox">
+            <h1 style="color: #0066FE;margin-top:0px;">LOGIN</h1>
+            <input class="inputter" id="loginUsername" type="text" placeholder="username" />
+            <br /><input class="inputter" id="loginPassword" type="password" placeholder="password" />
+            <br/><input type="checkbox" id="rememberMe" name="Remember" value="true" />Remember me
+            <br /><a href="#ForgotPass" style="margin-bottom:1px;" onclick="initWedge('ForgotPassBox', 'Reset Password', 'div');" id="forgotPassLink">Forgot?</a><br/>
+            <button style="width:200px;" id="logInBtn" type="submit">log in</button><br />
+            <span id="loginErrorBar" style="color:#FFF;"></span>
+        </div>
+        <div id="SignupBox" class="ColorBox">
+            <h1 style="color: #0066FE;margin-top:0px;">SIGNUP</h1>
+            <input class="inputter" id="suUsername" type="text" placeholder="username" /><br />
+            <input class="inputter" id="suPassword" type="password" placeholder="password" /><br />
+            <input class="inputter" id="suPasswordConf" type="password" placeholder="confirm password" /><br />
+            <input class="inputter" id="suName" type="text" placeholder="real name" /><br />
+            <input class="inputter" id="suEmail" type="text" placeholder="email" /><br />
+            <select id="suCode">
+                <option value="Miller">Miller</option>
+                <option value="Lynbrook" selected="selected">Lynbrook</option>
+            </select>
+            <select id="suGrade">
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9" selected="selected">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            <br />
+            <button id="suBtn" style="width:200px;" type="submit">sign up</button><br />
+            <span id="suErrorBar" style="color:#f00;"></span>
+        </div>
+        <div id="ForgotPassBox" style="display:none;">
+            <h1 style="color:#fff;">Reset your Password</h1>
+            <input id="resetEmail" class="inputter" placeholder="Your email" type="email" /><br />
+            <button style="width:200px;" id="resetPassBtn">Reset Your Password</button>
+        </div>
+        <script src="~/signalr/hubs" type="text/javascript"></script>
+        <script type="text/javascript">
+            /* <SignalR stuff> */
+            accnt = $.connection.account;
+            $.connection.hub.start();
+            /* </SignalR stuff> */
+        </script>
+        <script type="text/javascript">
+            function MakeMobile() {
+                $("body").width("300px");
+                $("#TopNav").hide();
+                $("#MainBody").css("margin-top", "0px");
+                $("#forgotPassLink").hide();
+                $("#LoginBox").css({
+                    "position": "relative",
+                    "width": "auto",
+                    "float": "none",
+                    "height": "250px"
+                });
+                $("#SignupBox").css({
+                    "position": "relative",
+                    "width": "auto",
+                    "float": "none",
+                    "height": "400px"
+                });
+            }
+            var isMobile = @ViewBag.Mobile.ToString().ToLower();
+            if (isMobile) {
+                MakeMobile();
+            }
+            //Look, we're just a little site collecting nothing that could really be considered "personal information" - leave us alone!
+            //If you don't agree with our stance, please contact matthewthepc@outlook.com for a discussion.
+            //$("#ageCheckWhy").click(function () { alert("Due to US regulations, we're required to ensure that all children under the age of 13 either do not sign up, or get parental permission."); });
+            $("#resetPassBtn").click(function () {
+                $('#resetPassBtn').fadeOut();
+                accnt.server.resetPass($("#resetEmail").val()).done(function (resp) {
+                    if (resp == 0) {
+                        alert("You should get an email from us soon, please follow the instructions contained in the email.");
+                        $("#lightOverlay").click();
+                    }
+                    else if (resp == 1) {
+                        alert("Sorry, please ensure that you entered the correct email address");
+                        $('#resetPassBtn').fadeIn();
+                    }
+                });
+            });
+            function Login(Username, Password, RememberMe) {
+                $.post("/Account/Login", { Username: Username, Password: Password, Remember: RememberMe, Silent: true }, function (data) {
+                    if (data != "FALSE") {
+                        if (!isMobile) {
+                            window.location.href = data;
+                        }
+                        else {
+                            window.location.href = data + "/mobile";
+                        }
+                    }
+                    else {
+                        $("#loginErrorBar").text("Wrong username/password!");
+                    }
+                });
+            }
+
+            $("#suBtn").click(function () {
+                //var RawDate = $("#newDate").val();
+                //var date = Date.parse(RawDate);
+                ////Thanks! http://stackoverflow.com/questions/3224834/get-difference-between-2-dates-in-javascript
+                //if ((Date.now() - date) < ((1000 * 60 * 60 * 24 * 365) * 13)) {
+                //    alert("Sorry, you're not old enough to sign up for Classfinder. If you are over the age of 13, please ensure that you entered your DOB in the correct format (YYYY/MM/DD, 1998/08/07 for August 7th, 1998)");
+                //}
+                //else {
+                $("#lightOverlay").click();
+                var SchoolCode = $("#suCode").val();
+                var Grade = $("#suGrade").val();
+                var Usernm = $("#suUsername").val();
+                var Pass = $("#suPassword").val();
+                var ConfPass = $("#suPasswordConf").val();
+                var Name = $("#suName").val();
+                var Email = $("#suEmail").val();
+                if (ConfPass == Pass) {
+                    accnt.server.signup(Usernm, Pass, Name, Email, SchoolCode, Grade, "Student").done(function (ErrorCode) {
+                        if (ErrorCode == 0) {
+                            Login(Usernm, Pass, true);
+                        } else if (ErrorCode == 1 || ErrorCode == 5) {
+                            //$("#suErrorBar").text("That user already exists!");
+                            alert("That user already exists!");
+                        } else if (ErrorCode == 2) {
+                            alert("You used an invalid school code! The school code for Miller is \"Miller\"");
+                        }
+                        else if (ErrorCode == 4) {
+                            alert("Someone else is already using that email!");
+                        }
+                    });
+                } else {
+                    //$("#suErrorBar").text("Your passwords don't match!");
+                    alert("Your passwords don't match!");
+                }
+                //}
+            });
+
+            $("#logInBtn").click(function () {
+                var Usernm = $("#loginUsername").val();
+                var Pass = $("#loginPassword").val();
+                var RememberMe = $("#rememberMe").prop("checked");
+                Login(Usernm, Pass, RememberMe);
+            });
+            $(document).ready(function () {
+                //Q&D scaling :\
+                FixHeight(document.getElementById("LoginBox"), 673, 1366);
+                FixHeight(document.getElementById("SignupBox"), 673, 1366);
+                FixHeight(document.getElementById("InfoBox"), 673, 1366);
+            });
+        </script>
+    </div>
+</body>
+</html>

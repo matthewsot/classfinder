@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/_TopNav.cshtml";
+}
+
+@section Head {
+    @RenderSection("Head", false)    
+}
+
+@section Nav {
+    <ul class="navList" id="mainNavList">
+        <li><a href="~/FAQ">faq</a></li>
+        <li><a href="~/Contact">contact</a></li>
+        <li style="border-right:1px solid"><a href="http://blog.classfinder.me/">tumblr</a></li>
+    </ul>
+}
+
+@RenderBody()
