@@ -8,7 +8,7 @@ namespace Classfinder
     {
         public static string GetValue(string Key, string Default = "")
         {
-            using (CfDb db = new CfDb())
+            using (var db = new CfDb())
             {
                 var val = db.Config.FirstOrDefault(a => a.Key == Key).Value;
                 if (val == null)
@@ -21,10 +21,10 @@ namespace Classfinder
 
         public static Dictionary<string, string> GetValues(string[] Keys)
         {
-            using (CfDb db = new CfDb())
+            using (var db = new CfDb())
             {
                 var gotten = db.Config.Where(a => Keys.Contains(a.Key));
-                Dictionary<string, string> Resp = new Dictionary<string,string>();
+                var Resp = new Dictionary<string,string>();
                 foreach (var Got in gotten)
                 {
                     if (Got != null)

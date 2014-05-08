@@ -1,12 +1,12 @@
 ﻿@using Classfinder.Database;
 @using System.Configuration;
 @{
-    using (CfDb context = new CfDb())
+    using (var context = new CfDb())
     {
         var debug01 = context.Users.ToList();
     }
 
-    using (CfDb context = new CfDb())
+    using (var context = new CfDb())
     {
         var debug02 = context.Users.ToList();
     }

@@ -8,11 +8,12 @@ using System.Net.Mail;
 
 namespace Classfinder.Hubs
 {
+    //TODO: why the heck is this using SignalR. Rewrite this with WebAPI
     public class Account : Hub
     {
         public int Signup(string Username, string Password, string Realname, string Email, string SchoolCode, int Grade, string Role)
         {
-            using (CfDb db = new CfDb())
+            using (var db = new CfDb())
             {
                 if (db.Users.Count(a => a.Username == Username || a.Email == Email) == 0
                     && !(String.IsNullOrWhiteSpace(Username) || String.IsNullOrWhiteSpace(Password) || String.IsNullOrWhiteSpace(Realname) 
@@ -52,12 +53,12 @@ namespace Classfinder.Hubs
 
         public bool ChangePassword(string CurrPass, string NewPass, string Username, string Challenge)
         {
-            using(CfDb db = new CfDb())
+            using(var db = new CfDb())
             {
                 var user = db.Users.FirstOrDefault(u => u.Username == Username && u.Challenge == Challenge);
                 if(user != null)
                 {
-                    bool didWork = WebSecurity.ChangePassword(Username, CurrPass, NewPass);
+                    var didWork = WebSecurity.ChangePassword(Username, CurrPass, NewPass);
                     return didWork;
                 }
             }
@@ -66,12 +67,12 @@ namespace Classfinder.Hubs
 
         public string UpdateInfo(string Usernm, string Realname, string Email, string Username, string Challenge)
         {
-            using (CfDb db = new CfDb())
+            using (var db = new CfDb())
             {
                 var user = db.Users.FirstOrDefault(u => u.Username == Username && u.Challenge == Challenge);
                 if (user != null)
                 {
-                    string toret = "";
+                    var toret = "";
                     if (Usernm != Username)
                     {
                         if (!String.IsNullOrWhiteSpace(Usernm) && db.Users.Where(u => u.Username == Usernm).Count() == 0)
@@ -115,15 +116,15 @@ namespace Classfinder.Hubs
 
         public int ResetPass(string Email)
         {
-            using (CfDb db = new CfDb())
+            using (var db = new CfDb())
             {
                 var user = db.Users.FirstOrDefault(u => u.Email == Email);
                 if (user != null)
                 {
                     //Thanks! http://csharp.net-informations.com/communications/csharp-smtp-mail.htm
                     var Settings = Config.GetValues(new string[] { "SMTP Server", "SMTP Port", "SMTP User", "SMTP Pass" });
-                    MailMessage mail = new MailMessage();
-                    SmtpClient SmtpServer = new SmtpClient(Settings["SMTP Server"]);
+                    var mail = new MailMessage();
+                    var SmtpServer = new SmtpClient(Settings["SMTP Server"]);
 
                     mail.From = new MailAddress("resetpass@classfinder.me", "Classfinder");
                     mail.To.Add(new MailAddress(Email, user.Realname));

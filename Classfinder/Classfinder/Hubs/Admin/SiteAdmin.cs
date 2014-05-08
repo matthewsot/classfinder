@@ -3,7 +3,6 @@ using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Web.Security;
 using WebMatrix.WebData;
 
@@ -13,12 +12,12 @@ namespace Classfinder.Hubs.Admin
     {
         public bool NewSchool(string SchoolName, string Code, string Locks, int Offset, string Username, string Challenge)
         {
-            using (CfDb db = new CfDb())
+            using (var db = new CfDb())
             {
                 var user = db.Users.FirstOrDefault(a => a.Username == Username && a.Challenge == Challenge);
                 if (user != null && Roles.IsUserInRole(Username, "SiteAdmin"))
                 {
-                    School newSchool = new School()
+                    var newSchool = new School()
                     {
                         Name = SchoolName,
                         SignupCode = Code,
@@ -33,7 +32,7 @@ namespace Classfinder.Hubs.Admin
         }
         public bool CreateUser(string Username, string Pass, string Realnm, string Email, string Permissions, string SchoolCode, int Grade, string MyUsername, string Challenge)
         {
-            using (CfDb db = new CfDb())
+            using (var db = new CfDb())
             {
                 var user = db.Users.FirstOrDefault(a => a.Username == MyUsername && a.Challenge == Challenge);
                 if (user != null && Roles.IsUserInRole(MyUsername, "SiteAdmin"))
@@ -75,7 +74,7 @@ namespace Classfinder.Hubs.Admin
         }
         public string GetPerms(string Usernm, string Username, string Challenge)
         {
-            using (CfDb db = new CfDb())
+            using (var db = new CfDb())
             {
                 var user = db.Users.FirstOrDefault(u => u.Username == Username && u.Challenge == Challenge);
                 if (user != null && Roles.IsUserInRole(Username, "SiteAdmin"))
@@ -91,7 +90,7 @@ namespace Classfinder.Hubs.Admin
         }
         public bool SetPerms(string Usernm, string Perms, string Username, string Challenge)
         {
-            using (CfDb db = new CfDb())
+            using (var db = new CfDb())
             {
                 var user = db.Users.FirstOrDefault(u => u.Username == Username && u.Challenge == Challenge);
                 if (user != null && Roles.IsUserInRole(Username, "SiteAdmin"))
@@ -116,7 +115,7 @@ namespace Classfinder.Hubs.Admin
         }
         public List<Class> CombineClasses(string Username, string Challenge)
         {
-            using (CfDb db = new CfDb())
+            using (var db = new CfDb())
             {
                 var x = db.Classes.Where(c => c.Teacher.Contains(", ")).ToList();
                 var SimilarClasses = db.Classes.Where(first => db.Classes.Count(second =>
@@ -145,11 +144,11 @@ namespace Classfinder.Hubs.Admin
                                 first.ClassSchool.Id == ThisClass.ClassSchool.Id);
                             if (SecondClass != null)
                             {
-                                foreach (User user in ThisClass.FirstSemStudents)
+                                foreach (var user in ThisClass.FirstSemStudents)
                                 {
                                     SecondClass.FirstSemStudents.Add(user);
                                 }
-                                foreach (User user in ThisClass.SecondSemStudents)
+                                foreach (var user in ThisClass.SecondSemStudents)
                                 {
                                     SecondClass.SecondSemStudents.Add(user);
                                 }

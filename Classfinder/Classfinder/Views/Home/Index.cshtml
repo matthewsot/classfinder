@@ -40,7 +40,7 @@
     }
     <a href="http://blog.classfinder.me/">Follow us on Tumblr!</a>
 </div>
-<script src="~/signalr/hubs" type="text/javascript"></script>
+
 <script type="text/javascript">
     var parts = location.pathname.split('/');
     var toUsername = "";
@@ -70,35 +70,21 @@
     if(isMobile) {
         MakeMobile();
     }
-    /* <SignalR stuff> */
-    classInfo = $.connection.classInfo;
-    $.connection.hub.start().done(function () {
-        if (toUsername != "") {
-            GetPeers(toUsername);
-        }
-        else {
-            if(!isMobile) {
-                window.location.href = "http://classfinder.me/";
-            }
-            else {
-                window.location.href = "http://classfinder.me/mobile";
-            }
-        }
-    });
-    function GetPeers(UsrNm) {
+
+    function GetPeers(usrNm) {
         $("#firstSem").html("<h2>First Semester:</h2>");
         $("#secondSem").html("<h2>Second Semester:</h2>");
-        classInfo.server.getPeers(UsrNm).done(function (PeerList) {
-            $("#NowViewing").text(PeerList[0] + "'s Schedule");
-            for (var i = 1; i < PeerList.length; i++) { //[0] is the person's name
-                AddPeers(PeerList[i]);
+        $.getJSON("/API/Peers", function (data) {
+            $("#NowViewing").text(data[0] + "'s Schedule");
+            for (var i = 1; i < data.length; i++) { //[0] is the person's name
+                AddPeers(data[i]);
             }
         });
     }
-    /* </SignalR stuff> */
-    function AddPeers(List) {
-        for (var i = 0; i < List.length; i++) {
-            var currClass = List[i];
+
+    function AddPeers(list) {
+        for (var i = 0; i < list.length; i++) {
+            var currClass = list[i];
             var classDiv = document.createElement("div");
             var className = document.createElement("h3");
             className.textContent = currClass.Period + " - " + currClass.Name + " (" + currClass.Teacher + ")";
@@ -122,6 +108,7 @@
                 $("#secondSem").append(classDiv);
             }
         }
+
         $('.peerItem').click(function () {
             var reg = new RegExp("^peer");
             var base = "http://classfinder.me/Schedule/" + escape($(this).attr("id").replace(reg, "")).replace('/', "%2F");
@@ -132,6 +119,19 @@
                 window.location.href = base + "/mobile";
             }
         });
+    }
+    
+
+    if (toUsername != "") {
+        GetPeers(toUsername);
+    }
+    else {
+        if(!isMobile) {
+            window.location.href = "http://classfinder.me/";
+        }
+        else {
+            window.location.href = "http://classfinder.me/mobile";
+        }
     }
 </script>
 @if (ViewBag.Mobile)

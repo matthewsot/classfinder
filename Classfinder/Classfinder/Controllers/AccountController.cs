@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Classfinder.Database;
+﻿using System.Web.Mvc;
 using WebMatrix.WebData;
 
 namespace Classfinder.Controllers
@@ -15,7 +10,7 @@ namespace Classfinder.Controllers
         public ActionResult Login(string Username, string Password, bool Remember = false, bool Silent = false, string Redirect = "/Schedule/[username]")
         {
             Redirect = Redirect.Replace("[username]", Username);
-            bool isGood = WebSecurity.Login(Username, Password, Remember);
+            var isGood = WebSecurity.Login(Username, Password, Remember);
             if (isGood)
             {
                 if (!Silent)

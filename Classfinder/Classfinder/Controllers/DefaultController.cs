@@ -13,16 +13,17 @@ namespace Classfinder.Controllers
         {
             if (WebSecurity.IsAuthenticated)
             {
-                var Username = WebSecurity.CurrentUserName;
-                if (Roles.IsUserInRole(Username, "Student"))
+                var username = WebSecurity.CurrentUserName;
+                if (Roles.IsUserInRole(username, "Student"))
                 {
                     ViewBag.Redirect = "/Schedule/" + WebSecurity.CurrentUserName;
                     return View("Redirecter");
                 }
-                else if (Roles.IsUserInRole(Username, "Teacher"))
+                
+                if (Roles.IsUserInRole(username, "Teacher"))
                 {
-                    ViewBag.Redirect = "/Teacher";
-                    return View("Teacher");
+                    //ViewBag.Redirect = "/Teacher";
+                    //return View("Teacher");
                 }
             }
             if ((Request.Browser.IsMobileDevice || device.ToLower().StartsWith("m")) && !device.ToLower().StartsWith("d"))

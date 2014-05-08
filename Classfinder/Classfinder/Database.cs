@@ -27,7 +27,7 @@ namespace Classfinder.Database
         public string Challenge { get; set; }
         public static User GetFromUsername(string username)
         {
-            using (CfDb db = new CfDb())
+            using (var db = new CfDb())
             {
                 var toRet = db.Users.FirstOrDefault(u => u.Username == username);
                 return toRet;
@@ -35,19 +35,11 @@ namespace Classfinder.Database
         }
         public static string GetNewChallenge()
         {
-            string path = Path.GetRandomFileName();
+            var path = Path.GetRandomFileName();
             path = path.Replace(".", ""); // Remove period.
-            string pathTwo = Path.GetRandomFileName();
-            pathTwo = path.Replace(".", ""); // Remove period.
+            var pathTwo = Path.GetRandomFileName();
+            pathTwo = pathTwo.Replace(".", ""); // Remove period.
             return path + pathTwo;
-        }
-        public static bool isAuthed(string Username, string Challenge)
-        {
-            using (CfDb db = new CfDb())
-            {
-                var toCheck = db.Users.FirstOrDefault(u => u.Username == Username);
-                return toCheck.Challenge == Challenge;
-            }
         }
     }
     public class Class

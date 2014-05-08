@@ -3,24 +3,24 @@
     ViewBag.Title = "Classes";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     int offset;
-    ICollection<Class> FirstSem;
-    ICollection<Class> SecSem;
-    string[] Teachers;
-    string[] ClassNames;
-    using(CfDb db = new CfDb()) { //TODO: move this stuff into a model and handle it in the controller
+    ICollection<Class> firstSem;
+    ICollection<Class> secSem;
+    string[] teachers;
+    string[] classNames;
+    using(var db = new CfDb()) { //TODO: move this stuff into a model and handle it in the controller
         var usr = db.Users.Where(u => u.Username == WebSecurity.CurrentUserName).Select(u => new { SchoolId = u.School.Id, u.School.PeriodOffset, u.FirstSem, u.SecondSem }).First();
         offset = usr.PeriodOffset;
-        FirstSem = usr.FirstSem;
-        SecSem = usr.SecondSem;
-        Teachers = db.Classes.Where(c=> c.ClassSchool.Id == usr.SchoolId).Select(c => c.Teacher).Distinct().ToArray();
-        for(var i = 0;i<Teachers.Length;i++)
+        firstSem = usr.FirstSem;
+        secSem = usr.SecondSem;
+        teachers = db.Classes.Where(c=> c.ClassSchool.Id == usr.SchoolId).Select(c => c.Teacher).Distinct().ToArray();
+        for(var i = 0;i<teachers.Length;i++)
         {
-            Teachers[i] = Server.HtmlEncode(Teachers[i]);
+            teachers[i] = Server.HtmlEncode(teachers[i]);
         }
-        ClassNames = db.Classes.Where(c => c.ClassSchool.Id == usr.SchoolId).Select(c => c.Name).Distinct().ToArray();
-        for (var i = 0; i < ClassNames.Length; i++)
+        classNames = db.Classes.Where(c => c.ClassSchool.Id == usr.SchoolId).Select(c => c.Name).Distinct().ToArray();
+        for (var i = 0; i < classNames.Length; i++)
         {
-            ClassNames[i] = Server.HtmlEncode(ClassNames[i]);
+            classNames[i] = Server.HtmlEncode(classNames[i]);
         }
     }
 }
@@ -37,7 +37,7 @@
     <h1>First Semester</h1>
     @for (var i = (0 + offset); i < (7 + offset); i++)
     {
-        var thisClass = FirstSem.FirstOrDefault(c => c.Period == i);
+        var thisClass = firstSem.FirstOrDefault(c => c.Period == i);
         @Html.Raw(i + "<div class=\"periodDiv\">")
         @("Class ")
         if(thisClass == null) {
@@ -63,7 +63,7 @@
     <h1>Second Semester</h1>
     @for (var i = (0 + offset); i < (7 + offset); i++)
     {
-        var thisClass = SecSem.FirstOrDefault(c => c.Period == i);
+        var thisClass = secSem.FirstOrDefault(c => c.Period == i);
         @Html.Raw(i + "<div class=\"periodDiv\">")
         @("Class ")
     if(thisClass == null)
@@ -98,10 +98,10 @@
     $.connection.hub.start();
     /* </SignalR stuff> */
     var NameSource = [
-        "@Html.Raw(string.Join("\",\r\n\"", ClassNames))"
+        "@Html.Raw(string.Join("\",\r\n\"", classNames))"
     ]
     var TeacherSource = [
-        "@Html.Raw(string.Join("\",\r\n\"", Teachers))"        
+        "@Html.Raw(string.Join("\",\r\n\"", teachers))"        
     ]
 
     $('[ast="class"]').autocomplete({
