@@ -172,3 +172,7 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+Classfinder/Classfinder.sln.ide/edb.chk
+Classfinder/Classfinder.sln.ide/edbres00001.jrs
+Classfinder/Classfinder.sln.ide/edbres00002.jrs
+Classfinder/Classfinder.sln.ide/storage.ide
