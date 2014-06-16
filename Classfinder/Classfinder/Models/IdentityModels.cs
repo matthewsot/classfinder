@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace Classfinder.Models
 {
@@ -15,6 +16,32 @@ namespace Classfinder.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public int Grade { get; set; }
+        public virtual School School { get; set; }
+    }
+
+    public class School
+    {
+        public string Name { get; set; }
+        public virtual ICollection<UserAccount> Students { get; set; }
+        public virtual ICollection<Teacher> Teachers { get; set; }
+    }
+
+    public class Teacher
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public virtual ICollection<Class> Classes { get; set; }
+        public virtual School School { get; set; }
+    }
+
+    public class Class
+    {
+        public string Subject { get; set; }
+        public int Period { get; set; }
+        public virtual Teacher Teacher { get; set; }
+        public virtual ICollection<UserAccount> Students { get; set; }
     }
 
     public class CfDb : IdentityDbContext<UserAccount>
