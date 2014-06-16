@@ -1,7 +1,0 @@
-﻿{
-    "Data": {
-        "DefaultConnection": { 
-            "ConnectionString": "Data Source=.\\SQLEXPRESS;Database=classfinder;Trusted_Connection=True;MultipleActiveResultSets=true"
-        }
-    }
-}
