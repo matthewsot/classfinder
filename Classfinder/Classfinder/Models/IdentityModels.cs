@@ -17,16 +17,16 @@ namespace Classfinder.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<UserAccount>
+    public class CfDb : IdentityDbContext<UserAccount>
     {
-        public ApplicationDbContext()
+        public CfDb()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
-        public static ApplicationDbContext Create()
+        public static CfDb Create()
         {
-            return new ApplicationDbContext();
+            return new CfDb();
         }
     }
 }
