@@ -101,6 +101,11 @@ namespace Classfinder.Models
         public int Period { get; set; }
         public virtual Teacher Teacher { get; set; }
         public virtual ICollection<Schedule> SchedulesWithClass { get; set; }
+
+        public IEnumerable<UserAccount> UsersInClass(int term, CfDb db)
+        {
+            return SchedulesWithClass.Where(sched => sched.Term == term).Select(sched => sched.User);
+        }
     }
 
     public class CfDb : IdentityDbContext<UserAccount>
