@@ -1,31 +1,136 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Classfinder";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<style type="text/css">
+    body, html {
+        width:100%;
+        margin:0;
+        color:#ffffff;
+    }
+
+    .row {
+        width:100%;
+        text-align:center;
+    }
+
+    .green-row {
+        background-color:#1ccfaf;
+    }
+
+    #first-row {
+        height:200px;
+        position:relative;
+    }
+
+    .btn {
+        border: 2px solid #fff;
+        border-radius: 4px;
+
+        background:none;
+        color:#fff;
+
+        font-weight:400;
+        font-size:25px;
+        padding:10px 40px 10px 40px;
+
+        cursor:pointer;
+        text-decoration:none;
+        
+        display:block;
+    }
+
+        .btn:hover {
+            background-color:#fff;
+            color:#1ccfaf;
+        }
+
+    .green-on-white {
+        color:#1ccfaf;
+        border-color:#1ccfaf;
+    }
+        .green-on-white:hover {
+            background-color:#1ccfaf;
+            color:#fff;
+        }
+
+    .login-btn {
+        position:absolute;
+        top:25px;
+        right:20px;
+    }
+
+
+
+    .dark-row {
+        background-color:#3b3b3b;
+    }
+
+    #main-row {
+        padding:50px 0 50px 0;
+    }
+
+    .info-box {
+        width:300px;
+        font-size:25px;
+        position:absolute;
+        left:50%;
+    }
+</style>
+
+<div class="row green-row" id="first-row">
+    <a href="~/Account/Login" class="btn login-btn">login</a>
+    <img src="~/Content/Images/logo.shadow.png" style="height:150px;margin-top:50px;" />
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<div class="row dark-row" id="main-row">
+    <h1 style="margin:0 0 50px 0;">The simple who's-in-your-class app for students across all grades</h1>
+
+    <img src="~/Content/Images/laptop.png" style="width:600px;" />
+    
+    <div style="margin-top:50px;">
+        <a href="~/Account/Signup" class="btn" style="display:inline-block;width:190px;margin-right:50px;">sign up for cf</a>
+        <a href="~/Account/Login" class="btn" style="display:inline-block;width:190px;margin:0px;">log in</a>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+</div>
+
+<div class="row" id="last-row" style="color:#000;padding:50px 0 50px 0;">
+    <div style="position:relative;">
+        <div class="info-box" style="margin-left:-500px;">
+            <div style="background-color:#1ccfaf;width:200px;height:200px;border-radius:100px;margin-left:50px;">
+                <img src="~/Content/Images/simplified.png" style="height:125px;margin-top:37.5px;" />
+            </div>
+            <h2>Simplified</h2>
+            <p style="font-weight:300;font-size:25px;">
+                Eh, I'm not very up for creating well-thought out descriptions and paragraphs. Will should probably do these (pretty please? &lt;3). if not, i'll just do em some other time.
+            </p>
+        </div>
+
+        <div class="info-box" style="margin-left:-150px;">
+            <div style="background-color:#1ccfaf;width:200px;height:200px;border-radius:100px;margin-left:50px;">
+                <img src="~/Content/Images/aesthetic.png" style="height:125px;margin-top:37.5px;" />
+            </div>
+            <h2>Aesthetic</h2>
+            <p style="font-weight:300;font-size:25px;">
+                Eh, I'm not very up for creating well-thought out descriptions and paragraphs. Will should probably do these (pretty please? &lt;3). if not, i'll just do em some other time.
+            </p>
+        </div>
+
+        <div class="info-box" style="margin-left:200px;">
+            <div style="background-color:#1ccfaf;width:200px;height:200px;border-radius:100px;margin-left:50px;">
+                <img src="~/Content/Images/efficient.png" style="height:125px;margin-top:37.5px;" />
+            </div>
+            <h2>Efficient</h2>
+            <p style="font-weight:300;font-size:25px;">
+                Eh, I'm not very up for creating well-thought out descriptions and paragraphs. Will should probably do these (pretty please? &lt;3). if not, i'll just do em some other time.
+            </p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <div style="margin-top:600px;">
+        <h2>Created by yours truly, Adhiv, Matthew, and Will.</h2>
+        <h2 style="color:#1ccfaf;">#4yearsandrunning</h2>
+
+        <a href="~/Account/Signup" class="btn green-on-white" style="width:200px;margin-top:30px;margin-left:50%;transform:translateX(-50%);">sign up for cf</a>
     </div>
 </div>
