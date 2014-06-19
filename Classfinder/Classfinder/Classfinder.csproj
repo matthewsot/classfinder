@@ -237,6 +237,7 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

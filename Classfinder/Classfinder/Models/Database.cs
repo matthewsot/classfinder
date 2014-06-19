@@ -21,6 +21,9 @@ namespace Classfinder.Models
 
         public int Grade { get; set; }
         public virtual School School { get; set; }
+        //This makes it kinda awk, but idk.
+        //We could do like FirstSemester and SecondSemester
+        //but eh.
         public virtual ICollection<Schedule> Schedules { get; set; }
 
         public Schedule GetFirstSemesterSchedule()
