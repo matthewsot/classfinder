@@ -182,6 +182,7 @@
     <Content Include="Content\Images\efficient.png" />
     <Content Include="Content\Images\laptop.png" />
     <Content Include="Content\Images\logo.shadow.png" />
+    <Content Include="Content\Images\logo.shadow.small.png" />
     <Content Include="Content\Images\simplified.png" />
     <Content Include="Content\Styles\bootstrap.css" />
     <Content Include="Content\Styles\bootstrap.min.css" />

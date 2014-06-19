@@ -33,6 +33,27 @@ html {
   background-color: #1ccfaf;
   color: #fff;
 }
+.half-vert {
+  position: relative;
+  /* Thanks! http://creative-punch.net/2014/01/center-vertically-horizontally-using-css3-transform/ */
+  top: 50%;
+  /* but ewe. should use prefix-free */
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.half-horiz {
+  position: relative;
+  left: 50%;
+  /* but ewe. should use prefix-free */
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
 .row {
   width: 100%;
   text-align: center;
@@ -43,6 +64,7 @@ html {
   height: 250px;
   position: relative;
   background-color: #1ccfaf;
+  width: 100%;
 }
 #first-row .login-btn {
   position: absolute;
@@ -52,6 +74,9 @@ html {
 #first-row #big-logo {
   height: 200px;
   margin-top: 50px;
+}
+#first-row #small-logo {
+  display: none;
 }
 .dark-row {
   background-color: #3b3b3b;
@@ -66,6 +91,8 @@ html {
 #main-row .btn {
   display: inline-block;
   width: 190px;
+  margin-right: 25px;
+  margin-left: 25px;
 }
 #last-row {
   color: #3b3b3b;
@@ -76,6 +103,15 @@ html {
   width: 300px;
   position: absolute;
   left: 50%;
+}
+#last-row .info-box:nth-child(1) {
+  margin-left: -500px;
+}
+#last-row .info-box:nth-child(2) {
+  margin-left: -150px;
+}
+#last-row .info-box:nth-child(3) {
+  margin-left: 200px;
 }
 #last-row .info-box h2 {
   color: #3b3b3b;
@@ -100,5 +136,55 @@ html {
 #footer .hashtag {
   margin-top: 20px;
   color: #1ccfaf;
+}
+@media screen and (max-width: 800px) {
+  #first-row {
+    height: auto;
+  }
+  #first-row .login-btn {
+    position: absolute;
+    width: 150px;
+    /* but ewe. should use prefix-free */
+    position: relative;
+    left: 50%;
+    /* but ewe. should use prefix-free */
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  #first-row #big-logo {
+    display: none;
+  }
+  #first-row #small-logo {
+    display: block;
+    width: 100%;
+    margin-top: 50px;
+  }
+  #main-row .btn {
+    margin: 0;
+    margin-top: 25px;
+  }
+  #main-row img#laptop {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  #last-row .info-box:nth-child(n) {
+    margin: 0;
+    /* but ewe. should use prefix-free */
+    position: relative;
+    left: 50%;
+    /* but ewe. should use prefix-free */
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    margin-top: 50px;
+  }
+  #last-row #footer {
+    margin-top: 50px;
+  }
 }
 /*# sourceMappingURL=index.css.map */
