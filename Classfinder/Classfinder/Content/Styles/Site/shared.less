@@ -1,0 +1,51 @@
+﻿@green: #1ccfaf;
+@dark: #3b3b3b;
+@light: #8b8b8b;
+
+body, html {
+    width:100%;
+    margin:0;
+    color:#fff;
+}
+
+.btn {
+    border: 2px solid #fff;
+    border-radius: 4px;
+
+    color:#fff;
+
+    font-weight:400;
+    font-size:25px;
+    padding:10px 40px 10px 40px;
+
+    cursor:pointer;
+    text-decoration:none;
+    display:block;
+}
+
+    .btn:hover {
+        background-color:#fff;
+        color:@green;
+    }
+
+.white-on-dark {
+    color:#fff;
+}
+    .white-on-dark:hover {
+        color:@dark;
+    }
+
+.green-on-white {
+    color:@green;
+    border-color:@green;
+}
+    .green-on-white:hover {
+        background-color:@green;
+        color:#fff;
+    }
+
+.circle(@size) {
+    height:@size;
+    width:@size;
+    border-radius:@size / 2;
+}

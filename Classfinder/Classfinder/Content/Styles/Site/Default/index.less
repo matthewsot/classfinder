@@ -1,0 +1,73 @@
+﻿@import "../shared.less";
+
+.row {
+    width:100%;
+    text-align:center;
+    padding:50px 0 50px 0;
+}
+
+#first-row {
+    padding:0;
+    height:250px;
+    position:relative;
+    background-color:@green;
+}
+    #first-row .login-btn {
+        position:absolute;
+        top:25px;
+        right:20px;
+    }
+    #first-row #big-logo {
+        height:200px;
+        margin-top:50px;
+    }
+
+.dark-row {
+    background-color:@dark;
+}
+
+#main-row {
+    padding:50px 0 50px 0;
+}
+    #main-row img#laptop {
+        margin:50px 0 50px 0;
+        width:600px;
+    }
+    #main-row .btn {
+        display:inline-block;
+        width:190px;
+    }
+
+#last-row {
+    color:@dark;
+    padding:50px 0 50px 0;
+    font-weight:400;
+}
+    #last-row .info-box {
+        width:300px;
+        position:absolute;
+        left:50%;
+    }
+        #last-row .info-box h2 {
+            color:@dark;
+            font-size:35px;
+        }
+        #last-row .info-box p {
+            color:@light;
+            font-size:25px;
+        }
+        #last-row .info-box div {
+            background-color:@green;
+            .circle(200px);
+            margin-left:200px / 4;
+        }
+
+#footer {
+    font-weight:400;
+    margin-top:600px;
+    font-size:30px;
+}
+    #footer .hashtag {
+        margin-top:20px;
+        color:@green;
+    }

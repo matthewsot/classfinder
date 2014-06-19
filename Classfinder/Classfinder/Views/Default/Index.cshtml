@@ -2,135 +2,63 @@
     ViewBag.Title = "Classfinder";
 }
 
-<style type="text/css">
-    body, html {
-        width:100%;
-        margin:0;
-        color:#ffffff;
-    }
-
-    .row {
-        width:100%;
-        text-align:center;
-    }
-
-    .green-row {
-        background-color:#1ccfaf;
-    }
-
-    #first-row {
-        height:200px;
-        position:relative;
-    }
-
-    .btn {
-        border: 2px solid #fff;
-        border-radius: 4px;
-
-        background:none;
-        color:#fff;
-
-        font-weight:400;
-        font-size:25px;
-        padding:10px 40px 10px 40px;
-
-        cursor:pointer;
-        text-decoration:none;
-        
-        display:block;
-    }
-
-        .btn:hover {
-            background-color:#fff;
-            color:#1ccfaf;
-        }
-
-    .green-on-white {
-        color:#1ccfaf;
-        border-color:#1ccfaf;
-    }
-        .green-on-white:hover {
-            background-color:#1ccfaf;
-            color:#fff;
-        }
-
-    .login-btn {
-        position:absolute;
-        top:25px;
-        right:20px;
-    }
-
-
-
-    .dark-row {
-        background-color:#3b3b3b;
-    }
-
-    #main-row {
-        padding:50px 0 50px 0;
-    }
-
-    .info-box {
-        width:300px;
-        font-size:25px;
-        position:absolute;
-        left:50%;
-    }
-</style>
+@section head {
+    <link href="~/Content/Styles/Site/Default/index.css" rel="stylesheet" type="text/css" />
+}
 
 <div class="row green-row" id="first-row">
     <a href="~/Account/Login" class="btn login-btn">login</a>
-    <img src="~/Content/Images/logo.shadow.png" style="height:150px;margin-top:50px;" />
+    <img src="~/Content/Images/logo.shadow.png" id="big-logo" />
 </div>
 
 <div class="row dark-row" id="main-row">
-    <h1 style="margin:0 0 50px 0;">The simple who's-in-your-class app for students across all grades</h1>
+    <h1>The simple who's-in-your-class app for students across all grades</h1>
 
-    <img src="~/Content/Images/laptop.png" style="width:600px;" />
+    <img src="~/Content/Images/laptop.png" id="laptop" />
     
-    <div style="margin-top:50px;">
-        <a href="~/Account/Signup" class="btn" style="display:inline-block;width:190px;margin-right:50px;">sign up for cf</a>
-        <a href="~/Account/Login" class="btn" style="display:inline-block;width:190px;margin:0px;">log in</a>
+    <div>
+        <a href="~/Account/Signup" class="btn white-on-dark" style="margin-right:50px;">sign up for cf</a>
+        <a href="~/Account/Login" class="btn white-on-dark">log in</a>
     </div>
 </div>
 
-<div class="row" id="last-row" style="color:#000;padding:50px 0 50px 0;">
+<div class="row" id="last-row">
     <div style="position:relative;">
         <div class="info-box" style="margin-left:-500px;">
-            <div style="background-color:#1ccfaf;width:200px;height:200px;border-radius:100px;margin-left:50px;">
+            <div>
                 <img src="~/Content/Images/simplified.png" style="height:125px;margin-top:37.5px;" />
             </div>
             <h2>Simplified</h2>
-            <p style="font-weight:300;font-size:25px;">
+            <p>
                 Eh, I'm not very up for creating well-thought out descriptions and paragraphs. Will should probably do these (pretty please? &lt;3). if not, i'll just do em some other time.
             </p>
         </div>
 
         <div class="info-box" style="margin-left:-150px;">
-            <div style="background-color:#1ccfaf;width:200px;height:200px;border-radius:100px;margin-left:50px;">
+            <div>
                 <img src="~/Content/Images/aesthetic.png" style="height:125px;margin-top:37.5px;" />
             </div>
             <h2>Aesthetic</h2>
-            <p style="font-weight:300;font-size:25px;">
+            <p>
                 Eh, I'm not very up for creating well-thought out descriptions and paragraphs. Will should probably do these (pretty please? &lt;3). if not, i'll just do em some other time.
             </p>
         </div>
 
         <div class="info-box" style="margin-left:200px;">
-            <div style="background-color:#1ccfaf;width:200px;height:200px;border-radius:100px;margin-left:50px;">
+            <div>
                 <img src="~/Content/Images/efficient.png" style="height:125px;margin-top:37.5px;" />
             </div>
             <h2>Efficient</h2>
-            <p style="font-weight:300;font-size:25px;">
+            <p>
                 Eh, I'm not very up for creating well-thought out descriptions and paragraphs. Will should probably do these (pretty please? &lt;3). if not, i'll just do em some other time.
             </p>
         </div>
     </div>
 
-    <div style="margin-top:600px;">
-        <h2>Created by yours truly, Adhiv, Matthew, and Will.</h2>
-        <h2 style="color:#1ccfaf;">#4yearsandrunning</h2>
+    <div id="footer">
+        Created by yours truly, Adhiv, Matthew, and Will.
+        <div class="hashtag">#4yearsandrunning</div>
 
-        <a href="~/Account/Signup" class="btn green-on-white" style="width:200px;margin-top:30px;margin-left:50%;transform:translateX(-50%);">sign up for cf</a>
+        <a href="~/Account/Signup" class="btn green-on-white" style="width: 200px; margin-top: 30px; margin-left: 50%; -moz-transform: translateX(-50%); -ms-transform: translateX(-50%); -o-transform: translateX(-50%); -webkit-transform: translateX(-50%); transform: translateX(-50%);">sign up for cf</a>
     </div>
 </div>

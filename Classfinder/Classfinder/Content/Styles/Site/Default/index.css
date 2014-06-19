@@ -1,0 +1,104 @@
+﻿body,
+html {
+  width: 100%;
+  margin: 0;
+  color: #fff;
+}
+.btn {
+  border: 2px solid #fff;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 25px;
+  padding: 10px 40px 10px 40px;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+.btn:hover {
+  background-color: #fff;
+  color: #1ccfaf;
+}
+.white-on-dark {
+  color: #fff;
+}
+.white-on-dark:hover {
+  color: #3b3b3b;
+}
+.green-on-white {
+  color: #1ccfaf;
+  border-color: #1ccfaf;
+}
+.green-on-white:hover {
+  background-color: #1ccfaf;
+  color: #fff;
+}
+.row {
+  width: 100%;
+  text-align: center;
+  padding: 50px 0 50px 0;
+}
+#first-row {
+  padding: 0;
+  height: 250px;
+  position: relative;
+  background-color: #1ccfaf;
+}
+#first-row .login-btn {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+}
+#first-row #big-logo {
+  height: 200px;
+  margin-top: 50px;
+}
+.dark-row {
+  background-color: #3b3b3b;
+}
+#main-row {
+  padding: 50px 0 50px 0;
+}
+#main-row img#laptop {
+  margin: 50px 0 50px 0;
+  width: 600px;
+}
+#main-row .btn {
+  display: inline-block;
+  width: 190px;
+}
+#last-row {
+  color: #3b3b3b;
+  padding: 50px 0 50px 0;
+  font-weight: 400;
+}
+#last-row .info-box {
+  width: 300px;
+  position: absolute;
+  left: 50%;
+}
+#last-row .info-box h2 {
+  color: #3b3b3b;
+  font-size: 35px;
+}
+#last-row .info-box p {
+  color: #8b8b8b;
+  font-size: 25px;
+}
+#last-row .info-box div {
+  background-color: #1ccfaf;
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  margin-left: 50px;
+}
+#footer {
+  font-weight: 400;
+  margin-top: 600px;
+  font-size: 30px;
+}
+#footer .hashtag {
+  margin-top: 20px;
+  color: #1ccfaf;
+}
+/*# sourceMappingURL=index.css.map */

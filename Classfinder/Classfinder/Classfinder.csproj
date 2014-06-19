@@ -178,8 +178,19 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\aesthetic.png" />
+    <Content Include="Content\Images\efficient.png" />
+    <Content Include="Content\Images\laptop.png" />
+    <Content Include="Content\Images\logo.shadow.png" />
+    <Content Include="Content\Images\simplified.png" />
     <Content Include="Content\Styles\bootstrap.css" />
     <Content Include="Content\Styles\bootstrap.min.css" />
+    <Content Include="Content\Styles\Site\Default\index.css">
+      <DependentUpon>index.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\shared.css">
+      <DependentUpon>shared.less</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -233,6 +244,14 @@
     <Content Include="Content\Fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
+    <Content Include="Content\Styles\Site\shared.less" />
+    <Content Include="Content\Styles\Site\Default\index.less" />
+    <Content Include="Content\Styles\Site\shared.css.map">
+      <DependentUpon>shared.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\Default\index.css.map">
+      <DependentUpon>index.css</DependentUpon>
+    </Content>
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
