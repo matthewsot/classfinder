@@ -1,0 +1,102 @@
+﻿body,
+html {
+  width: 100%;
+  margin: 0;
+  color: #fff;
+}
+.btn {
+  border: 2px solid #fff;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 25px;
+  padding: 10px 40px 10px 40px;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+.btn:hover {
+  background-color: #fff;
+  color: #1ccfaf;
+}
+.white-on-dark {
+  color: #fff;
+}
+.white-on-dark:hover {
+  color: #3b3b3b;
+}
+.green-on-white {
+  color: #1ccfaf;
+  border-color: #1ccfaf;
+}
+.green-on-white:hover {
+  background-color: #1ccfaf;
+  color: #fff;
+}
+.half-vert {
+  position: relative;
+  /* Thanks! http://creative-punch.net/2014/01/center-vertically-horizontally-using-css3-transform/ */
+  top: 50%;
+  /* but ewe. should use prefix-free */
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.half-horiz {
+  position: relative;
+  left: 50%;
+  /* but ewe. should use prefix-free */
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+#top-row {
+  width: 100%;
+  height: 100px;
+  background-color: #1ccfaf;
+  text-align: left;
+}
+#top-row #logo {
+  position: absolute;
+  height: 35px;
+  /* Thanks! http://creative-punch.net/2014/01/center-vertically-horizontally-using-css3-transform/ */
+  /* but ewe. should use prefix-free */
+  position: relative;
+  /* Thanks! http://creative-punch.net/2014/01/center-vertically-horizontally-using-css3-transform/ */
+  top: 50%;
+  /* but ewe. should use prefix-free */
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 50px;
+}
+body {
+  color: #1ccfaf;
+  text-align: center;
+}
+#progress-bar {
+  width: 60%;
+  border: 1px solid #000;
+  border-radius: 4px;
+  height: 10px;
+  /* but ewe. should use prefix-free */
+  position: relative;
+  left: 50%;
+  /* but ewe. should use prefix-free */
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+#progress-bar #progress {
+  height: 100%;
+  background-color: #1ccfaf;
+}
+/*# sourceMappingURL=shared.css.map */

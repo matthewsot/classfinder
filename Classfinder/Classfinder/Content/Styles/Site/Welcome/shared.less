@@ -1,0 +1,32 @@
+﻿@import "../shared.less";
+
+#top-row {
+    width:100%;
+    height:100px;
+    background-color:@green;
+    text-align:left;
+}
+
+#top-row #logo {
+    position:absolute;
+    height:35px;
+    .half-vert();
+    left:50px;
+}
+
+body {
+    color: @green;
+    text-align:center;
+}
+
+#progress-bar {
+    width:60%;
+    border:1px solid #000;
+    border-radius:4px;
+    height:10px;
+    .half-horiz;
+}
+    #progress-bar #progress {
+        height:100%;
+        background-color:@green;
+    }

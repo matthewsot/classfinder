@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head {
+    @RenderSection("head", false)
+}
+
+<div id="top-row">
+    <img id="logo" src="~/Content/Images/logo.png" />
+</div>
+
+<br/>
+
+<div id="setup">
+    <h1 style="font-size:40px;font-weight:400;">Setup Process</h1>
+    <div id="progress-bar">
+        <div id="progress"></div>
+    </div>
+    @RenderBody()
+</div>
