@@ -91,6 +91,30 @@ body {
   height: 100%;
   background-color: #1ccfaf;
 }
+input {
+  font-family: Lato;
+  height: 50px;
+  border: 1px solid #1ccfaf;
+  text-align: center;
+  color: #1ccfaf;
+  font-size: 30px;
+  font-weight: 300;
+}
+button {
+  cursor: pointer;
+  font-size: 30px;
+  font-weight: 300;
+  height: 50px;
+  width: 300px;
+  border: 1px solid #1ccfaf;
+  background-color: transparent;
+  color: #1ccfaf;
+  font-family: Lato;
+}
+button:hover {
+  background-color: #1ccfaf;
+  color: #fff;
+}
 @media screen and (max-width: 800px) {
   #progress-bar {
     width: 90%;

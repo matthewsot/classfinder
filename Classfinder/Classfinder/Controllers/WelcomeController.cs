@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Classfinder.Controllers
 {
@@ -19,9 +15,16 @@ namespace Classfinder.Controllers
             return View();
         }
 
-        public ActionResult Schedule(int semester)
+        public ActionResult Schedule(int? id)
         {
+            var semester = id;
+            if (!semester.HasValue || semester > 2 || semester < 1)
+            {
+                semester = 1;
+            }
+
             ViewBag.StepNum = semester + 1;
+
             return View();
         }
     }
