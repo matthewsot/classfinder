@@ -21,28 +21,9 @@ namespace Classfinder.Models
 
         public int Grade { get; set; }
         public virtual School School { get; set; }
-        //This makes it kinda awk, but idk.
-        //We could do like FirstSemester and SecondSemester
-        //but eh.
-        public virtual ICollection<Schedule> Schedules { get; set; }
 
-        public Schedule GetFirstSemesterSchedule()
-        {
-            return Schedules.FirstOrDefault(sched => sched.Term == 1);
-        }
-
-        public Schedule GetSecondSemesterSchedule()
-        {
-            return Schedules.FirstOrDefault(sched => sched.Term == 2);
-        }
-    }
-
-    public class Schedule
-    {
-        public int Id { get; set; }
-        public int Term { get; set; }
-        public virtual UserAccount User { get; set; }
-        public virtual ICollection<Class> Classes { get; set; }
+        public virtual ICollection<Class> FirstSemester { get; set; }
+        public virtual ICollection<Class> SecondSemester { get; set; }
     }
 
     public enum SchoolType
@@ -100,12 +81,8 @@ namespace Classfinder.Models
         public string Subject { get; set; }
         public int Period { get; set; }
         public virtual Teacher Teacher { get; set; }
-        public virtual ICollection<Schedule> SchedulesWithClass { get; set; }
-
-        public IEnumerable<UserAccount> UsersInClass(int term, CfDb db)
-        {
-            return SchedulesWithClass.Where(sched => sched.Term == term).Select(sched => sched.User);
-        }
+        public virtual ICollection<UserAccount> StudentsInClassFirstSemester { get; set; }
+        public virtual ICollection<UserAccount> StudentsInClassSecondSemester { get; set; }
     }
 
     public class CfDb : IdentityDbContext<UserAccount>
@@ -117,9 +94,8 @@ namespace Classfinder.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserAccount>().HasMany(user => user.Schedules).WithRequired(schedule => schedule.User);
-
-            modelBuilder.Entity<Schedule>().HasMany(schedule => schedule.Classes).WithMany(@class => @class.SchedulesWithClass);
+            modelBuilder.Entity<UserAccount>().HasMany(user => user.FirstSemester).WithMany(@class => @class.StudentsInClassFirstSemester);
+            modelBuilder.Entity<UserAccount>().HasMany(user => user.SecondSemester).WithMany(@class => @class.StudentsInClassSecondSemester);
 
             modelBuilder.Entity<School>().HasMany(school => school.Students).WithRequired(student => student.School);
             modelBuilder.Entity<School>().HasMany(school => school.Teachers).WithRequired(teacher => teacher.School);

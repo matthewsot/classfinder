@@ -172,6 +172,10 @@
     <Compile Include="Migrations\201406170023453_Schedules.Designer.cs">
       <DependentUpon>201406170023453_Schedules.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201406240301323_FirstAndSecondSemester.cs" />
+    <Compile Include="Migrations\201406240301323_FirstAndSecondSemester.Designer.cs">
+      <DependentUpon>201406240301323_FirstAndSecondSemester.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Database.cs" />
@@ -196,6 +200,12 @@
     </Content>
     <Content Include="Content\Styles\Site\Welcome\shared.min.css">
       <DependentUpon>shared.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\Welcome\schedule.css">
+      <DependentUpon>schedule.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\Welcome\schedule.min.css">
+      <DependentUpon>schedule.css</DependentUpon>
     </Content>
     <Content Include="Content\Styles\Site\Welcome\signup.css">
       <DependentUpon>signup.less</DependentUpon>
@@ -260,9 +270,14 @@
     <Content Include="Content\Styles\Site\Welcome\signup.css.map">
       <DependentUpon>signup.css</DependentUpon>
     </Content>
+    <Content Include="Content\Styles\Site\Welcome\schedule.less" />
+    <Content Include="Content\Styles\Site\Welcome\schedule.css.map">
+      <DependentUpon>schedule.css</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <Content Include="Views\Welcome\SignUp.cshtml" />
     <Content Include="Views\Welcome\_Setup.cshtml" />
+    <Content Include="Views\Welcome\Schedule.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -286,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201406170023453_Schedules.resx">
       <DependentUpon>201406170023453_Schedules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406240301323_FirstAndSecondSemester.resx">
+      <DependentUpon>201406240301323_FirstAndSecondSemester.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -18,5 +18,11 @@ namespace Classfinder.Controllers
         {
             return View();
         }
+
+        public ActionResult Schedule(int semester)
+        {
+            ViewBag.StepNum = semester + 1;
+            return View();
+        }
     }
 }

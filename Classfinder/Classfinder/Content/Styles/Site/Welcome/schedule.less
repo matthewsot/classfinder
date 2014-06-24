@@ -1,7 +1,7 @@
 ﻿@import "shared.less";
 
 #progress {
-    width:25%;
+    width:50%;
 }
 
 #signup-box {
@@ -50,11 +50,9 @@
     }
     #grad-years div:nth-child(2) {
         left:25.3%;
-        margin-right:1px;
     }
     #grad-years div:nth-child(3) {
         right:25.3%;
-        margin-left:1px;
     }
     #grad-years div:last-child {
         right:0;
@@ -75,28 +73,6 @@
         right:0;
     }
 
-#next-button {
-    margin-top:10px;
-    cursor:pointer;
-
-    font-size:30px;
-    font-weight:300;
-
-    height:50px;
-    width:300px;
-
-    border:1px solid @green;
-    background-color:transparent;
-    color:@green;
-    position:absolute;
-    font-family:Lato;
-    left:50.25%;
-}
-    #next-button:hover {
-        background-color:@green;
-        color:#fff;
-    }
-
 
 @media all and (max-width:972px) {
     #signup-box {
@@ -104,14 +80,15 @@
         margin:0;
     }
         #signup-box input {
-            width:99.5%;
+            width:100%;
             display:block;
             margin-top:10px;
         }
 
     #grad-years {
         height:50px;
-        width:98%;
+        width:97%;
+        margin-left:1%;
     }
         #grad-years div {
             width:23%;
@@ -121,11 +98,9 @@
         }
         #grad-years div:nth-child(2) {
             left:25.8%;
-            margin-right:1px;
         }
         #grad-years div:nth-child(3) {
             right:25.8%;
-            margin-left:1px;
         }
         #grad-years div:last-child {
             right:1%;
@@ -133,7 +108,7 @@
 
     .signup-row {
         margin-top:10px;
-        width:98%;
+        width:97%;
         margin-left:1%;
         border:none;
         height:auto;
@@ -144,11 +119,4 @@
         .signup-row input:last-child{
             position:static;
         }
-
-    #next-button {
-        width:98.5%;
-        margin-left:0;
-        padding:0;
-        position:static;
-    }
 }
