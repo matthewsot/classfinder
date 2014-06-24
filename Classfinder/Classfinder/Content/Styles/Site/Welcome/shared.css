@@ -82,18 +82,10 @@ body {
 }
 #progress-bar {
   width: 60%;
+  margin-left: 20%;
   border: 1px solid #000;
   border-radius: 4px;
   height: 10px;
-  /* but ewe. should use prefix-free */
-  position: relative;
-  left: 50%;
-  /* but ewe. should use prefix-free */
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
 }
 #progress-bar #progress {
   height: 100%;

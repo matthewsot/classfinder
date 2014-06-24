@@ -194,11 +194,17 @@
     <Content Include="Content\Styles\Site\shared.css">
       <DependentUpon>shared.less</DependentUpon>
     </Content>
+    <Content Include="Content\Styles\Site\Welcome\shared.min.css">
+      <DependentUpon>shared.css</DependentUpon>
+    </Content>
     <Content Include="Content\Styles\Site\Welcome\signup.css">
       <DependentUpon>signup.less</DependentUpon>
     </Content>
     <Content Include="Content\Styles\Site\Welcome\shared.css">
       <DependentUpon>shared.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\Welcome\signup.min.css">
+      <DependentUpon>signup.css</DependentUpon>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
