@@ -50,8 +50,8 @@ namespace Classfinder.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 var user = await UserManager.FindAsync(model.UserName, model.Password);
                 if (user != null)
                 {
@@ -67,7 +67,7 @@ namespace Classfinder.Controllers
                 {
                     ModelState.AddModelError("", "Invalid username or password.");
                 }
-            }
+            //}
 
             // If we got this far, something failed, redisplay form
             return View(model);
