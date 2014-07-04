@@ -194,6 +194,10 @@
     <Compile Include="Migrations\201407040356147_GradYearAndSignupLevel.Designer.cs">
       <DependentUpon>201407040356147_GradYearAndSignupLevel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407040440092_RemovedSchools.cs" />
+    <Compile Include="Migrations\201407040440092_RemovedSchools.Designer.cs">
+      <DependentUpon>201407040440092_RemovedSchools.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Database.cs" />
@@ -327,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407040356147_GradYearAndSignupLevel.resx">
       <DependentUpon>201407040356147_GradYearAndSignupLevel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407040440092_RemovedSchools.resx">
+      <DependentUpon>201407040440092_RemovedSchools.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

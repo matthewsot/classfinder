@@ -29,51 +29,9 @@ namespace Classfinder.Models
 
         public int GradYear { get; set; }
         public int SignUpLevel { get; set; }
-        public virtual School School { get; set; }
 
         public virtual ICollection<Class> FirstSemester { get; set; }
         public virtual ICollection<Class> SecondSemester { get; set; }
-    }
-
-    public enum SchoolType
-    {
-        HighSchool,
-        MiddleSchool,
-        ElementarySchool
-    }
-
-    public class School
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int MinGrade { get; set; }
-        public int MaxGrade { get; set; }
-        public int Terms { get; set; }
-        public virtual ICollection<UserAccount> Students { get; set; }
-        public virtual ICollection<Teacher> Teachers { get; set; }
-
-        public School(string Name = "", SchoolType schoolType = SchoolType.HighSchool)
-        {
-            this.Name = Name;
-            Terms = 2;
-            switch(schoolType)
-            {
-                case SchoolType.HighSchool:
-                    MinGrade = 9;
-                    MaxGrade = 12;
-                    break;
-                case SchoolType.MiddleSchool:
-                    MinGrade = 6;
-                    MaxGrade = 8;
-                    break;
-                case SchoolType.ElementarySchool:
-                    Terms = 1;
-                    MinGrade = 0;
-                    MaxGrade = 5;
-                    break;
-            }
-
-        }
     }
 
     public class Teacher
@@ -81,7 +39,6 @@ namespace Classfinder.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public virtual School School { get; set; }
     }
 
     public class Class
@@ -105,9 +62,6 @@ namespace Classfinder.Models
         {
             modelBuilder.Entity<UserAccount>().HasMany(user => user.FirstSemester).WithMany(@class => @class.StudentsInClassFirstSemester);
             modelBuilder.Entity<UserAccount>().HasMany(user => user.SecondSemester).WithMany(@class => @class.StudentsInClassSecondSemester);
-
-            modelBuilder.Entity<School>().HasMany(school => school.Students).WithRequired(student => student.School);
-            modelBuilder.Entity<School>().HasMany(school => school.Teachers).WithRequired(teacher => teacher.School);
             base.OnModelCreating(modelBuilder);
         }
 
