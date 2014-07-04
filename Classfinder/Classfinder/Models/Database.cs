@@ -8,6 +8,14 @@ using System.Data.Entity;
 
 namespace Classfinder.Models
 {
+    public enum SignUpLevel
+    {
+        Unregistered = -1,
+        Registered = 0,
+        FirstSemesterScheduleEntered = 1,
+        SecondSemesterScheduleEntered = 2,
+    }
+
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class UserAccount : IdentityUser
     {
@@ -19,7 +27,8 @@ namespace Classfinder.Models
             return userIdentity;
         }
 
-        public int Grade { get; set; }
+        public int GradYear { get; set; }
+        public int SignUpLevel { get; set; }
         public virtual School School { get; set; }
 
         public virtual ICollection<Class> FirstSemester { get; set; }

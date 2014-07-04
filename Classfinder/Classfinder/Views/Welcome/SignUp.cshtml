@@ -32,14 +32,56 @@
     
     <div class="signup-row">
         <input type="email" placeholder="Email (Optional)" id="email" />
-        <input type="text" placeholder="Username" />
+        <input type="text" placeholder="Username" id="username" />
     </div>
     
     <div class="signup-row">
         <input type="password" placeholder="Password" id="password" />
-        <input type="password" placeholder="Confirm Password" id="confirm-password" />
+        <input type="password" placeholder="Confirm Password" id="confirmation-password" />
     </div>
 </div>
 
 <br/>
 <button id="next-button">Next -></button>
+
+<script type="text/javascript">
+    $("#next-button").click(function () {
+        var errorsExist = false;
+
+        var fullName = $("#first-name").val().trim() + " " + $("#last-name").val();
+        fullName = fullName.trim();
+        if (fullName == "") {
+            alert("Please enter your name!");
+            errorsExist = true;
+        }
+
+        var gradYear = parseInt($("#grad-years").children(".selected").first().text());
+        if (isNaN(gradYear)) {
+            alert("Sorry, there was an error with your grade. Please refresh and/or try again.");
+            errorsExist = true;
+        }
+
+        var email = $("#email").val();
+
+        var username = $("#username").val().trim(); //remember to trim usernames
+        if (username == "") {
+            alert("Please enter a username!");
+            errorsExist = true;
+        }
+
+        var password = $("#password").val();
+        if (password != $("#confirmation-password").val()) {
+            alert("Your password and confirmation password don't match.");
+            errorsExist = true;
+        }
+
+        if(!errorsExist) {
+            /*$.post("/API/Account/SignUp", {
+
+            }, function(response) {
+
+            });*/
+            alert("posting!");
+        }
+    });
+</script>
