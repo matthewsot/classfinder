@@ -13,7 +13,7 @@ namespace Classfinder.Controllers
     public class SignUpModel
     {
         public string Password { get; set; }
-        public int Year { get; set; }
+        public int GradYear { get; set; }
         public string FullName { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
@@ -37,7 +37,7 @@ namespace Classfinder.Controllers
 
                 // TODO: Should be validating with ModelState
                 if (model.Password.Length <= 6) errors.Add("Password");
-                if (!(model.Year <= 2017 && model.Year >= 2015)) errors.Add("Year");
+                if (!(model.GradYear <= 2018 && model.GradYear >= 2015)) errors.Add("GradYear");
                 if (model.FullName != null && model.FullName.Length > 50) errors.Add("FullName");
                 if (db.Users.Count(usr => usr.UserName == model.Username) > 0) errors.Add("Username");
 
@@ -46,7 +46,7 @@ namespace Classfinder.Controllers
                     return Ok(string.Join(",", errors) + ",");
                 }
 
-                var user = new UserAccount { UserName = model.Username, Email = model.Email, GradYear = model.Year, SignUpLevel = ((int)SignUpLevel.Registered) };
+                var user = new UserAccount { UserName = model.Username, Email = model.Email, GradYear = model.GradYear, SignUpLevel = ((int)SignUpLevel.Registered) };
 
                 var result = await userManager.CreateAsync(user, model.Password);
                 return Ok(result.Succeeded ? "GOOD" : string.Join(",", errors));

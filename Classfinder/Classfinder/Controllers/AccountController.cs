@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -55,6 +56,11 @@ namespace Classfinder.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
+                    if (user.SignUpLevel == ((int) SignUpLevel.Registered) ||
+                        user.SignUpLevel == ((int) SignUpLevel.FirstSemesterScheduleEntered))
+                    {
+                        return RedirectToAction("Schedule", controllerName: "Welcome");
+                    }
                     return RedirectToLocal(returnUrl);
                 }
                 else
@@ -173,7 +179,7 @@ namespace Classfinder.Controllers
         {
             return View();
         }
-	
+    
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]

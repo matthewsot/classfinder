@@ -44,6 +44,13 @@
 <br/>
 <button id="next-button">Next -></button>
 
+<form action="/Account/Login" method="POST" style="display:none;" id="login-form">
+    @Html.AntiForgeryToken()
+    <input name="UserName" type="hidden" id="login-username" />
+    <input name="Password" type="hidden" id="login-password" />
+    <input name="RememberMe" type="checkbox" id="login-remember" checked />
+</form>
+
 <script type="text/javascript">
     $("#next-button").click(function () {
         var errorsExist = false;
@@ -76,12 +83,20 @@
         }
 
         if(!errorsExist) {
-            /*$.post("/API/Account/SignUp", {
-
+            $.post("/API/Account/SignUp", {
+                "Password": password,
+                "GradYear": gradYear,
+                "FullName": fullName,
+                "Username": username,
+                "Email": email
             }, function(response) {
+                if (response == "GOOD") {
+                    $("#login-username").val(username);
+                    $("#login-password").val(password);
 
-            });*/
-            alert("posting!");
+                    $("#login-form").submit();
+                }
+            });
         }
     });
 </script>
