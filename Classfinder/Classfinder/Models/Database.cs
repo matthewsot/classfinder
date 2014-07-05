@@ -34,25 +34,19 @@ namespace Classfinder.Models
         public virtual ICollection<Class> SecondSemester { get; set; }
     }
 
-    public class Teacher
-    {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-    }
-
     public class Class
     {
         public int Id { get; set; }
-        public string Subject { get; set; }
         public int Period { get; set; }
-        public virtual Teacher Teacher { get; set; }
+        public string Name { get; set; }
         public virtual ICollection<UserAccount> StudentsInClassFirstSemester { get; set; }
         public virtual ICollection<UserAccount> StudentsInClassSecondSemester { get; set; }
     }
 
     public class CfDb : IdentityDbContext<UserAccount>
     {
+        public DbSet<Class> Classes { get; set; }
+
         public CfDb()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
