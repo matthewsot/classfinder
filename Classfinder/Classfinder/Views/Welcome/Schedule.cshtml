@@ -13,75 +13,102 @@
     </style>
 }
 
-<h2 style="font-size:35px;font-weight:300;">step @ViewBag.StepNum</h2>
+<h2 id="step-label">step @ViewBag.StepNum</h2>
 
-<p style="font-size:25px;font-weight:300;">
+<p id="explanation">
 &nbsp;&nbsp;&nbsp; Enter in: Teacher name, subject
     <br>
     If you don't have a class that period, list "No Class"
 </p>
 
-<div id="schedule-container" style="width:55%;margin-left:22.5%;border:1px solid #1ccfaf;height:600px;">
+<div id="schedule-container">
     <div id="period-selector">
-        <div style="flex:1;">
+        <div>
             <div class="period-num selected">1</div>
         </div>
-        <div style="flex:1;">
+        <div>
             <div class="period-num">2</div>
         </div>
-        <div style="flex:1;">
+        <div>
             <div class="period-num">3</div>
         </div>
-        <div style="flex:1;">
+        <div>
             <div class="period-num">4</div>
         </div>
-        <div style="flex:1;">
+        <div>
             <div class="period-num">5</div>
         </div>
-        <div style="flex:1;">
+        <div>
             <div class="period-num">6</div>
         </div>
-        <div style="flex:1;">
+        <div>
             <div class="period-num">7</div>
         </div>
     </div>
     <script type="text/javascript">
+        var period = 1;
+
         $(".period-num").click(function () {
+            period = parseInt($(this).text());
+            $("#class-input").keydown();
+
             $(".period-num").removeClass("selected");
             $(this).addClass("selected");
+
             var suffix = "";
-            switch($(this).text()) {
-                case "1":
+            switch (period) {
+                case 1:
                     suffix = "st";
                     break;
-                case "2":
+                case 2:
                     suffix = "nd";
                     break;
-                case "3":
+                case 3:
                     suffix = "rd";
                     break;
                 default:
                     suffix = "th";
                     break;
             }
-            $("#period-label").text($(this).text() + suffix);
+
+            $("#period-label").text(period + suffix);
         });
     </script>
 
-    <div style="margin-top:20px;width:100%;border-top:1px solid #1ccfaf;height:100px;position:relative;">
-        <div style="position:absolute;top:0;left:0;font-size:25px;border-right:1px solid #1ccfaf;border-bottom:1px solid #1ccfaf;padding:20px;font-weight:300;">Your Class:</div>
-        <div style="position:absolute;bottom:0;right:0;font-size:40px;font-weight:300;padding:15px;padding-right:35px;">Alonzo, Biology</div>
+    <div id="selected-class-box">
+        <div id="selected-class-label">Your Class:</div>
+        <div id="selected-class">Alonzo, Biology</div>
     </div>
 
-    <div style="margin-top:20px;width:100%;border-top:1px solid #1ccfaf;height:50px;position:relative;">
+    <div id="class-search-box">
         <input id="class-input" type="text" placeholder="  Teacher Name, Subject" />
         <button id="add-class-btn">ADD CLASS</button>
+        <script type="text/javascript">
+            $("#class-input").keydown(function () {
+                $.getJSON("/API/Classes/" + period + "/" + encodeURIComponent($("#class-input").val()), function (data) {
+                    fillTableWithClasses(data);
+                });
+            });
+        </script>
     </div>
 
     <div style="width:100%;border-top:2px solid #1ccfaf;">
         <h1 style="font-family:Lato;font-weight:300;">Recorded <span id="period-label">1st</span> Period Classes:</h1>
-        <table>
+        <table id="classes-table">
         </table>
+        
+        <script type="text/javascript">
+            function fillTableWithClasses(classes) {
+                $("#classes-table").html("");
+
+                for (var i = 0; i < classes.length; i++) {
+                    var clss = classes[i];
+                    $("#classes-table").append("<tr><td>" + clss.name + "</td></tr>");
+                }
+            }
+
+            fillTableWithClasses([{ name: "Torp, Lit/Writ" }, {name: "Pakaluk, Band"}, {name: "Another, Thing" }]);
+        </script>
     </div>
 </div>
 

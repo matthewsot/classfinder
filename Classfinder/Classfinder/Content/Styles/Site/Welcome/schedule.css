@@ -60,6 +60,10 @@ html {
   background-color: #1ccfaf;
   text-align: left;
 }
+#step-label {
+  font-size: 35px;
+  font-weight: 300;
+}
 #top-row #logo {
   position: absolute;
   height: 35px;
@@ -150,6 +154,9 @@ button:hover {
   border-radius: 50px;
   color: #fff;
 }
+#period-selector div {
+  flex: 1;
+}
 #class-input {
   border: 0;
   position: absolute;
@@ -171,5 +178,51 @@ button:hover {
 #add-class-btn:hover {
   background-color: #fff;
   color: #1ccfaf;
+}
+#schedule-container {
+  width: 55%;
+  margin-left: 22.5%;
+  border: 1px solid #1ccfaf;
+  height: 600px;
+}
+#explanation {
+  font-size: 25px;
+  font-weight: 300;
+}
+#selected-class-box {
+  margin-top: 20px;
+  border-top: 1px solid #1ccfaf;
+  height: 100px;
+  position: relative;
+  font-weight: 300;
+}
+#selected-class-label {
+  position: absolute;
+  font-size: 25px;
+  border-right: 1px solid #1ccfaf;
+  border-bottom: 1px solid #1ccfaf;
+  padding: 20px;
+}
+#selected-class {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 40px;
+  padding: 15px;
+  padding-right: 35px;
+}
+#class-search-box {
+  margin-top: 20px;
+  width: 100%;
+  border-top: 1px solid #1ccfaf;
+  height: 50px;
+  position: relative;
+}
+#classes-table {
+  font-size: 30px;
+  font-weight: 300;
+}
+#classes-table td {
+  padding: 10px;
 }
 /*# sourceMappingURL=schedule.css.map */
