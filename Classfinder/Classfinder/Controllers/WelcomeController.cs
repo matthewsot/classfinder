@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using Classfinder.Models;
 using Microsoft.AspNet.Identity;
 
@@ -34,8 +35,17 @@ namespace Classfinder.Controllers
             if (semester == 2 && user.SignUpLevel < (int) SignUpLevel.SecondSemesterScheduleEntered)
             {
                 user.SignUpLevel = (int) SignUpLevel.SecondSemesterScheduleEntered;
-                db.SaveChanges();
             }
+
+            if (semester == 2 && !user.SecondSemester.Any())
+            {
+                foreach (var @class in user.FirstSemester)
+                {
+                    user.SecondSemester.Add(@class);
+                }
+            }
+
+            db.SaveChanges();
 
             ViewBag.StepNum = semester + 1;
 

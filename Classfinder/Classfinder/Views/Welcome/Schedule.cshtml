@@ -16,11 +16,19 @@
 
 <h2 id="step-label">step @ViewBag.StepNum</h2>
 
+@if (ViewBag.StepNum == 2)
+{
 <p id="explanation">
-&nbsp;&nbsp;&nbsp; Enter in: Teacher name, subject
+    &nbsp;&nbsp;&nbsp; Enter in: Teacher name, subject
     <br>
     If you don't have a class that period, list "No Class"
 </p>
+}
+else {
+<p id="explanation">
+    Please make any changes necessary for your second semester schedule
+</p>
+}
 
 <div id="schedule-container">
     <div id="period-selector">
