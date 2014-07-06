@@ -60,12 +60,78 @@ namespace Classfinder.Controllers
         {
             var user = db.Users.Find(userId);
             var schedule = semester == 2 ? user.SecondSemester : user.FirstSemester;
+            var classInPeriod = schedule.FirstOrDefault(@class => @class.Period == period) ?? new Class { Name = "No Class" };
 
-            return Ok(schedule.Where(@class => @class.Period == period).Select(@class => new
+            return Ok(new ClassModel
             {
-                name = @class.Name,
-                id = @class.Id,
-            }).FirstOrDefault());
+                name = classInPeriod.Name
+            });
+        }
+
+        public class ClassModel
+        {
+            public string name { get; set; }
+        }
+
+        [HttpGet]
+        [Route("Admin/AddNoClasses")]
+        [AllowAnonymous]
+        public IHttpActionResult AddNoClasses()
+        {
+            for (var i = 1; i <= 7; i++)
+            {
+                int period = i;
+
+                if (!db.Classes.Any(@class => @class.Period == period && @class.Name == "No Class"))
+                {
+                    db.Classes.Add(new Class
+                    {
+                        Name = "No Class",
+                        Period = period
+                    });
+                }
+            }
+            db.SaveChanges();
+            return Ok("Great!");
+        }
+
+        [HttpPost]
+        [Route("API/Schedule/{userId}/{semester}/{period}")]
+        public IHttpActionResult SetClassForPeriod(ClassModel model, string userId, int semester, int period)
+        {
+            var user = db.Users.Find(userId);
+            var schedule = semester == 2 ? user.SecondSemester : user.FirstSemester;
+
+            var currClassInPeriod = schedule.FirstOrDefault(@class => @class.Period == period);
+            if (currClassInPeriod != null)
+            {
+                schedule.Remove(currClassInPeriod);
+            }
+
+            var classToAdd = db.Classes.FirstOrDefault(@class => @class.Name == model.name);
+            if (classToAdd != null)
+            {
+                schedule.Add(classToAdd);
+            }
+            else
+            {
+                var newClass = new Class {Name = model.name, Period = period};
+                db.Classes.Add(newClass);
+                schedule.Add(newClass);
+            }
+
+            if (currClassInPeriod != null &&
+                currClassInPeriod.Name != "No Class" &&
+                currClassInPeriod != classToAdd &&
+                !currClassInPeriod.StudentsInClassFirstSemester.Any() &&
+                !currClassInPeriod.StudentsInClassSecondSemester.Any())
+            {
+                db.Classes.Remove(currClassInPeriod);
+            }
+
+            db.SaveChanges();
+
+            return Ok("GOOD");
         }
 
         protected override void Dispose(bool disposing)

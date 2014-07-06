@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity
+@{
     ViewBag.Title = "Schedule";
     Layout = "_Setup.cshtml";
 }
@@ -46,9 +47,13 @@
         </div>
     </div>
     <script type="text/javascript">
+        var userId = "@(User.Identity.GetUserId())";
+        var semester = @(ViewBag.StepNum - 1);
+
         var period = 1;
 
         $(".period-num").click(function () {
+            $("#selected-class").text("");
             period = parseInt($(this).text());
             $("#class-input").keydown();
 
@@ -57,27 +62,36 @@
 
             var suffix = "";
             switch (period) {
-                case 1:
-                    suffix = "st";
-                    break;
-                case 2:
-                    suffix = "nd";
-                    break;
-                case 3:
-                    suffix = "rd";
-                    break;
-                default:
-                    suffix = "th";
-                    break;
+            case 1:
+                suffix = "st";
+                break;
+            case 2:
+                suffix = "nd";
+                break;
+            case 3:
+                suffix = "rd";
+                break;
+            default:
+                suffix = "th";
+                break;
             }
 
             $("#period-label").text(period + suffix);
+            $("#class-input").val("");
+
+            $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + period, function(data) {
+                $("#selected-class").text(data.name);
+            });
+        });
+
+        $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + period, function(data) {
+            $("#selected-class").text(data.name);
         });
     </script>
 
     <div id="selected-class-box">
         <div id="selected-class-label">Your Class:</div>
-        <div id="selected-class">Alonzo, Biology</div>
+        <div id="selected-class"></div>
     </div>
 
     <div id="class-search-box">
@@ -85,9 +99,25 @@
         <button id="add-class-btn">ADD CLASS</button>
         <script type="text/javascript">
             $("#class-input").keydown(function () {
-                $.getJSON("/API/Classes/" + period + "/" + encodeURIComponent($("#class-input").val()), function (data) {
+                $.getJSON("/API/Classes/" + period + "/" + encodeURIComponent($("#class-input").val().trim()), function (data) {
                     fillTableWithClasses(data);
                 });
+            });
+
+            $("#add-class-btn").click(function() {
+                if ($("#class-input").val().trim() == "") {
+                    alert("Please enter a class");
+                }
+                else {
+                    $.post("/API/Schedule/" + userId + "/" + semester + "/" + period, {
+                        name: $("#class-input").val().trim()
+                    }, function(data) {
+                        if(data == "GOOD") {
+                            $("#selected-class").text($("#class-input").val().trim());
+                            $("#class-input").val("");
+                        }
+                    });
+                }
             });
         </script>
     </div>
@@ -105,9 +135,12 @@
                     var clss = classes[i];
                     $("#classes-table").append("<tr><td>" + clss.name + "</td></tr>");
                 }
-            }
 
-            fillTableWithClasses([{ name: "Torp, Lit/Writ" }, {name: "Pakaluk, Band"}, {name: "Another, Thing" }]);
+                $("#classes-table").find("tr").click(function() {
+                    $("#class-input").val($(this).text());
+                    $("#add-class-btn").click();
+                });
+            }
         </script>
     </div>
 </div>

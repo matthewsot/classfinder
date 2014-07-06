@@ -221,8 +221,14 @@ button:hover {
 #classes-table {
   font-size: 30px;
   font-weight: 300;
+  text-align: left;
 }
 #classes-table td {
   padding: 10px;
+  text-align: left;
+}
+#classes-table td tr {
+  cursor: pointer;
+  text-align: left;
 }
 /*# sourceMappingURL=schedule.css.map */
