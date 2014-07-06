@@ -129,6 +129,15 @@ namespace Classfinder.Controllers
                 db.Classes.Remove(currClassInPeriod);
             }
 
+            if (semester == 1 && user.SignUpLevel < (int) SignUpLevel.FirstSemesterScheduleEntered)
+            {
+                user.SignUpLevel = (int) SignUpLevel.FirstSemesterScheduleEntered;
+            }
+            if (semester == 2 && user.SignUpLevel < (int)SignUpLevel.SecondSemesterScheduleEntered)
+            {
+                user.SignUpLevel = (int)SignUpLevel.SecondSemesterScheduleEntered;
+            }
+
             db.SaveChanges();
 
             return Ok("GOOD");
