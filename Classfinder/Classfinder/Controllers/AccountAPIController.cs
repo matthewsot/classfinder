@@ -46,7 +46,7 @@ namespace Classfinder.Controllers
                     return Ok(string.Join(",", errors) + ",");
                 }
 
-                var user = new UserAccount { UserName = model.Username, Email = model.Email, GradYear = model.GradYear, SignUpLevel = ((int)SignUpLevel.Registered) };
+                var user = new UserAccount { UserName = model.Username, RealName = model.FullName, Email = model.Email, GradYear = model.GradYear, SignUpLevel = ((int)SignUpLevel.Registered) };
 
                 var result = await userManager.CreateAsync(user, model.Password);
                 return Ok(result.Succeeded ? "GOOD" : string.Join(",", errors));

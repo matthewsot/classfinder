@@ -30,6 +30,8 @@ namespace Classfinder.Models
         public int GradYear { get; set; }
         public int SignUpLevel { get; set; }
 
+        public string RealName { get; set; }
+
         public virtual ICollection<Class> FirstSemester { get; set; }
         public virtual ICollection<Class> SecondSemester { get; set; }
     }

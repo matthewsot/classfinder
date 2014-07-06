@@ -1,0 +1,22 @@
+﻿@using Classfinder.Models
+
+@{
+    ViewBag.Title = "Schedule";
+}
+
+<h2>First Semester</h2>
+
+<ul>
+    @foreach (Class @class in ViewBag.FirstSemester)
+    {
+        <li>
+            <h1>@(@class.Name)</h1>
+            <ul>
+                @foreach (var classmate in @class.StudentsInClassFirstSemester)
+                {
+                    <li>@(classmate.RealName)</li>
+                }
+            </ul>
+        </li>
+    }
+</ul>
