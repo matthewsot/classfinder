@@ -26,11 +26,11 @@ namespace Classfinder.Controllers
         }
 
         [HttpGet]
-        [Route("API/Classes/{period}/{searchTerm}")]
+        [Route("API/Classes/{gradYear}/{period}/{searchTerm}")]
         [AllowAnonymous]
-        public IHttpActionResult SearchClasses(int period, string searchTerm)
+        public IHttpActionResult SearchClasses(int gradYear, int period, string searchTerm)
         {
-            var classes = db.Classes.Where(@class => @class.Name.Contains(searchTerm) && @class.Period == period);
+            var classes = db.Classes.Where(@class => @class.Name.Contains(searchTerm) && @class.Period == period && @class.GradYear == gradYear);
 
             return Ok(classes.Select(@class => new
             {
@@ -40,11 +40,11 @@ namespace Classfinder.Controllers
         }
 
         [HttpGet]
-        [Route("API/Classes/{period}")]
+        [Route("API/Classes/{gradYear}/{period}")]
         [AllowAnonymous]
-        public IHttpActionResult SearchClasses(int period)
+        public IHttpActionResult SearchClasses(int gradYear, int period)
         {
-            var classes = db.Classes.Where(@class => @class.Period == period).Take(10);
+            var classes = db.Classes.Where(@class => @class.Period == period && @class.GradYear == gradYear).Take(10);
 
             return Ok(classes.Select(@class => new
             {
@@ -108,14 +108,14 @@ namespace Classfinder.Controllers
                 schedule.Remove(currClassInPeriod);
             }
 
-            var classToAdd = db.Classes.FirstOrDefault(@class => @class.Name == model.name);
+            var classToAdd = db.Classes.FirstOrDefault(@class => @class.Name == model.name && @class.Period == period && @class.GradYear == user.GradYear);
             if (classToAdd != null)
             {
                 schedule.Add(classToAdd);
             }
             else
             {
-                var newClass = new Class {Name = model.name, Period = period};
+                var newClass = new Class {Name = model.name, Period = period, GradYear = user.GradYear};
                 db.Classes.Add(newClass);
                 schedule.Add(newClass);
             }

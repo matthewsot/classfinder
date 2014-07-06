@@ -26,6 +26,8 @@ namespace Classfinder.Controllers
         {
             var user = db.Users.Find(User.Identity.GetUserId());
 
+            ViewBag.GradYear = user.GradYear;
+
             var semester = id;
             if (!semester.HasValue || semester > 2 || semester < 1)
             {

@@ -29,7 +29,7 @@ namespace Classfinder.Controllers
         public ActionResult Index()
         {
             //TODO: fix this
-            return RedirectToRoute("Schedule/" + HttpUtility.UrlEncode(User.Identity.GetUserName()));
+            return View();
         }
 
         [HttpGet]

@@ -208,6 +208,10 @@
     <Compile Include="Migrations\201407060320212_RealName.Designer.cs">
       <DependentUpon>201407060320212_RealName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407060344123_ClassGradYear.cs" />
+    <Compile Include="Migrations\201407060344123_ClassGradYear.Designer.cs">
+      <DependentUpon>201407060344123_ClassGradYear.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Database.cs" />
@@ -354,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407060320212_RealName.resx">
       <DependentUpon>201407060320212_RealName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407060344123_ClassGradYear.resx">
+      <DependentUpon>201407060344123_ClassGradYear.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

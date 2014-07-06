@@ -39,6 +39,7 @@ namespace Classfinder.Models
     public class Class
     {
         public int Id { get; set; }
+        public int GradYear { get; set; }
         public int Period { get; set; }
         public string Name { get; set; }
         public virtual ICollection<UserAccount> StudentsInClassFirstSemester { get; set; }
