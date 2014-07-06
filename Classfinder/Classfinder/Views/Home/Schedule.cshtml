@@ -1,22 +1,95 @@
 ﻿@using Classfinder.Models
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Schedule";
 }
 
-<h2>First Semester</h2>
+@section head {
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    @Styles.Render("~/Content/Styles/Site/shared.css")
 
-<ol>
+    <style type="text/css">
+        .period-box {
+            height: 100px;
+            line-height: 100px;
+            padding-left: 35px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+            .period-box:hover {
+                background-color: #287062;
+            }
+            .selected {
+                background-color: #287062;
+                border-right: 20px solid #1ccfaf;
+            }
+    </style>
+}
+
+<div id="left-bar" style="background-color:#20937e;width:300px;height:100%;position:absolute;left:0;top:0;margin:0;">
+    <div style="width:300px;height:100px;background-color:#1ccfaf;">
+        <img src="~/Content/Images/logo.png" style="width:250px;margin-top:25px;" class="half-horiz"/>
+    </div>
+    
+    <div style="border-bottom:1px solid #fff;height:50px;line-height:50px;padding-left:35px;font-size:25px;">
+        PERIODS
+    </div>
+
     @foreach (Class @class in ViewBag.FirstSemester)
     {
-        <li>
-            <h1>@(@class.Name)</h1>
-            <ul>
-                @foreach (var classmate in @class.StudentsInClassFirstSemester)
-                {
-                    <li>@(classmate.RealName)</li>
-                }
-            </ul>
-        </li>
+        var parts = @class.Name.Split(',');
+        
+        <div class="period-box" data-period="@(@class.Period)">
+            @(@class.Period) | @(parts.Last().Trim()) | @(parts.Count() == 1 ? "N/A" : parts.First().Trim())
+        </div>
     }
-</ol>
+
+    <script type="text/javascript">
+        var userId = "@(User.Identity.GetUserId())";
+        var gradYear = @(ViewBag.GradYear);
+
+        $(".period-box").click(function() {
+            $(".period-box").removeClass("selected");
+            $(this).addClass("selected");
+
+            var period = $(this).attr("data-period");
+
+            $("#classmates").html("");
+
+            $.getJSON("/API/Classmates/" + userId + "/1/" + period, function(data) {
+                for (var i = 0; i < data.classmates.length; i++) {
+                    var classmate = data.classmates[i];
+                    $("#classmates").append("<li><a href=\"/Schedule/" + encodeURIComponent(classmate.userName) + "\">" + classmate.realName + "</a></li>");
+                }
+            });
+        });
+
+        $(".period-box").first().click();
+    </script>
+</div>
+
+<div style="position:absolute;left:350px;">
+    <div>
+        <h1 id="period-name"></h1>
+        <h3 id="student-count"></h3>
+    </div>
+    
+    <div>
+        <ul id="classmates" style="color:#000;">
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //You shouldn't do layout in javascript blah blah blah...
+    //either send a PR or stop complaining - https://github.com/matthewsot/classfinder
+
+    $(document).ready(function() {
+        $(window).resize(function() {
+            $("#left-bar").height($(document).height() + 50);
+        });
+
+        $(window).resize();
+    });
+</script>

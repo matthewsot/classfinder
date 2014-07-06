@@ -68,6 +68,30 @@ namespace Classfinder.Controllers
             });
         }
 
+        [HttpGet]
+        [Route("API/Classmates/{userId}/{semester}/{period}")]
+        [AllowAnonymous]
+        public IHttpActionResult GetClassmatesForPeriod(string userId, int semester, int period)
+        {
+            var user = db.Users.Find(userId);
+            var schedule = semester == 2 ? user.SecondSemester : user.FirstSemester;
+            var classInPeriod = schedule.FirstOrDefault(@class => @class.Period == period) ?? new Class { Name = "No Class" };
+
+            var classmates = semester == 2
+                ? classInPeriod.StudentsInClassSecondSemester
+                : classInPeriod.StudentsInClassFirstSemester;
+
+            return Ok(new
+            {
+                name = classInPeriod.Name,
+                classmates = classmates.Select(student => new
+                {
+                    realName = student.RealName,
+                    userName = student.UserName
+                })
+            });
+        }
+
         public class ClassModel
         {
             public string name { get; set; }

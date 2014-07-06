@@ -232,8 +232,14 @@
     <Content Include="Content\Styles\Site\Default\index.css">
       <DependentUpon>index.less</DependentUpon>
     </Content>
+    <Content Include="Content\Styles\Site\Default\index.min.css">
+      <DependentUpon>index.css</DependentUpon>
+    </Content>
     <Content Include="Content\Styles\Site\shared.css">
       <DependentUpon>shared.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\shared.min.css">
+      <DependentUpon>shared.css</DependentUpon>
     </Content>
     <Content Include="Content\Styles\Site\Welcome\shared.min.css">
       <DependentUpon>shared.css</DependentUpon>

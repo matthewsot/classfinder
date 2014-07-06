@@ -5,5 +5,5 @@
 }
 
 <script type="text/javascript">
-    window.location.href = "/Schedule/" + urlencode("@(User.Identity.GetUserName())");
+    window.location.href = "/Schedule/" + encodeURIComponent("@(User.Identity.GetUserName())");
 </script>
