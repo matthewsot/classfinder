@@ -26,11 +26,11 @@ namespace Classfinder.Controllers
         }
 
         [HttpGet]
-        [Route("API/Classes/{gradYear}/{period}/{searchTerm}")]
+        [Route("API/Classes/{period}/{searchTerm}")]
         [AllowAnonymous]
-        public IHttpActionResult SearchClasses(int gradYear, int period, string searchTerm)
+        public IHttpActionResult SearchClasses(int period, string searchTerm)
         {
-            var classes = db.Classes.Where(@class => @class.Name.Contains(searchTerm) && @class.Period == period && @class.GradYear == gradYear);
+            var classes = db.Classes.Where(@class => @class.Name.Contains(searchTerm) && @class.Period == period);
 
             return Ok(classes.Select(@class => new
             {
@@ -40,11 +40,11 @@ namespace Classfinder.Controllers
         }
 
         [HttpGet]
-        [Route("API/Classes/{gradYear}/{period}")]
+        [Route("API/Classes/{period}")]
         [AllowAnonymous]
-        public IHttpActionResult SearchClasses(int gradYear, int period)
+        public IHttpActionResult SearchClasses(int period)
         {
-            var classes = db.Classes.Where(@class => @class.Period == period && @class.GradYear == gradYear).Take(10);
+            var classes = db.Classes.Where(@class => @class.Period == period).Take(10);
 
             return Ok(classes.Select(@class => new
             {
@@ -132,14 +132,14 @@ namespace Classfinder.Controllers
                 schedule.Remove(currClassInPeriod);
             }
 
-            var classToAdd = db.Classes.FirstOrDefault(@class => @class.Name == model.name && @class.Period == period && @class.GradYear == user.GradYear);
+            var classToAdd = db.Classes.FirstOrDefault(@class => @class.Name == model.name && @class.Period == period);
             if (classToAdd != null)
             {
                 schedule.Add(classToAdd);
             }
             else
             {
-                var newClass = new Class {Name = model.name, Period = period, GradYear = user.GradYear};
+                var newClass = new Class {Name = model.name, Period = period};
                 db.Classes.Add(newClass);
                 schedule.Add(newClass);
             }

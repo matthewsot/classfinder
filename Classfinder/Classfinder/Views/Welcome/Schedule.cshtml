@@ -57,7 +57,6 @@ else {
     <script type="text/javascript">
         var userId = "@(User.Identity.GetUserId())";
         var semester = @(ViewBag.StepNum - 1);
-        var gradYear = @(ViewBag.GradYear);
 
         var period = 1;
 
@@ -108,7 +107,7 @@ else {
         <button id="add-class-btn">ADD CLASS</button>
         <script type="text/javascript">
             $("#class-input").keydown(function () {
-                $.getJSON("/API/Classes/" + gradYear + "/" + period + "/" + encodeURIComponent($("#class-input").val().trim()), function (data) {
+                $.getJSON("/API/Classes/" + period + "/" + encodeURIComponent($("#class-input").val().trim()), function (data) {
                     fillTableWithClasses(data);
                 });
             });

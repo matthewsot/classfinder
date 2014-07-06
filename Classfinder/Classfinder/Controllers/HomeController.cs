@@ -41,7 +41,6 @@ namespace Classfinder.Controllers
 
             ViewBag.FirstSemester = CheckAndFillWithNoClass(user.FirstSemester).OrderBy(@class => @class.Period);
             ViewBag.SecondSemester = CheckAndFillWithNoClass(user.SecondSemester).OrderBy(@class => @class.Period);
-            ViewBag.GradYear = user.GradYear;
 
             return View();
         }
