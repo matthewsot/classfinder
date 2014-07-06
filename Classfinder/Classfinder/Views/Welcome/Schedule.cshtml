@@ -145,5 +145,29 @@
     </div>
 </div>
 
+<br />
+<button id="previous-button" style="display:none;">&lt;- Previous</button>
+<button id="next-button">Next -&gt;</button>
+
+<script type="text/javascript">
+    $("#next-button").click(function() {
+        if (semester == 1) {
+            window.location.href = "/Welcome/Schedule/2";
+        } else {
+            window.location.href = "/Welcome/Complete";
+        }
+    });
+    
+    $("#previous-button").click(function() {
+        if (semester == 2) {
+            window.location.href = "/Welcome/Schedule/1";
+        }
+    });
+
+    if (semester == 2) {
+        $("#previous-button").show();
+    }
+</script>
+
 <br/>
 <br/>

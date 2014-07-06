@@ -306,6 +306,7 @@
     <Content Include="Views\Welcome\_Setup.cshtml" />
     <Content Include="Views\Welcome\Schedule.cshtml" />
     <Content Include="Views\Default\Login.cshtml" />
+    <Content Include="Views\Welcome\Completed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

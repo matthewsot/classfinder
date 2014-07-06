@@ -23,15 +23,30 @@ namespace Classfinder.Controllers
 
         public ActionResult Schedule(int? id)
         {
+            var user = db.Users.Find(User.Identity.GetUserId());
+
             var semester = id;
             if (!semester.HasValue || semester > 2 || semester < 1)
             {
-                var user = db.Users.Find(User.Identity.GetUserId());
-
                 semester = ((SignUpLevel)user.SignUpLevel == SignUpLevel.FirstSemesterScheduleEntered) ? 2 : 1;
             }
 
+            if (semester == 2 && user.SignUpLevel < (int) SignUpLevel.SecondSemesterScheduleEntered)
+            {
+                user.SignUpLevel = (int) SignUpLevel.SecondSemesterScheduleEntered;
+                db.SaveChanges();
+            }
+
             ViewBag.StepNum = semester + 1;
+
+            return View();
+        }
+
+        public ActionResult Complete()
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            user.SignUpLevel = (int) SignUpLevel.SecondSemesterScheduleEntered;
+            db.SaveChanges();
 
             return View();
         }

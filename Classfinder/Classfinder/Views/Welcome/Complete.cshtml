@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Schedule";
+    Layout = "_Setup.cshtml";
+}
+
+@section head {
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    @Styles.Render("~/Content/Styles/Site/Welcome/shared.css")
+    <style type="text/css">
+        #progress {
+            width: 100%;
+        }
+    </style>
+}
+
+<h2 id="step-label">Completed!</h2>
+
+<br/>
+<br/>
+
+<button id="next-button">Finish</button>
+
+<script type="text/javascript">
+    $("#next-button").click(function() {
+        //TODO: replace this with an anchor
+        window.location.href = "/Home";
+    });
+</script>
