@@ -97,6 +97,13 @@ html {
   color: #fff;
   font-size: 25px;
 }
+#hero-action-bar a {
+  background-color: rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+}
+#hero-action-bar a:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
 #action-label {
   overflow: hidden;
   background-color: #1ccfaf;
@@ -106,17 +113,15 @@ html {
   z-index: 5;
 }
 #signup-btn {
-  margin: 0;
-  background-color: rgba(0, 0, 0, 0.3);
   display: block;
-  text-decoration: none;
   right: 0;
   bottom: 0;
   width: 20%;
   z-index: 0;
 }
-#signup-btn:hover {
-  background-color: rgba(0, 0, 0, 0.6);
+#mobile-login-btn {
+  margin: 0;
+  display: none;
 }
 #last-row {
   color: #3b3b3b;
@@ -214,6 +219,10 @@ html {
   }
 }
 @media screen and (max-width: 850px) {
+  body,
+  html {
+    overflow-x: hidden;
+  }
   #first-row {
     height: auto;
   }
@@ -227,16 +236,10 @@ html {
   }
   #hero-action-bar h1 {
     position: static;
-    /* but ewe. should use prefix-free */
-    position: relative;
-    left: 50%;
-    /* but ewe. should use prefix-free */
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-    font-size: 30px;
+    font-size: 25px;
+    height: auto;
+    overflow: visible;
+    width: 100%;
     background-color: transparent;
     border: none;
     margin-top: 20px;
@@ -246,6 +249,11 @@ html {
     border-radius: 2px;
     width: 80%;
     margin-left: 10%;
+    font-size: 30px;
+  }
+  #mobile-login-btn {
+    display: block;
+    margin-top: 15px;
   }
   #last-row .info-box:nth-child(n) {
     margin: 0;
