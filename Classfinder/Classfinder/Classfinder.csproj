@@ -232,6 +232,8 @@
     <Content Include="Content\Images\logo.shadow.png" />
     <Content Include="Content\Images\logo.shadow.small.png" />
     <Content Include="Content\Images\simplified.png" />
+    <Content Include="Content\Images\transparent-btn-background.dark.png" />
+    <Content Include="Content\Images\transparent-btn-background.png" />
     <Content Include="Content\Styles\bootstrap.css" />
     <Content Include="Content\Styles\bootstrap.min.css" />
     <Content Include="Content\Styles\Site\Default\index.css">
