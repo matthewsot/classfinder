@@ -41,7 +41,25 @@
         #classmates td:last-child {
             text-align:right;
             padding-right: 25px;
+            color: #a6a6a6;
         }
+
+        #header-row {
+            color:#7c7c7c;
+            font-size: 25px;
+        }
+            #header-row td {
+                border-bottom: 1px solid #1ccfaf;
+                padding-top: 10px;
+                padding-bottom: 5px;
+            }
+                #header-row td:first-child {
+                    padding-left: 25px;
+                }
+                #header-row td:last-child {
+                    text-align: right;
+                    padding-right: 25px;
+                }
     </style>
 }
 
@@ -62,45 +80,23 @@
             @(@class.Period) | @(parts.Last().Trim()) | @(parts.Count() == 1 ? "N/A" : parts.First().Trim())
         </div>
     }
-
-    <script type="text/javascript">
-        var userId = "@(User.Identity.GetUserId())";
-
-        $(".period-box").click(function() {
-            $(".period-box").removeClass("selected");
-            $(this).addClass("selected");
-
-            var period = $(this).attr("data-period");
-
-            $("#classmates").html("");
-
-            $.getJSON("/API/Classmates/" + userId + "/1/" + period, function(data) {
-                for (var i = 0; i < data.classmates.length; i++) {
-                    var classmate = data.classmates[i];
-                    $("#classmates").append('<tr><td><a href=\"/Schedule/' + encodeURIComponent(classmate.userName) + "\">" + classmate.realName + '</a></td><td>' + classmate.grade + "</td></tr>");
-                }
-            });
-        });
-
-        $(".period-box").first().click();
-    </script>
 </div>
 
 <div id="right-box" style="position:absolute;left:350px;">
-    <div>
-        <h1 id="period-name"></h1>
+    <div style="margin-left:25px;">
+        <h1 id="period-name" style="color:#1ccfaf;font-weight:400;"></h1>
         <h3 id="student-count"></h3>
     </div>
     
     <div style="background-color:#ededed;border-radius:15px;min-height:500px;width:100%;">
         <table style="width:100%;padding:30px;padding-top:15px;padding-bottom:10px;border-collapse:collapse;">
             <thead>
-                <tr style="color:#7c7c7c;font-size:25px;">
-                    <td style="border-bottom:1px solid #1ccfaf;padding:10px 0 5px 25px;">Name</td>
-                    <td style="text-align:right;border-bottom:1px solid #1ccfaf;padding:10px 25px 5px 0;">Grade</td>
+                <tr id="header-row">
+                    <td>Name</td>
+                    <td>Grade</td>
                 </tr>
             </thead>
-            <tbody id="classmates" style="color:#000;">
+            <tbody id="classmates">
                 
             </tbody>
         </table>
@@ -119,4 +115,46 @@
 
         $(window).resize();
     });
+
+    var userId = "@(User.Identity.GetUserId())";
+
+    $(".period-box").click(function () {
+        $(".period-box").removeClass("selected");
+        $(this).addClass("selected");
+
+
+        var period = parseInt($(this).attr("data-period"));
+
+        //todo function-ize this stuff
+        var suffix = "";
+        switch (period) {
+            case 1:
+                suffix = "st";
+                break;
+            case 2:
+                suffix = "nd";
+                break;
+            case 3:
+                suffix = "rd";
+                break;
+            default:
+                suffix = "th";
+                break;
+        }
+        var periodLabel = period + suffix + " Period";
+        var clss = $(this).text().split('|')[1];
+        var teacher = $(this).text().split('|')[2];
+        $("#period-name").text(period + " | " + clss + " | " + teacher);
+
+        $("#classmates").html("");
+
+        $.getJSON("/API/Classmates/" + userId + "/1/" + period, function (data) {
+            for (var i = 0; i < data.classmates.length; i++) {
+                var classmate = data.classmates[i];
+                $("#classmates").append('<tr><td><a href=\"/Schedule/' + encodeURIComponent(classmate.userName) + "\">" + classmate.realName + '</a></td><td>' + classmate.grade + "</td></tr>");
+            }
+        });
+    });
+
+    $(".period-box").first().click();
 </script>
