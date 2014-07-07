@@ -24,6 +24,24 @@
                 background-color: #287062;
                 border-right: 20px solid #1ccfaf;
             }
+
+        #classmates td {
+            border-bottom:1px solid #a6a6a6;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 20px;
+        }
+        #classmates td:first-child {
+            padding-left: 25px;
+        }
+        #classmates a {
+            color: #1ccfaf;
+            text-decoration: none;
+        }
+        #classmates td:last-child {
+            text-align:right;
+            padding-right: 25px;
+        }
     </style>
 }
 
@@ -59,7 +77,7 @@
             $.getJSON("/API/Classmates/" + userId + "/1/" + period, function(data) {
                 for (var i = 0; i < data.classmates.length; i++) {
                     var classmate = data.classmates[i];
-                    $("#classmates").append("<li><a href=\"/Schedule/" + encodeURIComponent(classmate.userName) + "\">" + classmate.realName + "</a></li>");
+                    $("#classmates").append('<tr><td><a href=\"/Schedule/' + encodeURIComponent(classmate.userName) + "\">" + classmate.realName + '</a></td><td>' + classmate.grade + "</td></tr>");
                 }
             });
         });
@@ -68,15 +86,24 @@
     </script>
 </div>
 
-<div style="position:absolute;left:350px;">
+<div id="right-box" style="position:absolute;left:350px;">
     <div>
         <h1 id="period-name"></h1>
         <h3 id="student-count"></h3>
     </div>
     
-    <div>
-        <ul id="classmates" style="color:#000;">
-        </ul>
+    <div style="background-color:#ededed;border-radius:15px;min-height:500px;width:100%;">
+        <table style="width:100%;padding:30px;padding-top:15px;padding-bottom:10px;border-collapse:collapse;">
+            <thead>
+                <tr style="color:#7c7c7c;font-size:25px;">
+                    <td style="border-bottom:1px solid #1ccfaf;padding:10px 0 5px 25px;">Name</td>
+                    <td style="text-align:right;border-bottom:1px solid #1ccfaf;padding:10px 25px 5px 0;">Grade</td>
+                </tr>
+            </thead>
+            <tbody id="classmates" style="color:#000;">
+                
+            </tbody>
+        </table>
     </div>
 </div>
 
@@ -87,6 +114,7 @@
     $(document).ready(function() {
         $(window).resize(function() {
             $("#left-bar").height($(document).height() + 50);
+            $("#right-box").width($(document).width() - 400);
         });
 
         $(window).resize();

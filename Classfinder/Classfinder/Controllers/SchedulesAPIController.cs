@@ -87,7 +87,8 @@ namespace Classfinder.Controllers
                 classmates = classmates.Select(student => new
                 {
                     realName = student.RealName,
-                    userName = student.UserName
+                    userName = student.UserName,
+                    grade = 12 - (student.GradYear - 2015)
                 })
             });
         }

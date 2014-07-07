@@ -1,15 +1,25 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" href="/Content/Images/favicon.ico" /> 
-    @RenderSection("head", false)
-    @RenderSection("scripts", false)
-</head>
-<body style="font-family:Lato;">
-    @RenderBody()
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title</title>
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" href="/Content/Images/favicon.ico" /> 
+        @RenderSection("head", false)
+        @RenderSection("scripts", false)
+    </head>
+    <body style="font-family:Lato;">
+        <noscript style="display:block;position:absolute;top:0;left:0;width:100%;height:100%;z-index:100000;background-color:#000;color:#fff;">
+            <h1>Woops, looks like you've disabled Javascript :\</h1>
+            <br />
+            Classfinder relies on Javascript for pretty much everything - redirection, communicating with our backend, and more.
+            <br />
+            Please enable Javascript for classfinder.me to use our site effectively.
+            <br />
+
+            <a href="http://www.enable-javascript.com/">Click here</a> to learn how to enable Javascript in your browser.
+        </noscript>
+        @RenderBody()
+    </body>
 </html>
