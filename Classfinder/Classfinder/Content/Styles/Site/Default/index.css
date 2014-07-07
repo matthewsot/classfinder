@@ -66,6 +66,11 @@ html {
   background-color: #1ccfaf;
   width: 100%;
 }
+#first-row img {
+  position: absolute;
+  top: 30px;
+  left: 45px;
+}
 .dark-row {
   background-color: #3b3b3b;
 }
@@ -102,8 +107,7 @@ html {
 }
 #signup-btn {
   margin: 0;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPkAAABwCAQAAAB2+R4LAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAEaSURBVHja7dFBDQAgEMCwA3/4t4MLeKxVsGRrzpCyfwfwmuU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludcEEQBLT+qDV4AAAAldEVYdGRhdGU6Y3JlYXRlADIwMTQtMDctMDdUMjE6Mjk6MjkrMDA6MDDeI3J8AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTA3LTA3VDIxOjI5OjI5KzAwOjAwr37KwAAAAABJRU5ErkJggg==') /*/Content/Images/transparent-btn-background.png*/;
-  background-repeat: repeat;
+  background-color: rgba(0, 0, 0, 0.3);
   display: block;
   text-decoration: none;
   right: 0;
@@ -112,7 +116,7 @@ html {
   z-index: 0;
 }
 #signup-btn:hover {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPkAAABwCAYAAADc8NaAAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAFnRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4wO+j1aQAAAW1JREFUeF7tyEENACAAxDD8a0AsCDgFS5f0s/O7QNqcQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMK5D1MeZh9WUWmiAAAAAElFTkSuQmCC') /*/Content/Images/transparent-btn-background.dark.png*/;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 #last-row {
   color: #3b3b3b;
@@ -223,14 +227,25 @@ html {
   }
   #hero-action-bar h1 {
     position: static;
+    /* but ewe. should use prefix-free */
+    position: relative;
+    left: 50%;
+    /* but ewe. should use prefix-free */
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    margin-top: 20px;
   }
-  #main-row .btn {
-    margin: 0;
-    margin-top: 25px;
-  }
-  #main-row img#laptop {
-    width: 100%;
-    margin-bottom: 0;
+  #hero-action-bar a {
+    position: static;
+    border-radius: 2px;
+    width: 80%;
+    margin-left: 10%;
   }
   #last-row .info-box:nth-child(n) {
     margin: 0;
