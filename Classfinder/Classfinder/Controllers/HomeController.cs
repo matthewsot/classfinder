@@ -39,6 +39,11 @@ namespace Classfinder.Controllers
         {
             var user = db.Users.FirstOrDefault(usr => usr.UserName == userName);
 
+            if (user == null)
+            {
+                //TODO: handle user-not-found errors
+            }
+
             ViewBag.FirstSemester = CheckAndFillWithNoClass(user.FirstSemester).OrderBy(@class => @class.Period);
             ViewBag.SecondSemester = CheckAndFillWithNoClass(user.SecondSemester).OrderBy(@class => @class.Period);
 
