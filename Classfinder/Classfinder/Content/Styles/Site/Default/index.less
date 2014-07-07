@@ -6,19 +6,6 @@
     padding:50px 0 50px 0;
 }
 
-#first-row {
-    padding:0;
-    height:250px;
-    position:relative;
-    background-color:@green;
-    width:100%;
-}
-        #first-row img {
-            position:absolute;
-            top:30px;
-            left:45px;
-        }
-
 .dark-row {
     background-color:@dark;
 }
@@ -30,6 +17,11 @@
     position:relative;
     height:500px;
 }
+    #main-row img {
+        position:absolute;
+        top:30px;
+        left:45px;
+    }
     @action-bar-height: 75px;
     #hero-action-bar {
         position:absolute;
@@ -78,6 +70,11 @@
             margin: 0;
             display:none;
         }
+    #desktop-login-btn {
+        position:absolute;
+        top:30px;
+        right:45px;
+    }
 
 #last-row {
     color:@dark;
@@ -176,12 +173,11 @@
     body,html {
         overflow-x:hidden; //TODO: figure out what's actually causing the overflow, instead of just hiding it
     }
-    #first-row {
-        height:auto;
+    #main-row {
+        height:500px;
     }
-        #first-row img {
+        #main-row img {
             position:static;
-
         }
         #hero-action-bar {
             position:static;
@@ -191,12 +187,14 @@
             #hero-action-bar h1 {
                 position:static;
                 font-size:25px;
+                line-height:25px;
                 height:auto;
                 overflow:visible;
                 width:100%;
                 background-color:transparent;
                 border:none;
-                margin-top:20px;
+                margin-top:50px;
+                margin-bottom:50px;
             }
             #hero-action-bar a {
                 position:static;
@@ -209,6 +207,10 @@
                 display:block;
                 margin-top:15px;
             }
+
+        #desktop-login-btn {
+            display:none;
+        }
 
     #last-row .info-box:nth-child(n) {
         margin:0;

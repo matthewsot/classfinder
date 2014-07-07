@@ -33,6 +33,14 @@ html {
   background-color: #1ccfaf;
   color: #fff;
 }
+.white-on-green {
+  color: #fff;
+  border-color: #1ccfaf;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.white-on-green:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
 .half-vert {
   position: relative;
   /* Thanks! http://creative-punch.net/2014/01/center-vertically-horizontally-using-css3-transform/ */
@@ -59,18 +67,6 @@ html {
   text-align: center;
   padding: 50px 0 50px 0;
 }
-#first-row {
-  padding: 0;
-  height: 250px;
-  position: relative;
-  background-color: #1ccfaf;
-  width: 100%;
-}
-#first-row img {
-  position: absolute;
-  top: 30px;
-  left: 45px;
-}
 .dark-row {
   background-color: #3b3b3b;
 }
@@ -79,6 +75,11 @@ html {
   background-size: cover;
   position: relative;
   height: 500px;
+}
+#main-row img {
+  position: absolute;
+  top: 30px;
+  left: 45px;
 }
 #hero-action-bar {
   position: absolute;
@@ -122,6 +123,11 @@ html {
 #mobile-login-btn {
   margin: 0;
   display: none;
+}
+#desktop-login-btn {
+  position: absolute;
+  top: 30px;
+  right: 45px;
 }
 #last-row {
   color: #3b3b3b;
@@ -223,10 +229,10 @@ html {
   html {
     overflow-x: hidden;
   }
-  #first-row {
-    height: auto;
+  #main-row {
+    height: 500px;
   }
-  #first-row img {
+  #main-row img {
     position: static;
   }
   #hero-action-bar {
@@ -237,12 +243,14 @@ html {
   #hero-action-bar h1 {
     position: static;
     font-size: 25px;
+    line-height: 25px;
     height: auto;
     overflow: visible;
     width: 100%;
     background-color: transparent;
     border: none;
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
   #hero-action-bar a {
     position: static;
@@ -254,6 +262,9 @@ html {
   #mobile-login-btn {
     display: block;
     margin-top: 15px;
+  }
+  #desktop-login-btn {
+    display: none;
   }
   #last-row .info-box:nth-child(n) {
     margin: 0;
