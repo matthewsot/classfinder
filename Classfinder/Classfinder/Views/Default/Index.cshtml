@@ -5,22 +5,18 @@
 @section head {
     <link href="~/Content/Styles/Site/Default/index.css" rel="stylesheet" type="text/css" />
 }
-
-<div class="row green-row" id="first-row">
-    <a href="~/LogIn" class="btn login-btn">login</a>
-    <img src="~/Content/Images/logo.shadow.png" class="top-logo" id="big-logo" />
-    <img src="~/Content/Images/logo.shadow.small.png" class="top-logo" id="small-logo" />
-</div>
-
-<div class="row dark-row" id="main-row">
-    <h1>The simple who's-in-your-class app for students across all grades</h1>
-
-    <img src="~/Content/Images/laptop.png" id="laptop" />
+<div class="row dark-row" id="main-row" style="background-image:url(/Content/Images/hero.background.png);position:relative;height:600px;">
+    <img src="~/Content/Images/logo.png" style="position:absolute;top:30px;left:45px;"/>
     
-    <div>
-        <a href="~/Welcome/Signup" class="btn white-on-dark">sign up for cf</a>
-        <a href="~/LogIn" class="btn white-on-dark">log in</a>
+    <div id="hero-action-bar">
+        <h1 id="action-label">The simple who's-in-your-class app for students across all grades</h1>
+
+        <a href="~/Welcome/Signup" id="signup-btn" class="btn">Sign up</a>
     </div>
+    
+    @*<div>
+        <a href="~/LogIn" class="btn white-on-dark">log in</a>
+    </div>*@
 </div>
 
 <div class="row" id="last-row">

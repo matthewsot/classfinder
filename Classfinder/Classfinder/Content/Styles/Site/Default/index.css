@@ -66,33 +66,55 @@ html {
   background-color: #1ccfaf;
   width: 100%;
 }
-#first-row .login-btn {
-  position: absolute;
-  top: 25px;
-  right: 20px;
-}
-#first-row #big-logo {
-  height: 200px;
-  margin-top: 50px;
-}
-#first-row #small-logo {
-  display: none;
-}
 .dark-row {
   background-color: #3b3b3b;
 }
 #main-row {
   padding: 50px 0 50px 0;
 }
-#main-row img#laptop {
-  margin: 50px 0 50px 0;
-  width: 600px;
+#hero-action-bar {
+  position: absolute;
+  bottom: 50px;
+  width: 80%;
+  left: 10%;
+  background-color: transparent;
+  height: 75px;
 }
-#main-row .btn {
-  display: inline-block;
-  width: 190px;
-  margin-right: 25px;
-  margin-left: 25px;
+#action-label {
+  border: 2px solid #1ccfaf;
+  position: absolute;
+  height: 75px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #1ccfaf;
+  left: 0;
+  line-height: 75px;
+  font-size: 25px;
+  width: 80%;
+  margin-top: -4px;
+  z-index: 5;
+}
+#signup-btn {
+  border: 2px solid #1ccfaf;
+  position: absolute;
+  height: 75px;
+  line-height: 75px;
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+  background-image: url(/Content/Images/transparent-btn-background.png);
+  background-color: transparent;
+  color: #fff;
+  right: 0;
+  bottom: 0;
+  width: 20%;
+  border-radius: 0;
+}
+#signup-btn:hover {
+  background-image: url(/Content/Images/transparent-btn-background.dark.png);
+  background-repeat: repeat;
+  z-index: 0;
 }
 #last-row {
   color: #3b3b3b;
