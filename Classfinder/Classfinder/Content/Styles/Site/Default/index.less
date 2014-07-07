@@ -19,53 +19,55 @@
 }
 
 #main-row {
-    padding:50px 0 50px 0;
+    background-image:url(/Content/Images/hero.background.png);
+    background-size:cover;
+
+    position:relative;
+    height:500px;
 }
+    @action-bar-height: 75px;
     #hero-action-bar {
         position:absolute;
         bottom:50px;
         width:80%;
         left:10%;
-        background-color:transparent;
-        height:75px;
+        height:@action-bar-height;
     }
-        #action-label {
+        #hero-action-bar h1,
+        #hero-action-bar a {
             border: 2px solid #1ccfaf;
             position: absolute;
-            height: 75px;
-            margin: 0;
+
+            height: @action-bar-height;
+            line-height:@action-bar-height;
+
             padding: 0;
+            font-size:25px;
+            color:#fff;
+        }
+        #action-label {
             overflow:hidden;
 
             background-color: #1ccfaf;
             left: 0;
-            line-height: 75px;
-            font-size: 25px;
             width: 80%;
-            margin-top: -4px;
+            margin:-4px 0 0 0;
             z-index:5;
         }
         #signup-btn {
-            border: 2px solid #1ccfaf;
-            position: absolute;
-            height: 75px;
-            line-height:75px;
-            font-size:25px;
             margin: 0;
-            padding: 0;
-            background-image:url(/Content/Images/transparent-btn-background.png);
+            background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPkAAABwCAQAAAB2+R4LAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAEaSURBVHja7dFBDQAgEMCwA3/4t4MLeKxVsGRrzpCyfwfwmuU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludYnmN5juU5ludcEEQBLT+qDV4AAAAldEVYdGRhdGU6Y3JlYXRlADIwMTQtMDctMDdUMjE6Mjk6MjkrMDA6MDDeI3J8AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTA3LTA3VDIxOjI5OjI5KzAwOjAwr37KwAAAAABJRU5ErkJggg==') /*/Content/Images/transparent-btn-background.png*/;
+            background-repeat:repeat;
+            display:block;
+            text-decoration:none;
 
-            background-color: transparent;
-            color:#fff;
             right: 0;
             bottom: 0;
             width: 20%;
-            border-radius: 0;
+            z-index:0;
         }
             #signup-btn:hover {
-                background-image:url(/Content/Images/transparent-btn-background.dark.png);
-                background-repeat:repeat;
-                z-index:0;
+                background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPkAAABwCAYAAADc8NaAAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAFnRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4wO+j1aQAAAW1JREFUeF7tyEENACAAxDD8a0AsCDgFS5f0s/O7QNqcQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMecQMK5D1MeZh9WUWmiAAAAAElFTkSuQmCC') /*/Content/Images/transparent-btn-background.dark.png*/;
             }
 
 #last-row {
@@ -115,19 +117,18 @@
     #first-row {
         height:auto;
     }
-    #first-row .login-btn {
-        position:absolute;
-        width:150px;
-        .half-horiz;
-    }
-    #first-row #big-logo {
-        display:none;
-    }
-    #first-row #small-logo {
-        display:block;
-        width:100%;
-        margin-top:50px;
-    }
+        #first-row img {
+            position:static;
+        }
+        #hero-action-bar {
+            position:static;
+            height:auto;
+            width:auto;
+        }
+            #hero-action-bar h1 {
+                position:static;
+
+            }
 
     #main-row .btn {
         margin:0;
