@@ -63,13 +63,13 @@
 
 <div id="login-popup" style="display:none;">
     <h1>log in</h1>
-    <form action="/Account/Login" method="POST" id="login-form">
+    <form action="/Account/Login?ReturnUrl=@(ViewBag.ReturnUrl ?? "")" method="POST" id="login-form">
         @Html.AntiForgeryToken()
         <input name="UserName" type="text" id="login-username" placeholder="username" />
         <br />
         <input name="Password" type="password" id="login-password" placeholder="password" />
         <br />
-        <label for="login-remember">Remember me</label> <input name="RememberMe" type="checkbox" id="login-remember" checked />
+        <label for="login-remember">Remember me</label> <input name="RememberMe" type="checkbox" id="login-remember" value="true" checked /> <!-- Thanks! http://stackoverflow.com/questions/6441654/html-input-checkbox-return-on-instead-of-true-when-submitting-form -->
         <br />
         <input type="submit" id="login-btn" value="let's go -->" class="btn green-on-white" />
     </form>

@@ -28,8 +28,7 @@ namespace Classfinder.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            //TODO: fix this
-            return View();
+            return Redirect("/Schedule/" + User.Identity.GetUserName());
         }
 
         [HttpGet]

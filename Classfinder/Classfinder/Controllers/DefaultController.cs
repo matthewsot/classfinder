@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 
 namespace Classfinder.Controllers
 {
@@ -6,22 +7,25 @@ namespace Classfinder.Controllers
     {
         public ActionResult Index()
         {
+            if (User != null && User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             ViewBag.ShowLogin = ViewBag.ShowLogin ?? false;
             return View();
         }
 
         [Route("LogIn")]
-        public ActionResult LogIn()
+        public ActionResult LogIn(string returnUrl)
         {
             if (User != null && User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
             }
-            else
-            {
-                ViewBag.ShowLogin = true;
-                return View("Index");
-            }
+
+            ViewBag.ReturnUrl = HttpUtility.UrlEncode(returnUrl ?? "");
+            ViewBag.ShowLogin = true;
+            return View("Index");
         }
     }
 }
