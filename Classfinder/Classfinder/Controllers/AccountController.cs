@@ -424,7 +424,7 @@ namespace Classfinder.Controllers
         //
         // POST: /Account/LogOff
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken] TODO: think about the implications of turning this off
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();

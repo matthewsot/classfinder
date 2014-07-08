@@ -7,68 +7,15 @@
 
 @section head {
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    @Styles.Render("~/Content/Styles/Site/shared.css")
-
-    <style type="text/css">
-        .period-box {
-            height: 100px;
-            line-height: 100px;
-            padding-left: 35px;
-            font-size: 25px;
-            cursor: pointer;
-        }
-            .period-box:hover {
-                background-color: #287062;
-            }
-            .selected {
-                background-color: #287062;
-                border-right: 20px solid #1ccfaf;
-            }
-
-        #classmates td {
-            border-bottom:1px solid #a6a6a6;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            font-size: 20px;
-        }
-        #classmates td:first-child {
-            padding-left: 25px;
-        }
-        #classmates a {
-            color: #1ccfaf;
-            text-decoration: none;
-        }
-        #classmates td:last-child {
-            text-align:right;
-            padding-right: 25px;
-            color: #a6a6a6;
-        }
-
-        #header-row {
-            color:#7c7c7c;
-            font-size: 25px;
-        }
-            #header-row td {
-                border-bottom: 1px solid #1ccfaf;
-                padding-top: 10px;
-                padding-bottom: 5px;
-            }
-                #header-row td:first-child {
-                    padding-left: 25px;
-                }
-                #header-row td:last-child {
-                    text-align: right;
-                    padding-right: 25px;
-                }
-    </style>
+    @Styles.Render("~/Content/Styles/Site/Home/schedule.css")
 }
 
-<div id="left-bar" style="background-color:#20937e;width:300px;height:100%;position:absolute;left:0;top:0;margin:0;">
-    <div style="width:300px;height:100px;background-color:#1ccfaf;">
-        <img src="~/Content/Images/logo.png" style="width:250px;margin-top:25px;" class="half-horiz"/>
+<div id="left-bar">
+    <div id="img-row">
+        <img src="~/Content/Images/logo.png" class="half-horiz"/>
     </div>
     
-    <div style="border-bottom:1px solid #fff;height:50px;line-height:50px;padding-left:35px;font-size:25px;">
+    <div id="periods-header">
         PERIODS
     </div>
 
@@ -80,9 +27,13 @@
             @(@class.Period) | @(parts.Last().Trim()) | @(parts.Count() == 1 ? "N/A" : parts.First().Trim())
         </div>
     }
+    
+    <div id="bottom-options" style="">
+        <a href="/Account/LogOff">log out</a> | <a href="/Manage/Schedule">modify schedule</a>
+    </div>
 </div>
 
-<div id="right-box" style="position:absolute;left:350px;">
+<div id="right-box">
     <div style="margin-left:25px;">
         <h1 id="period-name" style="color:#1ccfaf;font-weight:400;margin-bottom:5px;"></h1>
         <h2 id="student-count" style="color:#acacac;font-size:25px;margin-top:0;"></h2>

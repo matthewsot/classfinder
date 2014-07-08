@@ -1,0 +1,100 @@
+﻿@import "shared.less";
+
+@dark-green:#287062;
+@light-dark-green:#20937e;
+
+#left-bar {
+    background-color:@light-dark-green;
+    width:300px;
+    height:100%;
+    position:absolute;
+    left:0;
+    top:0;
+    margin:0;
+}
+    #img-row {
+        width:300px;
+        height:100px;
+        background-color:#1ccfaf;
+    }
+        #img-row img {
+            width:250px;
+            margin-top:25px;
+        }
+    #periods-header {
+        border-bottom:1px solid #fff;
+        height:50px;
+        line-height:50px;
+        padding-left:35px;
+        font-size:25px;
+    }
+    #bottom-options {
+        position:absolute;
+        bottom:25px;
+        left:20px;
+    }
+        #bottom-options a {
+            text-decoration:none;
+            color:#fff;
+            font-size:20px;
+        }
+
+.period-box {
+    height: 100px;
+    line-height: 100px;
+    padding-left: 35px;
+    font-size: 25px;
+    cursor: pointer;
+}
+    .period-box:hover {
+        background-color: @dark-green;
+    }
+    .selected {
+        background-color: @dark-green;
+        border-right: 20px solid @green;
+    }
+
+#classmates td {
+    border-bottom:1px solid #a6a6a6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+#classmates td:first-child {
+    padding-left: 25px;
+}
+#classmates a {
+    color: @green;
+    text-decoration: none;
+}
+#classmates td:last-child {
+    text-align:right;
+    padding-right: 25px;
+    color: #a6a6a6;
+}
+
+#header-row {
+    color:#7c7c7c;
+    font-size: 25px;
+}
+    #header-row td {
+        border-bottom: 1px solid @green;
+        padding-top: 10px;
+        padding-bottom: 5px;
+    }
+        #header-row td:first-child {
+            padding-left: 25px;
+        }
+        #header-row td:last-child {
+            text-align: right;
+            padding-right: 25px;
+        }
+
+#right-box {
+    position:absolute;
+    left:350px
+}
+
+@media all and (max-width:850px) {
+
+}

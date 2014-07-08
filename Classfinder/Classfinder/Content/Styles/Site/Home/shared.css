@@ -1,0 +1,79 @@
+﻿body,
+html {
+  width: 100%;
+  margin: 0;
+  color: #fff;
+}
+.btn {
+  border: 2px solid #fff;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 25px;
+  padding: 10px 40px 10px 40px;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+.btn:hover {
+  background-color: #fff;
+  color: #1ccfaf;
+}
+.white-on-dark {
+  color: #fff;
+}
+.white-on-dark:hover {
+  color: #3b3b3b;
+}
+.green-on-white {
+  color: #1ccfaf;
+  border-color: #1ccfaf;
+  background-color: #fff;
+}
+.green-on-white:hover {
+  background-color: #1ccfaf;
+  color: #fff;
+}
+.white-on-green {
+  color: #fff;
+  border-color: #1ccfaf;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.white-on-green:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+input {
+  font-family: Lato;
+  font-weight: 300;
+  font-size: 30px;
+}
+input[type=text],
+input[type=password],
+input[type=email] {
+  height: 50px;
+  border: 1px solid #1ccfaf;
+  text-align: center;
+  color: #1ccfaf;
+}
+.half-vert {
+  position: relative;
+  /* Thanks! http://creative-punch.net/2014/01/center-vertically-horizontally-using-css3-transform/ */
+  top: 50%;
+  /* but ewe. should use prefix-free */
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.half-horiz {
+  position: relative;
+  left: 50%;
+  /* but ewe. should use prefix-free */
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+/*# sourceMappingURL=shared.css.map */
