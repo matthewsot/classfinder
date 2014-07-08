@@ -16,7 +16,7 @@
 
         <a href="~/Welcome/Signup" id="signup-btn">Sign up</a>
 
-        <a href="~/LogIn" id="mobile-login-btn">Log in</a>
+        <a href="#login" id="mobile-login-btn">Log in</a>
     </div>
 </div>
 
@@ -79,6 +79,10 @@
 
 <script type="text/javascript">
     $("#desktop-login-btn").click(function () {
+        initWedge('login-popup', 'div');
+    });
+
+    $("#mobile-login-btn").click(function() {
         initWedge('login-popup', 'div');
     });
 
