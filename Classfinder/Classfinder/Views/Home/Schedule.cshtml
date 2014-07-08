@@ -12,7 +12,8 @@
 
 <div id="left-bar">
     <div id="img-row">
-        <img src="~/Content/Images/logo.png" class="half-horiz"/>
+        <img src="~/Content/Images/logo.png" id="desktop-logo" class="half-horiz"/>
+        <img src="~/Content/Images/logo.favicon.png" id="mobile-logo" />
     </div>
     
     <div id="periods-header">
@@ -28,6 +29,15 @@
         </div>
     }
     
+    <div id="mobile-period-list">
+        @for (var i = 1; i <= 7; i++)
+        {
+            <div>
+                <div class="period-box-mobile" data-period="@(i)">@(i)</div>
+            </div>
+        }
+    </div>
+    
     <div id="bottom-options" style="">
         <a href="/Account/LogOff">log out</a> | <a href="/Manage/Schedule">modify schedule</a>
     </div>
@@ -39,7 +49,7 @@
         <h2 id="student-count" style="color:#acacac;font-size:25px;margin-top:0;"></h2>
     </div>
     
-    <div style="background-color:#ededed;border-radius:15px;min-height:500px;width:100%;">
+    <div id="table-container">
         <table style="width:100%;padding:30px;padding-top:15px;padding-bottom:10px;border-collapse:collapse;">
             <thead>
                 <tr id="header-row">
@@ -60,21 +70,31 @@
 
     $(document).ready(function() {
         $(window).resize(function() {
-            $("#left-bar").height($(document).height() + 50);
-            $("#right-box").width($(document).width() - 400);
+            if (window.innerWidth > 850) {
+                $("#left-bar").height($(document).height() - 100);
+                $("#right-box").width($(document).width() - 400);
+            }
+            else if (window.innerWidth > 650) {
+                $("#left-bar").height($(document).height() - 100);
+                $("#right-box").width(window.innerWidth - 300);
+            } else {
+                $("#mobile-period-list").width(window.innerWidth - 90);
+            }
         });
 
         $(window).resize();
+        setTimeout(500, $(window).resize);
     });
 
     var userId = "@(User.Identity.GetUserId())";
 
     $(".period-box").click(function () {
         $(".period-box").removeClass("selected");
+        $(".period-box-mobile").removeClass("selected-mobile");
         $(this).addClass("selected");
 
-
         var period = parseInt($(this).attr("data-period"));
+        $(".period-box-mobile[data-period=" + period + "]").addClass("selected-mobile");
 
         //todo function-ize this stuff
         var suffix = "";
@@ -110,6 +130,10 @@
                 $("#classmates").append('<tr><td><a href=\"/Schedule/' + encodeURIComponent(classmate.userName) + "\">" + classmate.realName + '</a></td><td>' + classmate.grade + "</td></tr>");
             }
         });
+    });
+
+    $(".period-box-mobile").click(function () {
+        $(".period-box[data-period=" + $(this).attr("data-period") + "]").click();
     });
 
     $(".period-box").first().click();

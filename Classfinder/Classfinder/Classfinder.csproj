@@ -229,6 +229,7 @@
     <Content Include="Content\Images\hero.background.jpg" />
     <Content Include="Content\Images\hero.background.png" />
     <Content Include="Content\Images\laptop.png" />
+    <Content Include="Content\Images\logo.favicon.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\logo.shadow.png" />
     <Content Include="Content\Images\logo.shadow.small.png" />
@@ -244,6 +245,18 @@
     </Content>
     <Content Include="Content\Styles\Site\Default\index.min.css">
       <DependentUpon>index.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\Home\schedule.css">
+      <DependentUpon>schedule.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\Home\schedule.min.css">
+      <DependentUpon>schedule.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\Home\shared.css">
+      <DependentUpon>shared.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\Home\shared.min.css">
+      <DependentUpon>shared.css</DependentUpon>
     </Content>
     <Content Include="Content\Styles\Site\shared.css">
       <DependentUpon>shared.less</DependentUpon>
@@ -329,6 +342,14 @@
     </Content>
     <Content Include="Content\Scripts\Wedge\wedge.min.js.map">
       <DependentUpon>wedge.min.js</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\Home\schedule.less" />
+    <Content Include="Content\Styles\Site\Home\shared.less" />
+    <Content Include="Content\Styles\Site\Home\shared.css.map">
+      <DependentUpon>shared.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\Home\schedule.css.map">
+      <DependentUpon>schedule.css</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <Content Include="Views\Welcome\SignUp.cshtml" />
