@@ -81,4 +81,8 @@
     $("#desktop-login-btn").click(function () {
         initWedge('login-popup', 'div');
     });
+
+    if (window.location.hash.indexOf("login") != -1 || @(ViewBag.ShowLogin.ToString().ToLower())) {
+        $("#desktop-login-btn").click();
+    }
 </script>

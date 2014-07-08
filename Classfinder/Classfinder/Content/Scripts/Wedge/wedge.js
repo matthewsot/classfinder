@@ -65,9 +65,7 @@ function initWedge(link, type, title, animator, exitOnEscape, doAutoPosition, op
     var overlay = '#' + overlayId;
     var content = '#' + contentId;
 
-    $('body').append('<div id="' + overlayId + '" style="overflow:hidden;top:0px;left:0px;position:fixed;z-index:2147483630;opacity:' + opacity.toString() + ';background-color:#000000;display:none;" />');
-    $(overlay).css('height', window.innerHeight);
-    $(overlay).css('width', window.innerWidth);
+    $('body').append('<div id="' + overlayId + '" style="overflow:hidden;top:0px;left:0px;position:fixed;z-index:2147483630;opacity:' + opacity.toString() + ';background-color:#000000;display:none;width:100%;height:100%;" />');
 
     if (allowExit) {
         var doExit = function () {

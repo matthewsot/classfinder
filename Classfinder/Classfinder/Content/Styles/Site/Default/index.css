@@ -312,7 +312,7 @@ input[type=email] {
     margin-left: 27.5px;
   }
 }
-@media screen and (max-width: 850px) {
+@media all and (max-width: 850px) {
   body,
   html {
     overflow-x: hidden;
@@ -369,6 +369,29 @@ input[type=email] {
   }
   #last-row #footer {
     margin-top: 50px;
+  }
+}
+@media all and (max-width: 600px) {
+  #wedge-content {
+    left: 0 !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  #login-popup {
+    width: 100%;
+  }
+  #login-username,
+  #login-password {
+    width: 70%;
+    left: 15%;
+  }
+  #login-password {
+    margin-bottom: 15px;
+  }
+  #login-btn {
+    height: 50px;
+    width: 55%;
+    margin-left: 22.5%;
   }
 }
 @media all and (max-width: 400px) {
