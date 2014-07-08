@@ -233,6 +233,10 @@
     <Content Include="Content\Images\logo.shadow.png" />
     <Content Include="Content\Images\logo.shadow.small.png" />
     <Content Include="Content\Images\simplified.png" />
+    <Content Include="Content\Scripts\Wedge\wedge.js" />
+    <Content Include="Content\Scripts\Wedge\wedge.min.js">
+      <DependentUpon>wedge.js</DependentUpon>
+    </Content>
     <Content Include="Content\Styles\bootstrap.css" />
     <Content Include="Content\Styles\bootstrap.min.css" />
     <Content Include="Content\Styles\Site\Default\index.css">
@@ -322,6 +326,9 @@
     <Content Include="Content\Styles\Site\Welcome\schedule.less" />
     <Content Include="Content\Styles\Site\Welcome\schedule.css.map">
       <DependentUpon>schedule.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Scripts\Wedge\wedge.min.js.map">
+      <DependentUpon>wedge.min.js</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <Content Include="Views\Welcome\SignUp.cshtml" />

@@ -28,6 +28,7 @@ html {
 .green-on-white {
   color: #1ccfaf;
   border-color: #1ccfaf;
+  background-color: #fff;
 }
 .green-on-white:hover {
   background-color: #1ccfaf;
@@ -40,6 +41,19 @@ html {
 }
 .white-on-green:hover {
   background-color: rgba(0, 0, 0, 0.6);
+}
+input {
+  font-family: Lato;
+  font-weight: 300;
+  font-size: 30px;
+}
+input[type=text],
+input[type=password],
+input[type=email] {
+  height: 50px;
+  border: 1px solid #1ccfaf;
+  text-align: center;
+  color: #1ccfaf;
 }
 .half-vert {
   position: relative;

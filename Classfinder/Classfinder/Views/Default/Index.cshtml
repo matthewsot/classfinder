@@ -4,6 +4,8 @@
 
 @section head {
     <link href="~/Content/Styles/Site/Default/index.css" rel="stylesheet" type="text/css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/Scripts/Wedge/wedge.min.js"></script>
 }
 <div class="row dark-row" id="main-row">
     <img src="~/Content/Images/logo.png" />
@@ -58,3 +60,25 @@
         <a href="~/Welcome/Signup" class="btn green-on-white" style="width: 200px; margin-top: 30px; margin-left: 50%; -moz-transform: translateX(-50%); -ms-transform: translateX(-50%); -o-transform: translateX(-50%); -webkit-transform: translateX(-50%); transform: translateX(-50%);">sign up for cf</a>
     </div>
 </div>
+
+<div id="login-popup" style="display:none;">
+    <h1>log in</h1>
+    <form action="/Account/Login" method="POST" id="login-form">
+        @Html.AntiForgeryToken()
+        <input name="UserName" type="text" id="login-username" placeholder="username" />
+        <br />
+        <input name="Password" type="password" id="login-password" placeholder="password" />
+        <br />
+        <label for="login-remember">Remember me</label> <input name="RememberMe" type="checkbox" id="login-remember" checked />
+        <br />
+        <input type="submit" id="login-btn" value="let's go -->" class="btn green-on-white" />
+    </form>
+    <br/>
+    <span>don't have an account? sign up <a href="~/Welcome/SignUp">here</a></span>
+</div>
+
+<script type="text/javascript">
+    $("#desktop-login-btn").click(function () {
+        initWedge('login-popup', 'div');
+    });
+</script>

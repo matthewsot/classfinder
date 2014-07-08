@@ -28,6 +28,7 @@ html {
 .green-on-white {
   color: #1ccfaf;
   border-color: #1ccfaf;
+  background-color: #fff;
 }
 .green-on-white:hover {
   background-color: #1ccfaf;
@@ -40,6 +41,19 @@ html {
 }
 .white-on-green:hover {
   background-color: rgba(0, 0, 0, 0.6);
+}
+input {
+  font-family: Lato;
+  font-weight: 300;
+  font-size: 30px;
+}
+input[type=text],
+input[type=password],
+input[type=email] {
+  height: 50px;
+  border: 1px solid #1ccfaf;
+  text-align: center;
+  color: #1ccfaf;
 }
 .half-vert {
   position: relative;
@@ -171,9 +185,48 @@ html {
   font-weight: 400;
   margin-top: 600px;
   font-size: 30px;
+  color: #8b8b8b;
 }
 #footer .hashtag {
   margin-top: 20px;
+  color: #1ccfaf;
+}
+#login-popup {
+  width: 500px;
+  height: 400px;
+  background-color: #fff;
+  color: #8b8b8b;
+  border-radius: 5px;
+}
+#login-popup h1 {
+  font-weight: 300;
+  width: 80%;
+  margin-left: 10%;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  font-size: 35px;
+  border-bottom: 2px solid #1ccfaf;
+}
+#login-username,
+#login-password {
+  height: 40px;
+  margin: 10px;
+}
+#login-password {
+  margin-bottom: 15px;
+}
+#login-btn {
+  height: 50px;
+  width: 200px;
+  margin: 0;
+  padding: 0;
+  margin-top: 15px;
+  margin-left: 150px;
+  font-weight: 300;
+  border: 1px solid #1ccfaf;
+}
+#login-popup a {
+  text-decoration: none;
   color: #1ccfaf;
 }
 @media all and (max-width: 1200px) {
@@ -316,6 +369,12 @@ html {
   }
   #last-row #footer {
     margin-top: 50px;
+  }
+}
+@media all and (max-width: 400px) {
+  #main-row img {
+    width: 90%;
+    margin-left: 5%;
   }
 }
 /*# sourceMappingURL=index.css.map */
