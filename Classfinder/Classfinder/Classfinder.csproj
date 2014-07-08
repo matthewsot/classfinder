@@ -226,6 +226,7 @@
     <Content Include="Content\Images\aesthetic.png" />
     <Content Include="Content\Images\efficient.png" />
     <Content Include="Content\Images\favicon.ico" />
+    <Content Include="Content\Images\hero.background.jpg" />
     <Content Include="Content\Images\hero.background.png" />
     <Content Include="Content\Images\laptop.png" />
     <Content Include="Content\Images\logo.png" />

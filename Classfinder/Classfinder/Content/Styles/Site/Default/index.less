@@ -32,7 +32,7 @@
     }
         #hero-action-bar h1,
         #hero-action-bar a {
-            border: 2px solid #1ccfaf;
+            border: 2px solid @green;
             position: absolute;
 
             height: @action-bar-height;
@@ -52,7 +52,7 @@
         #action-label {
             overflow:hidden;
 
-            background-color: #1ccfaf;
+            background-color: @green;
             left: 0;
             width: 80%;
             margin:-4px 0 0 0;
@@ -81,23 +81,27 @@
     padding:50px 0 50px 0;
     font-weight:400;
 }
+    @info-box-width: 350px;
+    @info-box-padding: 50px;
     #last-row .info-box {
-        width:300px;
+        width:@info-box-width;
         position:absolute;
         left:50%;
     }
+        @info-circle-size: 250px;
+        @info-img-size: 100px;
         #last-row .info-box img {
-            height:125px;
-            margin-top:37.5px;
+            height: @info-img-size;
+            margin-top: (@info-circle-size - @info-img-size) / 2;
         }
         #last-row .info-box:nth-child(1) {
-            margin-left:-500px;
+            margin-left:-((@info-box-width * 1.5) + @info-box-padding);
         }
         #last-row .info-box:nth-child(2) {
-            margin-left:-150px;
+            margin-left:-(@info-box-width / 2);
         }
         #last-row .info-box:nth-child(3) {
-             margin-left:200px;
+             margin-left:(@info-box-width / 2) + @info-box-padding;
         }
         #last-row .info-box h2 {
             color:@dark;
@@ -108,9 +112,9 @@
             font-size:25px;
         }
         #last-row .info-box div {
-            background-color:@green;
-            .circle(200px);
-            margin-left:200px / 4;
+            border:2px solid @green;
+            .circle(@info-circle-size);
+            margin-left: (@info-box-width - @info-circle-size) / 2;
         }
 
 #footer {
@@ -128,13 +132,51 @@
     #hero-action-bar a {
         font-size:23px;
     }
+    
+    @info-box-width: 275px;
+    @info-box-padding: 50px;
+    #last-row .info-box {
+        width:@info-box-width;
+        position:absolute;
+        left:50%;
+    }
+        @info-circle-size: 200px;
+        @info-img-size: 75px;
+        #last-row .info-box img {
+            height: @info-img-size;
+            margin-top: (@info-circle-size - @info-img-size) / 2;
+        }
+        #last-row .info-box:nth-child(1) {
+            margin-left:-((@info-box-width * 1.5) + @info-box-padding);
+        }
+        #last-row .info-box:nth-child(2) {
+            margin-left:-(@info-box-width / 2);
+        }
+        #last-row .info-box:nth-child(3) {
+             margin-left:(@info-box-width / 2) + @info-box-padding;
+        }
+        #last-row .info-box h2 {
+            color:@dark;
+            font-size:25px;
+        }
+        #last-row .info-box p {
+            color:@light;
+            font-size:20px;
+        }
+        #last-row .info-box div {
+            border:2px solid @green;
+            .circle(@info-circle-size);
+            margin-left: (@info-box-width - @info-circle-size) / 2;
+        }
 }
+
 @media all and (max-width:1100px) {
     #hero-action-bar h1,
     #hero-action-bar a {
         font-size:20px;
     }
 }
+
 @media all and (max-width:970px) {
     #hero-action-bar h1 {
         width:85%;
@@ -143,32 +185,39 @@
     #hero-action-bar a {
         width:15%;
     }
-}
-@media all and (max-width:1020px) {
+
+    @info-box-width: 255px;
+    @info-box-padding: 30px;
     #last-row .info-box {
-        width:250px;
+        width:@info-box-width;
         position:absolute;
         left:50%;
     }
-        #last-row .info-box img {
-            height:100px;
-            margin-top:37.5px;
-        }
         #last-row .info-box:nth-child(1) {
-            margin-left:-400px;
+            margin-left:-((@info-box-width * 1.5) + @info-box-padding);
         }
         #last-row .info-box:nth-child(2) {
-            margin-left:-125px;
+            margin-left:-(@info-box-width / 2);
         }
         #last-row .info-box:nth-child(3) {
-             margin-left:150px;
+             margin-left:(@info-box-width / 2) + @info-box-padding;
         }
+        #last-row .info-box h2 {
+            color:@dark;
+            font-size:25px;
+        }
+        #last-row .info-box p {
+            color:@light;
+            font-size:20px;
+        }
+        @info-circle-size: 200px;
         #last-row .info-box div {
-            background-color:@green;
-            .circle(175px);
-            margin-left:100px / 4;
+            border:2px solid @green;
+            .circle(@info-circle-size);
+            margin-left: (@info-box-width - @info-circle-size) / 2;
         }
 }
+
 @media screen and (max-width:850px) {
     body,html {
         overflow-x:hidden; //TODO: figure out what's actually causing the overflow, instead of just hiding it
