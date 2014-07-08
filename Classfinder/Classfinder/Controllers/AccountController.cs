@@ -423,7 +423,7 @@ namespace Classfinder.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
+        //[HttpPost]
         //[ValidateAntiForgeryToken] TODO: think about the implications of turning this off
         public ActionResult LogOff()
         {
