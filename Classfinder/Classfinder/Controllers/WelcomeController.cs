@@ -19,6 +19,10 @@ namespace Classfinder.Controllers
         [AllowAnonymous]
         public ActionResult SignUp()
         {
+            if (User != null && User.Identity.IsAuthenticated)
+            {
+                
+            }
             return View();
         }
 

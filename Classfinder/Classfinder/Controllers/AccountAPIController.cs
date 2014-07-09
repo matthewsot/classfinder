@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using Classfinder.Models;
 using Microsoft.AspNet.Identity;
@@ -16,6 +18,11 @@ namespace Classfinder.Controllers
         public int GradYear { get; set; }
         public string FullName { get; set; }
         public string Username { get; set; }
+        public string Email { get; set; }
+    }
+
+    public class ResetPassModel
+    {
         public string Email { get; set; }
     }
 
@@ -50,6 +57,38 @@ namespace Classfinder.Controllers
 
                 var result = await userManager.CreateAsync(user, model.Password);
                 return Ok(result.Succeeded ? "GOOD" : string.Join(",", errors));
+            }
+        }
+
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> ResetPassword(ResetPassModel model)
+        {
+            using (var userManager = new UserManager<UserAccount>(
+                new Microsoft.AspNet.Identity.EntityFramework.UserStore<UserAccount>(db)))
+            {
+                var user = db.Users.FirstOrDefault(u => u.Email == model.Email);
+
+                if (user == null) return Ok("NO USER");
+                if (user.Email == null) return Ok("NO EMAIL");
+
+                //Thanks! http://csharp.net-informations.com/communications/csharp-smtp-mail.htm
+                var Settings = Config.GetValues(new[] {"SMTP Server", "SMTP Port", "SMTP User", "SMTP Pass"});
+                var mail = new MailMessage();
+                var SmtpServer = new SmtpClient(Settings["SMTP Server"]);
+
+                mail.From = new MailAddress("resetpass@classfinder.me", "Classfinder");
+                mail.To.Add(new MailAddress(user.Email, user.RealName));
+                mail.Subject = "Reset Your Password";
+                mail.Body = "Please visit http://classfinder.me/ResetPass/" +
+                            HttpUtility.UrlEncode(await userManager.GeneratePasswordResetTokenAsync(user.Id)) +
+                            " to reset your Classfinder password.";
+
+                SmtpServer.Port = Int32.Parse(Settings["SMTP Port"]);
+                SmtpServer.Credentials = new System.Net.NetworkCredential(Settings["SMTP User"],
+                    Settings["SMTP Pass"]);
+
+                SmtpServer.Send(mail);
+                return Ok("GOOD");
             }
         }
 
