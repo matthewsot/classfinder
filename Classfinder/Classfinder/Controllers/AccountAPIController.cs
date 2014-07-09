@@ -7,8 +7,10 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Routing;
 using Classfinder.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace Classfinder.Controllers
 {
@@ -61,33 +63,43 @@ namespace Classfinder.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<IHttpActionResult> ResetPassword(ResetPassModel model)
+        [HttpGet]
+        [Route("API/Account/ResetPassword/{username}")]
+        public async Task<IHttpActionResult> ResetPassword(string username)
         {
             using (var userManager = new UserManager<UserAccount>(
                 new Microsoft.AspNet.Identity.EntityFramework.UserStore<UserAccount>(db)))
             {
-                var user = db.Users.FirstOrDefault(u => u.Email == model.Email);
+                //Thanks! http://stackoverflow.com/questions/19539579/how-to-implement-a-tokenprovider-in-asp-net-identity-1-1-nightly-build
+                if (Startup.DataProtectionProvider != null)
+                {
+                    userManager.UserTokenProvider = new DataProtectorTokenProvider<UserAccount>(Startup.DataProtectionProvider.Create("PasswordReset"));
+                }
+
+                var user = db.Users.FirstOrDefault(u => u.UserName == username);
 
                 if (user == null) return Ok("NO USER");
                 if (user.Email == null) return Ok("NO EMAIL");
 
                 //Thanks! http://csharp.net-informations.com/communications/csharp-smtp-mail.htm
-                var Settings = Config.GetValues(new[] {"SMTP Server", "SMTP Port", "SMTP User", "SMTP Pass"});
                 var mail = new MailMessage();
-                var SmtpServer = new SmtpClient(Settings["SMTP Server"]);
+                var smtpServer = new SmtpClient();
 
                 mail.From = new MailAddress("resetpass@classfinder.me", "Classfinder");
                 mail.To.Add(new MailAddress(user.Email, user.RealName));
                 mail.Subject = "Reset Your Password";
-                mail.Body = "Please visit http://classfinder.me/ResetPass/" +
+                mail.Body = "Please visit http://classfinder.me/ResetPass?token=" +
                             HttpUtility.UrlEncode(await userManager.GeneratePasswordResetTokenAsync(user.Id)) +
                             " to reset your Classfinder password.";
 
-                SmtpServer.Port = Int32.Parse(Settings["SMTP Port"]);
-                SmtpServer.Credentials = new System.Net.NetworkCredential(Settings["SMTP User"],
-                    Settings["SMTP Pass"]);
-
-                SmtpServer.Send(mail);
+                try
+                {
+                    smtpServer.Send(mail);
+                }
+                catch (Exception e)
+                {
+                    return Ok(e.Message);
+                }
                 return Ok("GOOD");
             }
         }

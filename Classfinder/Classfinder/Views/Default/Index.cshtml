@@ -75,6 +75,8 @@
     </form>
     <br/>
     <span>don't have an account? sign up <a href="~/Welcome/SignUp">here</a></span>
+    <br/>
+    <span>forgot your password? click <a href="#resetpass" id="reset-pass-link">here</a></span>
 </div>
 
 <script type="text/javascript">
@@ -84,6 +86,10 @@
 
     $("#mobile-login-btn").click(function() {
         initWedge('login-popup', 'div');
+    });
+
+    $("#reset-pass-link").click(function() {
+
     });
 
     if (window.location.hash.indexOf("login") != -1 || @(ViewBag.ShowLogin.ToString().ToLower())) {

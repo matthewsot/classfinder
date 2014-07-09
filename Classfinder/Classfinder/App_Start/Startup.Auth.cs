@@ -13,6 +13,8 @@ namespace Classfinder
 {
     public partial class Startup
     {
+        internal static IDataProtectionProvider DataProtectionProvider { get; private set; }
+
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
@@ -55,6 +57,7 @@ namespace Classfinder
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+            DataProtectionProvider = app.GetDataProtectionProvider();
         }
     }
 }
