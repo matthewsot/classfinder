@@ -61,7 +61,10 @@ namespace Classfinder.Controllers
             //}
 
             // If we got this far, something failed, redisplay form
-            return RedirectToAction("Login", controllerName: "Default");
+
+            ViewBag.ReturnUrl = HttpUtility.UrlEncode(returnUrl ?? "");
+            ViewBag.ShowLogin = true;
+            return View("Index");
             //return View(model);
         }
 
