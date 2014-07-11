@@ -59,7 +59,9 @@ input {
     font-weight:300;
     font-size:30px;
 }
-
+input:focus, textarea:focus { //Thanks! https://stackoverflow.com/questions/3779577/how-to-get-rid-of-text-box-selection-highlight-on-chrome-safari
+    outline: none;
+}
 input[type=text],
 input[type=password],
 input[type=email] {

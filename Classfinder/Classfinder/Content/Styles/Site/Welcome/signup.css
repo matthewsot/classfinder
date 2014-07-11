@@ -47,6 +47,10 @@ input {
   font-weight: 300;
   font-size: 30px;
 }
+input:focus,
+textarea:focus {
+  outline: none;
+}
 input[type=text],
 input[type=password],
 input[type=email] {
