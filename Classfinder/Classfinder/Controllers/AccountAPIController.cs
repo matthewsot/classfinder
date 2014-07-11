@@ -85,21 +85,14 @@ namespace Classfinder.Controllers
                 var mail = new MailMessage();
                 var smtpServer = new SmtpClient();
 
-                mail.From = new MailAddress("resetpass@classfinder.me", "Classfinder");
+                mail.From = new MailAddress("noreply@classfinder.me", "Classfinder");
                 mail.To.Add(new MailAddress(user.Email, user.RealName));
                 mail.Subject = "Reset Your Password";
                 mail.Body = "Please visit http://classfinder.me/ResetPass?token=" +
                             HttpUtility.UrlEncode(await userManager.GeneratePasswordResetTokenAsync(user.Id)) +
                             " to reset your Classfinder password.";
 
-                try
-                {
-                    smtpServer.Send(mail);
-                }
-                catch (Exception e)
-                {
-                    return Ok(e.Message);
-                }
+                smtpServer.Send(mail);
                 return Ok("GOOD");
             }
         }
