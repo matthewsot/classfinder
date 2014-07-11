@@ -119,6 +119,7 @@ input[type=email] {
 #options {
   position: absolute;
   top: 25px;
+  color: #1ccfaf;
   right: 5%;
 }
 #options a {
@@ -177,10 +178,10 @@ input[type=email] {
 }
 #right-box {
   margin-left: 25%;
+  color: #1ccfaf;
   width: 75%;
 }
 #period-name {
-  color: #1ccfaf;
   font-weight: 400;
   margin-bottom: 5px;
   margin-left: 5%;
@@ -189,6 +190,7 @@ input[type=email] {
   color: #acacac;
   font-size: 25px;
   margin-top: 0;
+  margin-left: 5%;
 }
 #table-container {
   background-color: #ededed;
