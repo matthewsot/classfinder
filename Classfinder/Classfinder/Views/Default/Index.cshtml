@@ -63,6 +63,8 @@
 
 <div id="login-popup" style="display:none;">
     <h1>log in</h1>
+    <!-- TODO: validate over API -->
+    <span>@(ViewBag.LoginError ?? "")</span>
     <form action="/Account/Login?ReturnUrl=@(ViewBag.ReturnUrl ?? "")" method="POST" id="login-form">
         @Html.AntiForgeryToken()
         <input name="UserName" type="text" id="login-username" placeholder="username" />

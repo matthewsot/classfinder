@@ -56,12 +56,13 @@ namespace Classfinder.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    ViewBag.LoginError = "Invalid username or password.";
                 }
             //}
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return RedirectToAction("Login", controllerName: "Default");
+            //return View(model);
         }
 
         //
