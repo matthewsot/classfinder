@@ -55,7 +55,7 @@ function initWedge(link, type, title, animator, exitOnEscape, doAutoPosition, op
     if (typeof animator === "undefined") { animator = new FadeAnimation; }
     if (typeof exitOnEscape === "undefined") { exitOnEscape = true; }
     if (typeof doAutoPosition === "undefined") { doAutoPosition = true; }
-    if (typeof opacity === "undefined") { opacity = 0.9; }
+    if (typeof opacity === "undefined") { opacity = 0.8; }
     if (typeof allowExit === "undefined") { allowExit = true; }
     if (typeof overlayId === "undefined") { overlayId = 'wedge-overlay'; }
     if (typeof contentId === "undefined") { contentId = 'wedge-content'; }
