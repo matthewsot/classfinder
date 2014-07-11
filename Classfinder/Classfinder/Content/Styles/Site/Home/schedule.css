@@ -79,49 +79,51 @@ input[type=email] {
 #left-bar {
   background-color: #20937e;
   width: 300px;
+  position: fixed;
   height: 100%;
-  min-height: 900px;
-  position: absolute;
+  min-height: 620px;
+  overflow-y: auto;
+  overflow-x: hidden;
   left: 0;
   top: 0;
   margin: 0;
-  padding-bottom: 100px;
 }
 #img-row {
   width: 300px;
-  height: 100px;
+  height: 75px;
   background-color: #1ccfaf;
+  text-align: center;
 }
 #desktop-logo {
-  width: 250px;
-  margin-top: 25px;
+  height: 35px;
+  margin-top: 20px;
 }
 #mobile-logo {
   display: none;
 }
 #periods-header {
   border-bottom: 1px solid #fff;
-  height: 50px;
-  line-height: 50px;
+  height: 40px;
+  line-height: 40px;
   padding-left: 35px;
   font-size: 25px;
 }
 #mobile-period-list {
   display: none;
 }
-#bottom-options {
+#options {
   position: absolute;
-  bottom: 25px;
-  left: 20px;
+  top: 25px;
+  right: 50px;
 }
-#bottom-options a {
+#options a {
   text-decoration: none;
-  color: #fff;
+  color: #1ccfaf;
   font-size: 20px;
 }
 .period-box {
-  height: 100px;
-  line-height: 100px;
+  height: 75px;
+  line-height: 75px;
   padding-left: 35px;
   font-size: 25px;
   cursor: pointer;

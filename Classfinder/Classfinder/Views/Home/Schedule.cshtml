@@ -10,12 +10,20 @@
     @Styles.Render("~/Content/Styles/Site/Home/schedule.css")
 }
 
+<div id="options">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a href="/Account/LogOff">log out</a> @:|
+        }
+    <a href="/Manage/Schedule">modify schedule</a>
+</div>
+
 <div id="left-bar">
     <div id="img-row">
-        <img src="~/Content/Images/logo.png" id="desktop-logo" class="half-horiz"/>
+        <img src="~/Content/Images/logo.png" id="desktop-logo" />
         <img src="~/Content/Images/logo.favicon.png" id="mobile-logo" />
     </div>
-    
+
     <div id="periods-header">
         PERIODS
     </div>
@@ -23,12 +31,12 @@
     @foreach (Class @class in ViewBag.FirstSemester)
     {
         var parts = @class.Name.Split(',');
-        
+
         <div class="period-box" data-period="@(@class.Period)">
             @(@class.Period) | @(parts.Last().Trim()) | @(parts.Count() == 1 ? "N/A" : parts.First().Trim())
         </div>
     }
-    
+
     <div id="mobile-period-list">
         @for (var i = 1; i <= 7; i++)
         {
@@ -37,10 +45,6 @@
             </div>
         }
     </div>
-    
-    <div id="bottom-options" style="">
-        <a href="/Account/LogOff">log out</a> | <a href="/Manage/Schedule">modify schedule</a>
-    </div>
 </div>
 
 <div id="right-box">
@@ -48,7 +52,7 @@
         <h1 id="period-name" style="color:#1ccfaf;font-weight:400;margin-bottom:5px;"></h1>
         <h2 id="student-count" style="color:#acacac;font-size:25px;margin-top:0;"></h2>
     </div>
-    
+
     <div id="table-container">
         <table style="width:100%;padding:30px;padding-top:15px;padding-bottom:10px;border-collapse:collapse;">
             <thead>
@@ -57,9 +61,7 @@
                     <td>Grade</td>
                 </tr>
             </thead>
-            <tbody id="classmates">
-                
-            </tbody>
+            <tbody id="classmates"></tbody>
         </table>
     </div>
 </div>
@@ -68,14 +70,14 @@
     //You shouldn't do layout in javascript blah blah blah...
     //either send a PR or stop complaining - https://github.com/matthewsot/classfinder
 
-    $(document).ready(function() {
-        $(window).resize(function() {
+    $(document).ready(function () {
+        $(window).resize(function () {
             if (window.innerWidth > 850) {
-                $("#left-bar").height($(document).height() - 100);
+                //$("#left-bar").height($(document).height() - 100);
                 $("#right-box").width($(document).width() - 400);
             }
             else if (window.innerWidth > 650) {
-                $("#left-bar").height($(document).height() - 100);
+                //$("#left-bar").height($(document).height() - 100);
                 $("#right-box").width(window.innerWidth - 300);
             } else {
                 $("#mobile-period-list").width(window.innerWidth - 90);
