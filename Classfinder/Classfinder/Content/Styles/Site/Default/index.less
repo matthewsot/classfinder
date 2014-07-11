@@ -1,5 +1,16 @@
 ﻿@import "../shared.less";
 
+.transparent-btn { //todo move this to shared.less?
+    background-color:rgba(0, 0, 0, 0.30);
+    text-decoration:none;
+    border-radius:0;
+    border:2px solid @green;
+}
+    .transparent-btn:hover {
+        background-color:rgba(0, 0, 0, 0.60);
+        color:#fff;
+    }
+
 .row {
     width:100%;
     text-align:center;
@@ -29,27 +40,20 @@
         width:80%;
         left:10%;
         height:@action-bar-height;
+        color:#fff;
     }
         #hero-action-bar h1,
         #hero-action-bar a {
-            border: 2px solid @green;
             position: absolute;
 
             height: @action-bar-height;
             line-height:@action-bar-height;
 
             padding: 0;
-            color:#fff;
             font-size:25px;
         }
-        #hero-action-bar a {
-            background-color:rgba(0, 0, 0, 0.30);
-            text-decoration:none;
-        }
-            #hero-action-bar a:hover {
-                background-color:rgba(0, 0, 0, 0.60);
-            }
         #action-label {
+            border: 2px solid @green;
             overflow:hidden;
 
             background-color: @green;
@@ -59,8 +63,6 @@
             z-index:5;
         }
         #signup-btn {
-            display:block;
-
             right: 0;
             bottom: 0;
             width: 20%;

@@ -76,6 +76,16 @@ input[type=email] {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
+.transparent-btn {
+  background-color: rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  border-radius: 0;
+  border: 2px solid #1ccfaf;
+}
+.transparent-btn:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
 .row {
   width: 100%;
   text-align: center;
@@ -101,25 +111,18 @@ input[type=email] {
   width: 80%;
   left: 10%;
   height: 75px;
+  color: #fff;
 }
 #hero-action-bar h1,
 #hero-action-bar a {
-  border: 2px solid #1ccfaf;
   position: absolute;
   height: 75px;
   line-height: 75px;
   padding: 0;
-  color: #fff;
   font-size: 25px;
 }
-#hero-action-bar a {
-  background-color: rgba(0, 0, 0, 0.3);
-  text-decoration: none;
-}
-#hero-action-bar a:hover {
-  background-color: rgba(0, 0, 0, 0.6);
-}
 #action-label {
+  border: 2px solid #1ccfaf;
   overflow: hidden;
   background-color: #1ccfaf;
   left: 0;
@@ -128,7 +131,6 @@ input[type=email] {
   z-index: 5;
 }
 #signup-btn {
-  display: block;
   right: 0;
   bottom: 0;
   width: 20%;
