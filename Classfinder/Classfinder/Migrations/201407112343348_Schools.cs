@@ -7,8 +7,8 @@ namespace Classfinder.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Classes", "School", c => c.String());
-            AddColumn("dbo.AspNetUsers", "School", c => c.String());
+            AddColumn("dbo.Classes", "School", c => c.String(defaultValue: "Lynbrook"));
+            AddColumn("dbo.AspNetUsers", "School", c => c.String(defaultValue: "Lynbrook"));
         }
         
         public override void Down()

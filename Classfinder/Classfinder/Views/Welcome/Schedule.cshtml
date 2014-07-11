@@ -109,6 +109,8 @@ else {
 
         <button id="add-class-btn">ADD CLASS</button>
         <script type="text/javascript">
+            var school = "@ViewBag.School";
+
             function getClassName() {
                 var teacher = $("#teacher-input").val().trim();
                 var subject = $("#subject-input").val().trim();
@@ -120,7 +122,7 @@ else {
             }
 
             $("#teacher-input, #subject-input").keyup(function () {
-                $.getJSON("/API/Classes/" + period + "/" + encodeURIComponent(getClassName()), function (data) {
+                $.getJSON("/API/Classes/" + school + "/" + period + "/" + encodeURIComponent(getClassName()), function (data) {
                     fillTableWithClasses(data);
                 });
             });

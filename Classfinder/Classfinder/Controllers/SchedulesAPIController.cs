@@ -26,11 +26,11 @@ namespace Classfinder.Controllers
         }
 
         [HttpGet]
-        [Route("API/Classes/{period}/{searchTerm}")]
+        [Route("API/Classes/{school}/{period}/{searchTerm}")]
         [AllowAnonymous]
-        public IHttpActionResult SearchClasses(int period, string searchTerm)
+        public IHttpActionResult SearchClasses(string school, int period, string searchTerm)
         {
-            var classes = db.Classes.Where(@class => @class.Name.Contains(searchTerm) && @class.Period == period);
+            var classes = db.Classes.Where(@class => @class.Name.Contains(searchTerm) && @class.Period == period && (@class.School == school || @class.School == null));
 
             return Ok(classes.Select(@class => new
             {
@@ -133,14 +133,14 @@ namespace Classfinder.Controllers
                 schedule.Remove(currClassInPeriod);
             }
 
-            var classToAdd = db.Classes.FirstOrDefault(@class => @class.Name == model.name && @class.Period == period);
+            var classToAdd = db.Classes.FirstOrDefault(@class => @class.Name == model.name && @class.Period == period && (@class.School == user.School || @class.School == null));
             if (classToAdd != null)
             {
                 schedule.Add(classToAdd);
             }
             else
             {
-                var newClass = new Class {Name = model.name, Period = period};
+                var newClass = new Class {Name = model.name, Period = period, School = user.School};
                 db.Classes.Add(newClass);
                 schedule.Add(newClass);
             }
