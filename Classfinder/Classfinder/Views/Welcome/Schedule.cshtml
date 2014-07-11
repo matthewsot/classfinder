@@ -85,7 +85,8 @@ else {
             }
 
             $("#period-label").text(period + suffix);
-            $("#class-input").val("");
+            var teacher = $("#teacher-input").val(""); //todo: make sure this works
+            var subject = $("#subject-input").val("");
 
             $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + period, function(data) {
                 $("#selected-class").text(data.name);
@@ -103,29 +104,48 @@ else {
     </div>
 
     <div id="class-search-box">
-        <input id="class-input" type="text" placeholder="  Teacher Name, Subject" />
+        <input id="teacher-input" type="text" placeholder="  Teacher Name" />
+        <input id="subject-input" type="text" placeholder="  Subject" />
+
         <button id="add-class-btn">ADD CLASS</button>
         <script type="text/javascript">
-            $("#class-input").keydown(function () {
-                $.getJSON("/API/Classes/" + period + "/" + encodeURIComponent($("#class-input").val().trim()), function (data) {
+            function getClassName() {
+                var teacher = $("#teacher-input").val().trim();
+                var subject = $("#subject-input").val().trim();
+
+                var className = teacher;
+                if (subject != "") className += ", " + subject;
+
+                return className;
+            }
+
+            $("#teacher-input, #subject-input").keyup(function () {
+                $.getJSON("/API/Classes/" + period + "/" + encodeURIComponent(getClassName()), function (data) {
                     fillTableWithClasses(data);
                 });
             });
 
-            $("#add-class-btn").click(function() {
-                if ($("#class-input").val().trim() == "") {
+            function addClass(className) {
+                if (className == "") {
                     alert("Please enter a class");
                 }
                 else {
                     $.post("/API/Schedule/" + userId + "/" + semester + "/" + period, {
-                        name: $("#class-input").val().trim()
+                        name: className
                     }, function(data) {
                         if(data == "GOOD") {
-                            $("#selected-class").text($("#class-input").val().trim());
+                            $("#selected-class").text(className);
                             $("#class-input").val("");
                         }
                     });
                 }
+
+                var teacher = $("#teacher-input").val(""); //todo: make sure this works
+                var subject = $("#subject-input").val("");
+            }
+
+            $("#add-class-btn").click(function() {
+                addClass(getClassName());
             });
         </script>
     </div>
@@ -145,8 +165,7 @@ else {
                 }
 
                 $("#classes-table").find("tr").click(function() {
-                    $("#class-input").val($(this).text());
-                    $("#add-class-btn").click();
+                    addClass($(this).text());
                 });
             }
         </script>
