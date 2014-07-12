@@ -185,8 +185,7 @@
         }
 
     #mobile-period-list {
-        display:flexbox;
-        display:flex;
+        display:block;
         position:absolute;
         top:0;
         width:90%;
@@ -211,7 +210,8 @@
             background-color:@green;
         }
         #mobile-period-list div {
-            flex:1;
+            width:14.28571428571428%;
+            float:left;
         }
 
     #right-box {
@@ -219,11 +219,16 @@
         margin-top:75px;
         margin-left:0;
     }
-    #period-name {
+    #period-name, #student-count {
         width:100%;
         text-align:center;
         margin:0;
+    }
+    #period-name {
         padding-top:25px;
+    }
+    #student-count {
+        padding-bottom:25px;
     }
     #table-container {
         border-radius:0;
