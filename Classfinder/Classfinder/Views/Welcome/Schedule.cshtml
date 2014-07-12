@@ -7,12 +7,19 @@
 
 @section head {
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/Scripts/suffix.js"></script>
     @Styles.Render("~/Content/Styles/Site/Welcome/schedule.css")
     <style type="text/css">
-    #progress {
-        width: @(ViewBag.StepNum * 25)%;
-    }
+        #progress {
+            width: @(ViewBag.StepNum * 25)%;
+        }
     </style>
+    <script type="text/javascript">
+        //needed for the schedule picker
+        var school = "@ViewBag.School";
+        var userId = "@(User.Identity.GetUserId())";
+        var semester = @(ViewBag.Semester);
+    </script>
 }
 
 <h2 id="step-label">step @ViewBag.StepNum</h2>

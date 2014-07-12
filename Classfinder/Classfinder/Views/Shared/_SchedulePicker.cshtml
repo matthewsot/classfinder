@@ -1,68 +1,36 @@
 ﻿@using Microsoft.AspNet.Identity
-<div id="schedule-container">
+<div id="schedule-picker-container">
     <div id="period-selector">
-        <div>
-            <div class="period-num selected">1</div>
-        </div>
-        <div>
-            <div class="period-num">2</div>
-        </div>
-        <div>
-            <div class="period-num">3</div>
-        </div>
-        <div>
-            <div class="period-num">4</div>
-        </div>
-        <div>
-            <div class="period-num">5</div>
-        </div>
-        <div>
-            <div class="period-num">6</div>
-        </div>
-        <div>
-            <div class="period-num">7</div>
-        </div>
+        <div><div class="period-num selected">1</div></div>
+        <div><div class="period-num">2</div></div>
+        <div><div class="period-num">3</div></div>
+        <div><div class="period-num">4</div></div>
+        <div><div class="period-num">5</div></div>
+        <div><div class="period-num">6</div></div>
+        <div><div class="period-num">7</div></div>
     </div>
-    <script type="text/javascript">
-        var userId = "@(User.Identity.GetUserId())";
-        var semester = @(ViewBag.Semester);
 
-        var period = 1;
+    <script type="text/javascript">
+        var schedPickerPeriod = 1;
 
         $(".period-num").click(function () {
             $("#selected-class").text("");
-            period = parseInt($(this).text());
+            schedPickerPeriod = parseInt($(this).text());
             $("#class-input").keydown();
 
             $(".period-num").removeClass("selected");
             $(this).addClass("selected");
 
-            var suffix = "";
-            switch (period) {
-            case 1:
-                suffix = "st";
-                break;
-            case 2:
-                suffix = "nd";
-                break;
-            case 3:
-                suffix = "rd";
-                break;
-            default:
-                suffix = "th";
-                break;
-            }
-
-            $("#period-label").text(period + suffix);
+            $("#period-label").text(suffix(schedPickerPeriod));
             var teacher = $("#teacher-input").val(""); //todo: make sure this works
             var subject = $("#subject-input").val("");
 
-            $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + period, function(data) {
+            $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + schedPickerPeriod, function(data) {
                 $("#selected-class").text(data.name);
             });
         });
 
-        $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + period, function(data) {
+        $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + schedPickerPeriod, function(data) {
             $("#selected-class").text(data.name);
         });
     </script>
@@ -78,8 +46,6 @@
 
         <button id="add-class-btn">ADD CLASS</button>
         <script type="text/javascript">
-            var school = "@ViewBag.School";
-
             function getClassName() {
                 var teacher = $("#teacher-input").val().trim();
                 var subject = $("#subject-input").val().trim();
@@ -91,7 +57,7 @@
             }
 
             $("#teacher-input, #subject-input").keyup(function () {
-                $.getJSON("/API/Classes/" + school + "/" + period + "/" + encodeURIComponent(getClassName()), function (data) {
+                $.getJSON("/API/Classes/" + school + "/" + schedPickerPeriod + "/" + encodeURIComponent(getClassName()), function (data) {
                     fillTableWithClasses(data);
                 });
             });
@@ -101,7 +67,7 @@
                     alert("Please enter a class");
                 }
                 else {
-                    $.post("/API/Schedule/" + userId + "/" + semester + "/" + period, {
+                    $.post("/API/Schedule/" + userId + "/" + semester + "/" + schedPickerPeriod, {
                         name: className
                     }, function(data) {
                         if(data == "GOOD") {
@@ -121,20 +87,20 @@
         </script>
     </div>
 
-    <div style="width:100%;border-top:1px solid #1ccfaf;">
-        <h1 style="font-weight:300;">Recorded <span id="period-label">1st</span> Period Classes:</h1>
-        <table id="classes-table"></table>
+    <div id="results-container">
+        <h1 id="results-label">Recorded <span id="period-label">1st</span> Period Classes:</h1>
+        <div id="results"></div>
 
         <script type="text/javascript">
             function fillTableWithClasses(classes) {
-                $("#classes-table").html("");
+                $("#results").html("");
 
                 for (var i = 0; i < classes.length; i++) {
                     var clss = classes[i];
-                    $("#classes-table").append("<tr><td>" + clss.name + "</td></tr>");
+                    $("#results").append("<div>" + clss.name + "</div>");
                 }
 
-                $("#classes-table").find("tr").click(function() {
+                $("#results").children("div").click(function () {
                     addClass($(this).text());
                 });
             }

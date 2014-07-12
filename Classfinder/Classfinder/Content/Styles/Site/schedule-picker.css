@@ -82,7 +82,7 @@ input[type=email] {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
-#schedule-container {
+#schedule-picker-container {
   border: 1px solid #1ccfaf;
   height: 600px;
 }
@@ -115,8 +115,35 @@ input[type=email] {
   float: left;
   width: 14.28571428571428%;
 }
-#teacher-input,
-#subject-input {
+#selected-class-box {
+  border-top: 1px solid #1ccfaf;
+  height: 100px;
+  position: relative;
+}
+#selected-class-box div {
+  position: absolute;
+  padding: 20px;
+}
+#selected-class-label {
+  font-size: 25px;
+  border-right: 1px solid #1ccfaf;
+  border-bottom: 1px solid #1ccfaf;
+}
+#selected-class {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 40px;
+  margin-right: 15px;
+}
+#class-search-box {
+  margin-top: 20px;
+  width: 100%;
+  border-top: 1px solid #1ccfaf;
+  height: 50px;
+  position: relative;
+}
+#class-search-box input {
   position: absolute;
   width: 35%;
   text-align: left;
@@ -144,50 +171,32 @@ input[type=email] {
   background-color: #fff;
   color: #1ccfaf;
 }
-#explanation {
-  font-size: 25px;
-  font-weight: 300;
-}
-#selected-class-box {
-  margin-top: 20px;
-  border-top: 1px solid #1ccfaf;
-  height: 100px;
-  position: relative;
-  font-weight: 300;
-}
-#selected-class-label {
-  position: absolute;
-  font-size: 25px;
-  border-right: 1px solid #1ccfaf;
-  border-bottom: 1px solid #1ccfaf;
-  padding: 20px;
-}
-#selected-class {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  font-size: 40px;
-  padding: 15px;
-  padding-right: 35px;
-}
-#class-search-box {
-  margin-top: 20px;
+#results-container {
   width: 100%;
   border-top: 1px solid #1ccfaf;
-  height: 50px;
-  position: relative;
 }
-#classes-table {
-  font-size: 30px;
+#results-label {
+  font-size: 25px;
   font-weight: 300;
-  text-align: left;
 }
-#classes-table td {
-  padding: 10px;
+#results {
+  font-size: 20px;
   text-align: left;
+  margin-left: 15px;
 }
-#classes-table td tr {
+#results div {
   cursor: pointer;
   text-align: left;
+  height: 50px;
+  line-height: 50px;
+  float: left;
+  width: 30%;
+  overflow-x: visible;
+}
+#results div:nth-child(3n - 1) {
+  text-align: center;
+}
+#results div:nth-child(3n) {
+  text-align: right;
 }
 /*# sourceMappingURL=schedule-picker.css.map */

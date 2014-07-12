@@ -7,6 +7,7 @@
 
 @section head {
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/Scripts/suffix.js"></script>
     @Styles.Render("~/Content/Styles/Site/Home/schedule.css")
 }
 
@@ -74,24 +75,7 @@
 
         var period = parseInt($(this).attr("data-period"));
         $(".period-box-mobile[data-period=" + period + "]").addClass("selected-mobile");
-
-        //todo function-ize this stuff
-        var suffix = "";
-        switch (period) {
-            case 1:
-                suffix = "st";
-                break;
-            case 2:
-                suffix = "nd";
-                break;
-            case 3:
-                suffix = "rd";
-                break;
-            default:
-                suffix = "th";
-                break;
-        }
-        var periodLabel = period + suffix + " Period";
+        var periodLabel = suffix(period) + " Period";
         var clss = $(this).text().split('|')[1];
         var teacher = $(this).text().split('|')[2];
         $("#period-name").text(period + " | " + clss + " | " + teacher);
