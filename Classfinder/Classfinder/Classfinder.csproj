@@ -262,6 +262,9 @@
     <Content Include="Content\Styles\Site\Home\shared.min.css">
       <DependentUpon>shared.css</DependentUpon>
     </Content>
+    <Content Include="Content\Styles\Site\schedule-picker.css">
+      <DependentUpon>schedule-picker.less</DependentUpon>
+    </Content>
     <Content Include="Content\Styles\Site\shared.css">
       <DependentUpon>shared.less</DependentUpon>
     </Content>
@@ -324,8 +327,6 @@
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
@@ -355,6 +356,10 @@
     <Content Include="Content\Styles\Site\Home\schedule.css.map">
       <DependentUpon>schedule.css</DependentUpon>
     </Content>
+    <Content Include="Content\Styles\Site\schedule-picker.less" />
+    <Content Include="Content\Styles\Site\schedule-picker.css.map">
+      <DependentUpon>schedule-picker.css</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <Content Include="Views\Welcome\SignUp.cshtml" />
     <Content Include="Views\Welcome\_Setup.cshtml" />
@@ -362,6 +367,7 @@
     <Content Include="Views\Welcome\Complete.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Schedule.cshtml" />
+    <Content Include="Views\Shared\_SchedulePicker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Default\" />

@@ -1,0 +1,143 @@
+﻿@using Microsoft.AspNet.Identity
+<div id="schedule-container">
+    <div id="period-selector">
+        <div>
+            <div class="period-num selected">1</div>
+        </div>
+        <div>
+            <div class="period-num">2</div>
+        </div>
+        <div>
+            <div class="period-num">3</div>
+        </div>
+        <div>
+            <div class="period-num">4</div>
+        </div>
+        <div>
+            <div class="period-num">5</div>
+        </div>
+        <div>
+            <div class="period-num">6</div>
+        </div>
+        <div>
+            <div class="period-num">7</div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var userId = "@(User.Identity.GetUserId())";
+        var semester = @(ViewBag.Semester);
+
+        var period = 1;
+
+        $(".period-num").click(function () {
+            $("#selected-class").text("");
+            period = parseInt($(this).text());
+            $("#class-input").keydown();
+
+            $(".period-num").removeClass("selected");
+            $(this).addClass("selected");
+
+            var suffix = "";
+            switch (period) {
+            case 1:
+                suffix = "st";
+                break;
+            case 2:
+                suffix = "nd";
+                break;
+            case 3:
+                suffix = "rd";
+                break;
+            default:
+                suffix = "th";
+                break;
+            }
+
+            $("#period-label").text(period + suffix);
+            var teacher = $("#teacher-input").val(""); //todo: make sure this works
+            var subject = $("#subject-input").val("");
+
+            $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + period, function(data) {
+                $("#selected-class").text(data.name);
+            });
+        });
+
+        $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + period, function(data) {
+            $("#selected-class").text(data.name);
+        });
+    </script>
+
+    <div id="selected-class-box">
+        <div id="selected-class-label">Your Class:</div>
+        <div id="selected-class"></div>
+    </div>
+
+    <div id="class-search-box">
+        <input id="teacher-input" type="text" placeholder="  Teacher Name" />
+        <input id="subject-input" type="text" placeholder="  Subject" />
+
+        <button id="add-class-btn">ADD CLASS</button>
+        <script type="text/javascript">
+            var school = "@ViewBag.School";
+
+            function getClassName() {
+                var teacher = $("#teacher-input").val().trim();
+                var subject = $("#subject-input").val().trim();
+
+                var className = teacher;
+                if (subject != "") className += ", " + subject;
+
+                return className;
+            }
+
+            $("#teacher-input, #subject-input").keyup(function () {
+                $.getJSON("/API/Classes/" + school + "/" + period + "/" + encodeURIComponent(getClassName()), function (data) {
+                    fillTableWithClasses(data);
+                });
+            });
+
+            function addClass(className) {
+                if (className == "") {
+                    alert("Please enter a class");
+                }
+                else {
+                    $.post("/API/Schedule/" + userId + "/" + semester + "/" + period, {
+                        name: className
+                    }, function(data) {
+                        if(data == "GOOD") {
+                            $("#selected-class").text(className);
+                            $("#class-input").val("");
+                        }
+                    });
+                }
+
+                var teacher = $("#teacher-input").val(""); //todo: make sure this works
+                var subject = $("#subject-input").val("");
+            }
+
+            $("#add-class-btn").click(function() {
+                addClass(getClassName());
+            });
+        </script>
+    </div>
+
+    <div style="width:100%;border-top:1px solid #1ccfaf;">
+        <h1 style="font-weight:300;">Recorded <span id="period-label">1st</span> Period Classes:</h1>
+        <table id="classes-table"></table>
+
+        <script type="text/javascript">
+            function fillTableWithClasses(classes) {
+                $("#classes-table").html("");
+
+                for (var i = 0; i < classes.length; i++) {
+                    var clss = classes[i];
+                    $("#classes-table").append("<tr><td>" + clss.name + "</td></tr>");
+                }
+
+                $("#classes-table").find("tr").click(function() {
+                    addClass($(this).text());
+                });
+            }
+        </script>
+    </div>
+</div>

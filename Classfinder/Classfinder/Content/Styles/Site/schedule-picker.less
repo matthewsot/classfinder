@@ -1,0 +1,109 @@
+﻿@import "shared.less";
+
+#schedule-container {
+    border: 1px solid @green;
+    height: 600px;
+}
+    #period-selector {
+        width:80%;
+        margin:20px 10%;
+        height:50px;
+        font-size:25px;
+    }
+        #period-selector .period-num {
+            cursor:pointer;
+            line-height:50px;
+            width:50px;
+            .half-horiz;
+        }
+            #period-selector .selected {
+                background-color:@green;
+                border-radius:50px;
+                color:#fff;
+            }
+        #period-selector div {
+            float:left;
+            width:14.28571428571428%;
+        }
+    
+    #teacher-input, #subject-input {
+        position:absolute;
+        width:35%;
+        text-align:left;
+        padding-left:5px;
+        padding:0;
+    }
+        #teacher-input {
+            border:0;
+        }
+        #subject-input {
+            border:0;
+            border-left:1px solid @green;
+            left:35%;
+        }
+
+    #add-class-btn {
+        background-color:@green;
+        color:#fff;
+        position:absolute;
+        right:-1px;
+        top:-1px;
+        height:52px;
+        width:30%;
+    }
+        #add-class-btn:hover {
+            background-color:#fff;
+            color:@green;
+        }
+
+    #explanation {
+        font-size: 25px;
+        font-weight: 300;
+    }
+
+    #selected-class-box {
+        margin-top: 20px;
+        border-top: 1px solid @green;
+        height: 100px;
+        position: relative;
+        font-weight: 300;
+    }
+
+    #selected-class-label {
+        position: absolute;
+        font-size: 25px;
+        border-right: 1px solid @green;
+        border-bottom: 1px solid @green;
+        padding: 20px;
+    }
+
+    #selected-class {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-size: 40px;
+        padding: 15px;
+        padding-right: 35px;
+    }
+
+    #class-search-box {
+        margin-top: 20px;
+        width: 100%;
+        border-top: 1px solid @green;
+        height: 50px;
+        position: relative;
+    }
+
+    #classes-table {
+        font-size:30px;
+        font-weight:300;
+        text-align:left;
+    }
+        #classes-table td {
+            padding:10px;
+            text-align:left;
+        }
+            #classes-table td tr {
+                cursor:pointer;
+                text-align:left;
+            }

@@ -82,68 +82,6 @@ input[type=email] {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
-#top-row {
-  width: 100%;
-  height: 100px;
-  background-color: #1ccfaf;
-  text-align: left;
-}
-#step-label {
-  font-size: 35px;
-  font-weight: 300;
-}
-#top-row #logo {
-  position: absolute;
-  height: 35px;
-  /* Thanks! http://creative-punch.net/2014/01/center-vertically-horizontally-using-css3-transform/ */
-  /* but ewe. should use prefix-free */
-  position: relative;
-  /* Thanks! http://creative-punch.net/2014/01/center-vertically-horizontally-using-css3-transform/ */
-  top: 50%;
-  /* but ewe. should use prefix-free */
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  left: 50px;
-}
-body {
-  color: #1ccfaf;
-  text-align: center;
-}
-#progress-bar {
-  width: 65%;
-  margin-left: 17.5%;
-  border: 1px solid #000;
-  border-radius: 4px;
-  height: 10px;
-}
-#progress-bar #progress {
-  height: 100%;
-  background-color: #1ccfaf;
-}
-button {
-  cursor: pointer;
-  font-size: 30px;
-  font-weight: 300;
-  height: 50px;
-  width: 300px;
-  border: 1px solid #1ccfaf;
-  background-color: transparent;
-  color: #1ccfaf;
-  font-family: Lato;
-}
-button:hover {
-  background-color: #1ccfaf;
-  color: #fff;
-}
-@media screen and (max-width: 800px) {
-  #progress-bar {
-    width: 90%;
-    margin-left: 5%;
-  }
-}
 #schedule-container {
   border: 1px solid #1ccfaf;
   height: 600px;
@@ -252,15 +190,4 @@ button:hover {
   cursor: pointer;
   text-align: left;
 }
-body,
-html {
-  font-weight: 300;
-}
-#progress {
-  width: 50%;
-}
-#schedule-container {
-  width: 55%;
-  margin-left: 22.5%;
-}
-/*# sourceMappingURL=schedule.css.map */
+/*# sourceMappingURL=schedule-picker.css.map */
