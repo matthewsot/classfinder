@@ -104,26 +104,27 @@ input[type=email] {
   background-image: url(/Content/Images/hero.background.jpg);
   background-size: cover;
   position: relative;
-  height: 500px;
+  height: 400px;
 }
 #main-row img {
   position: absolute;
   top: 30px;
   left: 45px;
+  width: 300px;
 }
 #hero-action-bar {
   position: absolute;
   bottom: 50px;
-  width: 80%;
-  left: 10%;
-  height: 75px;
+  width: 75%;
+  left: 12.5%;
+  height: 60px;
   color: #fff;
 }
 #hero-action-bar h1,
 #hero-action-bar a {
   position: absolute;
-  height: 75px;
-  line-height: 75px;
+  height: 60px;
+  line-height: 60px;
   padding: 0;
   font-size: 25px;
 }
@@ -157,19 +158,19 @@ input[type=email] {
   font-weight: 400;
 }
 #last-row .info-box {
-  width: 350px;
+  width: 300px;
   position: absolute;
   left: 50%;
 }
 #last-row .info-box img {
   height: 100px;
-  margin-top: 75px;
+  margin-top: 50px;
 }
 #last-row .info-box:nth-child(1) {
-  margin-left: -575px;
+  margin-left: -525px;
 }
 #last-row .info-box:nth-child(2) {
-  margin-left: -175px;
+  margin-left: -150px;
 }
 #last-row .info-box:nth-child(3) {
   margin-left: 225px;
@@ -184,9 +185,9 @@ input[type=email] {
 }
 #last-row .info-box div {
   border: 2px solid #1ccfaf;
-  height: 250px;
-  width: 250px;
-  border-radius: 125px;
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
   margin-left: 50px;
 }
 #footer {
