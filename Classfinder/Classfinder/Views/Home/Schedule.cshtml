@@ -11,18 +11,12 @@
     @Styles.Render("~/Content/Styles/Site/Home/schedule.css")
 }
 
-<div id="options">
-    @if (User.Identity.IsAuthenticated)
-    {
-        <a href="/Account/LogOff">log out</a> @:|
-        }
-    <a href="/Manage/Schedule">modify schedule</a>
-</div>
-
 <div id="left-bar">
     <div id="img-row">
-        <img src="~/Content/Images/logo.png" id="desktop-logo" />
-        <img src="~/Content/Images/logo.favicon.png" id="mobile-logo" />
+        <a href="/Schedule/@(User.Identity.GetUserName())">
+            <img src="~/Content/Images/logo.png" id="desktop-logo" />
+            <img src="~/Content/Images/logo.favicon.png" id="mobile-logo" />
+        </a>
     </div>
 
     <div id="periods-header">
@@ -49,8 +43,22 @@
 </div>
 
 <div id="right-box">
-    <h1 id="period-name"></h1>
-    <h2 id="student-count"></h2>
+    <div id="top-left">
+        <h1 id="period-name"></h1>
+        <h2 id="student-count"></h2>
+    </div>
+    <div id="top-right">
+        <div id="options">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="/Account/LogOff">log out</a> @:|
+            }
+            <a href="/Manage/Schedule">modify schedule</a>
+        </div>
+
+        <h2 id="viewing-label">Viewing:</h2>
+        <h1 id="viewing-name">@(ViewBag.UserName)'s Schedule</h1>
+    </div>
 
     <div id="table-container">
         <table style="width:100%;padding:30px;padding-top:15px;padding-bottom:10px;border-collapse:collapse;">

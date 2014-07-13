@@ -266,6 +266,9 @@
     <Content Include="Content\Styles\Site\schedule-picker.css">
       <DependentUpon>schedule-picker.less</DependentUpon>
     </Content>
+    <Content Include="Content\Styles\Site\schedule-picker.min.css">
+      <DependentUpon>schedule-picker.css</DependentUpon>
+    </Content>
     <Content Include="Content\Styles\Site\shared.css">
       <DependentUpon>shared.less</DependentUpon>
     </Content>
