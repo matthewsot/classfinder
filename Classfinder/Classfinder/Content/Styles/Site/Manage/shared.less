@@ -1,0 +1,62 @@
+﻿@import "../shared.less";
+
+body {
+    color: @green;
+    text-align:center;
+}
+
+#top-row {
+    width:100%;
+    height:100px;
+    background-color:@green;
+    text-align:left;
+}
+    #top-row #logo {
+        position:absolute;
+        height:35px;
+        .half-vert();
+        left:50px;
+    }
+
+#contents-container {
+    width:75%;
+    margin-left:12.5%;
+}
+    #header-row {
+        border-bottom:1px solid @light;
+        position:relative;
+        height:100px;
+        margin-top:50px;
+    }
+        #header-row h1,
+        #header-row h2,
+        #header-row a {
+            margin:0;
+            font-weight:400;
+        }
+        #header-row #settings-label {
+            position:absolute;
+            left:5%;
+            bottom:25px;
+            font-size:35px;
+        }
+        #header-row #curr-page-options {
+            position:absolute;
+            right:5%;
+            bottom:15px;
+            text-align:right;
+        }
+            #curr-page-options #curr-page-label {
+                color:@light;
+                font-size:25px;
+                padding-bottom:5px;
+            }
+            #curr-page-options #save-changes-link {
+                font-size:20px;
+                text-decoration:none;
+                color:@green;
+            }
+
+    #nav-list {
+
+    }

@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head {
+    @RenderSection("head", false)
+}
+
+<div id="top-row">
+    <a href="~/" style="border:none;"><img id="logo" src="~/Content/Images/logo.png" style="border:none;" /></a>
+</div>
+
+<div id="contents-container">
+    <div id="header-row">
+        <h1 id="settings-label">Settings</h1>
+
+        <div id="curr-page-options">
+            <h2 id="curr-page-label">@ViewBag.CurrPage</h2>
+            <a href="#" id="save-changes-link">Save Changes</a>
+        </div>
+    </div>
+    
+    <div id="nav-list">
+        <a href="~/Manage/Schedule">Modify Schedule</a>
+        <a href="~/Manage/Password">Change Pass</a>
+        <a href="~/Manage/Username">Change Username</a>
+        <a href="~/Manage/Name">Change Name</a>
+        <a href="~/Manage/FAQ">FAQ</a>
+    </div>
+</div>
