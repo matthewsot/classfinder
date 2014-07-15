@@ -1,5 +1,41 @@
 ﻿@import "shared.less";
+@import "../schedule-picker.less";
 
 #nav-list a:first-child {
     .selected;
+}
+#nav-list a:nth-child(2) {
+    .selected;
+}
+
+#semester-picker {
+    color:@green;
+    font-size:30px;
+    font-weight:400;
+}
+    .selected-semester {
+        color:@green;
+    }
+    #semester-picker span {
+        color:@light;
+        cursor:pointer;
+    }
+    #semester-picker #semester-one {
+        .selected-semester;
+    }
+
+    #copy-link {
+        color:@green;
+        cursor:pointer;
+        font-size:20px;
+        text-decoration:none;//todo my use of anchors makes no sense
+    }
+        #copy-link span {
+            color:@green;
+        }
+
+#schedule-picker-container {
+    position:static;
+    margin-top:25px;
+    width:100%;
 }

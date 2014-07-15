@@ -20,11 +20,25 @@
         </div>
     </div>
     
-    <div id="nav-list">
-        <a href="~/Manage/Schedule">Modify Schedule</a>
-        <a href="~/Manage/Password">Change Pass</a>
-        <a href="~/Manage/Username">Change Username</a>
-        <a href="~/Manage/Name">Change Name</a>
-        <a href="~/Manage/FAQ">FAQ</a>
+    <div id="lower-content">
+        <div id="nav-list">
+            <a href="~/Manage/Schedule" class="nav-desktop">Modify Schedule</a>
+            <a href="~/Manage/Schedule" class="nav-mobile">Schedule</a>
+
+            <a href="~/Manage/Password" class="nav-desktop">Change Pass</a>
+            <a href="~/Manage/Password" class="nav-mobile">Password</a>
+
+            <a href="~/Manage/Username" class="nav-desktop">Change Username</a>
+            <a href="~/Manage/Username" class="nav-mobile">Username</a>
+
+            <a href="~/Manage/Name" class="nav-desktop">Change Name</a>
+            <a href="~/Manage/Name" class="nav-mobile">Name</a>
+
+            <a href="~/Manage/FAQ">FAQ</a>
+        </div>
+
+        <div id="real-content">
+            @RenderBody()
+        </div>
     </div>
 </div>

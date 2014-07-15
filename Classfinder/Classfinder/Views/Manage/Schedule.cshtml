@@ -1,4 +1,5 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
+
 @{
     ViewBag.Title = "Schedule";
     ViewBag.CurrPage = "Modify Schedule";
@@ -7,5 +8,20 @@
 
 @section head {
     <link href="~/Content/Styles/Site/Manage/schedule.css" rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/Scripts/suffix.js"></script>
 }
 
+<script type="text/javascript">
+    var school = "@ViewBag.School";
+    var userId = "@User.Identity.GetUserId()";
+    var semester = 1;
+</script>
+
+<div id="semester-picker">
+    <span id="semester-one">Semester 1</span> | <span id="semester-two">Semester 2</span>
+    <br/>
+    <a href="#copy" id="copy-link">copy classes from Semester <span id="semester-num">1</span></a>
+</div>
+
+@Html.Partial("~/Views/Shared/_SchedulePicker.cshtml")

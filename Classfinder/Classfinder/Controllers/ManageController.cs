@@ -1,4 +1,6 @@
 ﻿using System.Web.Mvc;
+using Classfinder.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Classfinder.Controllers
 {
@@ -13,7 +15,12 @@ namespace Classfinder.Controllers
 
         public ActionResult Schedule()
         {
-            return View();
+            using (var db = new CfDb())
+            {
+                var user = db.Users.Find(User.Identity.GetUserId());
+                ViewBag.School = user.School;
+                return View();
+            }
         }
     }
 }

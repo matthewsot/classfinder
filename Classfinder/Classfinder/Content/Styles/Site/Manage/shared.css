@@ -146,11 +146,13 @@ body {
   text-decoration: none;
   color: #1ccfaf;
 }
-#nav-list {
-  width: 250px;
-  border: 1px solid #1ccfaf;
-  border-bottom: none;
+#lower-content {
   margin-top: 25px;
+  position: relative;
+}
+#nav-list {
+  width: 20%;
+  border-left: 1px solid #1ccfaf;
   margin-left: 1%;
 }
 #nav-list a {
@@ -162,9 +164,110 @@ body {
   color: #8b8b8b;
   text-decoration: none;
   border-bottom: 1px solid #1ccfaf;
+  border-right: 1px solid #1ccfaf;
+  text-align: left;
+  padding-left: 10px;
+}
+#nav-list a:first-child {
+  border-top: 1px solid #1ccfaf;
 }
 .selected {
   background-color: #1ccfaf;
   color: #fff;
+}
+.nav-mobile {
+  display: none !important;
+}
+#real-content {
+  position: absolute;
+  right: 1%;
+  top: 0;
+  width: 70%;
+  padding-bottom: 75px;
+}
+@media all and (max-width: 1200px) {
+  #nav-list {
+    width: 23%;
+    margin-left: 0;
+  }
+  #real-content {
+    width: 73%;
+    right: 0;
+  }
+}
+@media all and (max-width: 1100px) {
+  #nav-list {
+    width: 100%;
+  }
+  #nav-list a {
+    float: left;
+    width: 20%;
+    padding: 0;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #1ccfaf;
+    border-right: none;
+    margin: -1px;
+    font-weight: 400;
+  }
+  #nav-list a:last-child {
+    border-right: 1px solid #1ccfaf;
+  }
+  #real-content {
+    top: 90px;
+    width: 90%;
+    left: 5%;
+  }
+}
+@media all and (max-width: 1050px) {
+  #nav-list a {
+    font-size: 15px;
+  }
+}
+@media all and (max-width: 900px) {
+  #top-row {
+    text-align: center;
+  }
+  #top-row #logo {
+    height: 35px;
+    left: 0;
+  }
+  #header-row {
+    height: 75px;
+  }
+  #contents-container {
+    width: 90%;
+    margin-left: 5%;
+  }
+  #real-content {
+    top: 90px;
+    width: 100%;
+    left: 0;
+  }
+}
+@media all and (max-width: 750px) {
+  .nav-desktop {
+    display: none !important;
+  }
+  .nav-mobile {
+    display: block !important;
+  }
+  #nav-list a {
+    font-size: 20px;
+  }
+}
+@media all and (max-width: 550px) {
+  #contents-container {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+  #nav-list a {
+    font-size: 18px;
+  }
+}
+@media all and (max-width: 500px) {
+  #nav-list a {
+    font-size: 15px;
+  }
 }
 /*# sourceMappingURL=shared.css.map */

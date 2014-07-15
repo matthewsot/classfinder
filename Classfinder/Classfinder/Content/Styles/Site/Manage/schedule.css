@@ -146,11 +146,13 @@ body {
   text-decoration: none;
   color: #1ccfaf;
 }
-#nav-list {
-  width: 250px;
-  border: 1px solid #1ccfaf;
-  border-bottom: none;
+#lower-content {
   margin-top: 25px;
+  position: relative;
+}
+#nav-list {
+  width: 20%;
+  border-left: 1px solid #1ccfaf;
   margin-left: 1%;
 }
 #nav-list a {
@@ -162,13 +164,265 @@ body {
   color: #8b8b8b;
   text-decoration: none;
   border-bottom: 1px solid #1ccfaf;
+  border-right: 1px solid #1ccfaf;
+  text-align: left;
+  padding-left: 10px;
+}
+#nav-list a:first-child {
+  border-top: 1px solid #1ccfaf;
 }
 .selected {
   background-color: #1ccfaf;
   color: #fff;
 }
+.nav-mobile {
+  display: none !important;
+}
+#real-content {
+  position: absolute;
+  right: 1%;
+  top: 0;
+  width: 70%;
+  padding-bottom: 75px;
+}
+@media all and (max-width: 1200px) {
+  #nav-list {
+    width: 23%;
+    margin-left: 0;
+  }
+  #real-content {
+    width: 73%;
+    right: 0;
+  }
+}
+@media all and (max-width: 1100px) {
+  #nav-list {
+    width: 100%;
+  }
+  #nav-list a {
+    float: left;
+    width: 20%;
+    padding: 0;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #1ccfaf;
+    border-right: none;
+    margin: -1px;
+    font-weight: 400;
+  }
+  #nav-list a:last-child {
+    border-right: 1px solid #1ccfaf;
+  }
+  #real-content {
+    top: 90px;
+    width: 90%;
+    left: 5%;
+  }
+}
+@media all and (max-width: 1050px) {
+  #nav-list a {
+    font-size: 15px;
+  }
+}
+@media all and (max-width: 900px) {
+  #top-row {
+    text-align: center;
+  }
+  #top-row #logo {
+    height: 35px;
+    left: 0;
+  }
+  #header-row {
+    height: 75px;
+  }
+  #contents-container {
+    width: 90%;
+    margin-left: 5%;
+  }
+  #real-content {
+    top: 90px;
+    width: 100%;
+    left: 0;
+  }
+}
+@media all and (max-width: 750px) {
+  .nav-desktop {
+    display: none !important;
+  }
+  .nav-mobile {
+    display: block !important;
+  }
+  #nav-list a {
+    font-size: 20px;
+  }
+}
+@media all and (max-width: 550px) {
+  #contents-container {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+  #nav-list a {
+    font-size: 18px;
+  }
+}
+@media all and (max-width: 500px) {
+  #nav-list a {
+    font-size: 15px;
+  }
+}
+#schedule-picker-container {
+  border: 1px solid #1ccfaf;
+  height: 600px;
+}
+#period-selector {
+  width: 80%;
+  margin: 20px 10%;
+  height: 50px;
+  font-size: 25px;
+}
+#period-selector .period-num {
+  cursor: pointer;
+  line-height: 50px;
+  width: 50px;
+  /* but ewe. should use prefix-free */
+  position: relative;
+  left: 50%;
+  /* but ewe. should use prefix-free */
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+#period-selector .selected {
+  background-color: #1ccfaf;
+  border-radius: 50px;
+  color: #fff;
+}
+#period-selector div {
+  float: left;
+  width: 14.28571428571428%;
+}
+#selected-class-box {
+  border-top: 1px solid #1ccfaf;
+  height: 100px;
+  position: relative;
+}
+#selected-class-box div {
+  position: absolute;
+  padding: 20px;
+}
+#selected-class-label {
+  font-size: 25px;
+  border-right: 1px solid #1ccfaf;
+  border-bottom: 1px solid #1ccfaf;
+}
+#selected-class {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 40px;
+  margin-right: 15px;
+}
+#class-search-box {
+  margin-top: 20px;
+  width: 100%;
+  border-top: 1px solid #1ccfaf;
+  height: 50px;
+  position: relative;
+}
+#class-search-box input {
+  position: absolute;
+  width: 35%;
+  text-align: left;
+  padding: 0;
+  padding-left: 5px;
+}
+#teacher-input {
+  left: 0;
+  border: 0;
+}
+#subject-input {
+  border: 0;
+  border-left: 1px solid #1ccfaf;
+  left: 35%;
+}
+#add-class-btn {
+  background-color: #1ccfaf;
+  color: #fff;
+  position: absolute;
+  right: -1px;
+  top: -1px;
+  height: 52px;
+  width: 30%;
+}
+#add-class-btn:hover {
+  background-color: #fff;
+  color: #1ccfaf;
+}
+#results-container {
+  width: 100%;
+  border-top: 1px solid #1ccfaf;
+}
+#results-label {
+  font-size: 25px;
+  font-weight: 300;
+}
+#results {
+  font-size: 20px;
+  text-align: left;
+  margin-left: 15px;
+}
+#results div {
+  cursor: pointer;
+  text-align: left;
+  height: 50px;
+  line-height: 50px;
+  float: left;
+  width: 30%;
+  overflow-x: visible;
+}
+#results div:nth-child(3n - 1) {
+  text-align: center;
+}
+#results div:nth-child(3n) {
+  text-align: right;
+}
 #nav-list a:first-child {
   background-color: #1ccfaf;
   color: #fff;
+}
+#nav-list a:nth-child(2) {
+  background-color: #1ccfaf;
+  color: #fff;
+}
+#semester-picker {
+  color: #1ccfaf;
+  font-size: 30px;
+  font-weight: 400;
+}
+.selected-semester {
+  color: #1ccfaf;
+}
+#semester-picker span {
+  color: #8b8b8b;
+  cursor: pointer;
+}
+#semester-picker #semester-one {
+  color: #1ccfaf;
+}
+#copy-link {
+  color: #1ccfaf;
+  cursor: pointer;
+  font-size: 20px;
+  text-decoration: none;
+}
+#copy-link span {
+  color: #1ccfaf;
+}
+#schedule-picker-container {
+  position: static;
+  margin-top: 25px;
+  width: 100%;
 }
 /*# sourceMappingURL=schedule.css.map */
