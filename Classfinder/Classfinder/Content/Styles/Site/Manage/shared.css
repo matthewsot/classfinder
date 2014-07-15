@@ -146,4 +146,25 @@ body {
   text-decoration: none;
   color: #1ccfaf;
 }
+#nav-list {
+  width: 250px;
+  border: 1px solid #1ccfaf;
+  border-bottom: none;
+  margin-top: 25px;
+  margin-left: 1%;
+}
+#nav-list a {
+  display: block;
+  font-size: 20px;
+  line-height: 40px;
+  height: 40px;
+  width: 100%;
+  color: #8b8b8b;
+  text-decoration: none;
+  border-bottom: 1px solid #1ccfaf;
+}
+.selected {
+  background-color: #1ccfaf;
+  color: #fff;
+}
 /*# sourceMappingURL=shared.css.map */
