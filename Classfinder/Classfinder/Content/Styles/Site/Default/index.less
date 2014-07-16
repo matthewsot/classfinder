@@ -73,6 +73,9 @@
         position:absolute;
         bottom: 35px;
     }
+    #mobile-login-btn {
+        display:none;
+    }
 
 #last-row {
     color:@dark;
@@ -170,18 +173,12 @@
         color:@green;
     }
 
-@media all and (max-width:1200px) {
-    #hero-action-bar h1,
-    #hero-action-bar a {
-        font-size:23px;
-    }
-    
+
+@media all and (max-width:1200px) {    
     @info-box-width: 275px;
     @info-box-padding: 50px;
     #last-row .info-box {
         width:@info-box-width;
-        position:absolute;
-        left:50%;
     }
         #last-row .info-box:nth-child(1) {
             margin-left:-((@info-box-width * 1.5) + @info-box-padding);
@@ -192,38 +189,34 @@
         #last-row .info-box:nth-child(3) {
              margin-left:(@info-box-width / 2) + @info-box-padding;
         }
+
+        #last-row .info-box h1 {
+            font-size:35px;
+        }
         #last-row .info-box h2 {
-            color:@dark;
-            font-size:25px;
+            font-size:15px;
         }
         #last-row .info-box p {
             color:@light;
-            font-size:20px;
+            font-size:15px;
         }
 }
 
 @media all and (max-width:1100px) {
-    #hero-action-bar h1,
-    #hero-action-bar a {
-        font-size:20px;
+    #hero-label {
+        font-size:23px;
     }
 }
 
 @media all and (max-width:970px) {
-    #hero-action-bar h1 {
-        width:85%;
-        font-size:18px;
-    }
-    #hero-action-bar a {
-        width:15%;
+    #hero-label {
+        font-size:20px;
     }
 
     @info-box-width: 255px;
     @info-box-padding: 30px;
     #last-row .info-box {
         width:@info-box-width;
-        position:absolute;
-        left:50%;
     }
         #last-row .info-box:nth-child(1) {
             margin-left:-((@info-box-width * 1.5) + @info-box-padding);
@@ -234,63 +227,27 @@
         #last-row .info-box:nth-child(3) {
              margin-left:(@info-box-width / 2) + @info-box-padding;
         }
+
+        #last-row .info-box h1 {
+            font-size:30px;
+        }
         #last-row .info-box h2 {
-            color:@dark;
-            font-size:25px;
+            font-size:13px;
         }
         #last-row .info-box p {
             color:@light;
-            font-size:20px;
-        }
-        @info-circle-size: 200px;
-        #last-row .info-box div {
-            border:2px solid @green;
-            .circle(@info-circle-size);
-            margin-left: (@info-box-width - @info-circle-size) / 2;
+            font-size:13px;
         }
 }
 @media all and (max-width:850px) {
     body,html {
         overflow-x:hidden; //TODO: figure out what's actually causing the overflow, instead of just hiding it
     }
-    #main-row {
-        height:500px;
-    }
-        #main-row img {
-            position:static;
-        }
-        #hero-action-bar {
-            position:static;
-            height:auto;
-            width:auto;
-        }
-            #hero-action-bar h1 {
-                position:static;
-                font-size:25px;
-                line-height:25px;
-                height:auto;
-                overflow:visible;
-                width:100%;
-                background-color:transparent;
-                border:none;
-                margin-top:50px;
-                margin-bottom:50px;
-            }
-            #hero-action-bar a {
-                position:static;
-                border-radius:2px;
-                width:80%;
-                margin-left:10%;
-                font-size:30px;
-            }
-            #mobile-login-btn {
-                display:block;
-                margin-top:15px;
-            }
 
-        #desktop-login-btn {
-            display:none;
-        }
+    #hero-label {
+        width:80%;
+        margin-left:10%;
+    }
 
     #last-row .info-box:nth-child(n) {
         margin:0;
@@ -303,7 +260,41 @@
     }
 }
 
-@media all and (max-width:600px) {
+@media all and (max-width:750px) {
+    #head-row {
+        text-align:center;
+    }
+        #head-row img {
+            margin:0;
+            height:auto;
+            width:80%;
+            .half-vert;
+        }
+
+    #main-row {
+        height:450px;
+    }
+        #hero-label {
+            position:static;
+            width:100%;
+            margin:0;
+            text-align:center;
+            font-size:20px;
+            border-radius:20px;
+            //todo get a mobile mockup from adhiv
+        }
+        #hero-signup-btn {
+            .half-horiz;
+            margin-top:65px;
+        }
+        #desktop-login-btn {
+            display:none;
+        }
+        #mobile-login-btn {
+            display:block;
+            .half-horiz;
+        }
+
     #wedge-content {
         left:0 !important;
         margin-left:0 !important;

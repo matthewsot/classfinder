@@ -160,6 +160,9 @@ input[type=email] {
   position: absolute;
   bottom: 35px;
 }
+#mobile-login-btn {
+  display: none;
+}
 #last-row {
   color: #3b3b3b;
   padding: 50px 0 50px 0;
@@ -258,14 +261,8 @@ input[type=email] {
   color: #1ccfaf;
 }
 @media all and (max-width: 1200px) {
-  #hero-action-bar h1,
-  #hero-action-bar a {
-    font-size: 23px;
-  }
   #last-row .info-box {
     width: 275px;
-    position: absolute;
-    left: 50%;
   }
   #last-row .info-box:nth-child(1) {
     margin-left: -462.5px;
@@ -276,33 +273,28 @@ input[type=email] {
   #last-row .info-box:nth-child(3) {
     margin-left: 187.5px;
   }
+  #last-row .info-box h1 {
+    font-size: 35px;
+  }
   #last-row .info-box h2 {
-    color: #3b3b3b;
-    font-size: 25px;
+    font-size: 15px;
   }
   #last-row .info-box p {
     color: #8b8b8b;
-    font-size: 20px;
+    font-size: 15px;
   }
 }
 @media all and (max-width: 1100px) {
-  #hero-action-bar h1,
-  #hero-action-bar a {
-    font-size: 20px;
+  #hero-label {
+    font-size: 23px;
   }
 }
 @media all and (max-width: 970px) {
-  #hero-action-bar h1 {
-    width: 85%;
-    font-size: 18px;
-  }
-  #hero-action-bar a {
-    width: 15%;
+  #hero-label {
+    font-size: 20px;
   }
   #last-row .info-box {
     width: 255px;
-    position: absolute;
-    left: 50%;
   }
   #last-row .info-box:nth-child(1) {
     margin-left: -412.5px;
@@ -313,20 +305,15 @@ input[type=email] {
   #last-row .info-box:nth-child(3) {
     margin-left: 157.5px;
   }
+  #last-row .info-box h1 {
+    font-size: 30px;
+  }
   #last-row .info-box h2 {
-    color: #3b3b3b;
-    font-size: 25px;
+    font-size: 13px;
   }
   #last-row .info-box p {
     color: #8b8b8b;
-    font-size: 20px;
-  }
-  #last-row .info-box div {
-    border: 2px solid #1ccfaf;
-    height: 200px;
-    width: 200px;
-    border-radius: 100px;
-    margin-left: 27.5px;
+    font-size: 13px;
   }
 }
 @media all and (max-width: 850px) {
@@ -334,42 +321,9 @@ input[type=email] {
   html {
     overflow-x: hidden;
   }
-  #main-row {
-    height: 500px;
-  }
-  #main-row img {
-    position: static;
-  }
-  #hero-action-bar {
-    position: static;
-    height: auto;
-    width: auto;
-  }
-  #hero-action-bar h1 {
-    position: static;
-    font-size: 25px;
-    line-height: 25px;
-    height: auto;
-    overflow: visible;
-    width: 100%;
-    background-color: transparent;
-    border: none;
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-  #hero-action-bar a {
-    position: static;
-    border-radius: 2px;
+  #hero-label {
     width: 80%;
     margin-left: 10%;
-    font-size: 30px;
-  }
-  #mobile-login-btn {
-    display: block;
-    margin-top: 15px;
-  }
-  #desktop-login-btn {
-    display: none;
   }
   #last-row .info-box:nth-child(n) {
     margin: 0;
@@ -388,7 +342,64 @@ input[type=email] {
     margin-top: 50px;
   }
 }
-@media all and (max-width: 600px) {
+@media all and (max-width: 750px) {
+  #head-row {
+    text-align: center;
+  }
+  #head-row img {
+    margin: 0;
+    height: auto;
+    width: 80%;
+    /* Thanks! http://creative-punch.net/2014/01/center-vertically-horizontally-using-css3-transform/ */
+    /* but ewe. should use prefix-free */
+    position: relative;
+    /* Thanks! http://creative-punch.net/2014/01/center-vertically-horizontally-using-css3-transform/ */
+    top: 50%;
+    /* but ewe. should use prefix-free */
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  #main-row {
+    height: 450px;
+  }
+  #hero-label {
+    position: static;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 20px;
+  }
+  #hero-signup-btn {
+    /* but ewe. should use prefix-free */
+    position: relative;
+    left: 50%;
+    /* but ewe. should use prefix-free */
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    margin-top: 65px;
+  }
+  #desktop-login-btn {
+    display: none;
+  }
+  #mobile-login-btn {
+    display: block;
+    /* but ewe. should use prefix-free */
+    position: relative;
+    left: 50%;
+    /* but ewe. should use prefix-free */
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
   #wedge-content {
     left: 0 !important;
     margin-left: 0 !important;
