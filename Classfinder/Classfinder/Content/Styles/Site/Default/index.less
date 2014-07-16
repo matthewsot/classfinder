@@ -78,6 +78,7 @@
     color:@dark;
     padding:50px 0 50px 0;
     font-weight:400;
+    background-color:#f4f4f4;
 }
     @info-box-width: 300px;
     @info-box-padding: 75px;
@@ -86,12 +87,6 @@
         position:absolute;
         left:50%;
     }
-        @info-circle-size: 200px;
-        @info-img-size: 100px;
-        #last-row .info-box img {
-            height: @info-img-size;
-            margin-top: (@info-circle-size - @info-img-size) / 2;
-        }
         #last-row .info-box:nth-child(1) {
             margin-left:-((@info-box-width * 1.5) + @info-box-padding);
         }
@@ -101,18 +96,25 @@
         #last-row .info-box:nth-child(3) {
              margin-left:(@info-box-width / 2) + @info-box-padding;
         }
+
+        #last-row .info-box h1 {
+            color:@green;
+            font-size:40px;
+            font-weight:300;
+            margin:0;
+        }
         #last-row .info-box h2 {
             color:@dark;
-            font-size:35px;
+            font-size:18px;
         }
+
+        #last-row .info-box img {
+            width:100%;
+        }
+
         #last-row .info-box p {
             color:@light;
-            font-size:25px;
-        }
-        #last-row .info-box div {
-            border:2px solid @green;
-            .circle(@info-circle-size);
-            margin-left: (@info-box-width - @info-circle-size) / 2;
+            font-size:20px;
         }
 
 #footer {
@@ -177,12 +179,6 @@
         position:absolute;
         left:50%;
     }
-        @info-circle-size: 200px;
-        @info-img-size: 75px;
-        #last-row .info-box img {
-            height: @info-img-size;
-            margin-top: (@info-circle-size - @info-img-size) / 2;
-        }
         #last-row .info-box:nth-child(1) {
             margin-left:-((@info-box-width * 1.5) + @info-box-padding);
         }
@@ -199,11 +195,6 @@
         #last-row .info-box p {
             color:@light;
             font-size:20px;
-        }
-        #last-row .info-box div {
-            border:2px solid @green;
-            .circle(@info-circle-size);
-            margin-left: (@info-box-width - @info-circle-size) / 2;
         }
 }
 
