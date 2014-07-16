@@ -101,7 +101,7 @@ input[type=email] {
   margin-top: 30px;
   margin-left: 50px;
 }
-#pre-login-btn {
+#desktop-login-btn {
   padding: 0;
   width: 125px;
   height: 60px;
@@ -114,7 +114,7 @@ input[type=email] {
   background-color: #1ccfaf;
   border: 1px solid #1ccfaf;
 }
-#pre-login-btn:hover {
+#desktop-login-btn:hover {
   background-color: #fff;
   color: #1ccfaf;
 }
@@ -195,17 +195,29 @@ input[type=email] {
 }
 #last-row .info-box p {
   color: #8b8b8b;
-  font-size: 20px;
+  font-size: 18px;
 }
 #footer {
   font-weight: 400;
   margin-top: 700px;
-  font-size: 30px;
+  font-size: 20px;
   color: #8b8b8b;
 }
 #footer .hashtag {
   margin-top: 20px;
   color: #1ccfaf;
+}
+#footer #footer-signup-btn {
+  margin-top: 30px;
+  /* but ewe. should use prefix-free */
+  position: relative;
+  left: 50%;
+  /* but ewe. should use prefix-free */
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 #login-popup {
   width: 500px;
