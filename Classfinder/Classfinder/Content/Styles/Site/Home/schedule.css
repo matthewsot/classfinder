@@ -6,6 +6,9 @@ html {
   font-family: 'Lato';
   font-weight: 300;
 }
+a {
+  text-decoration: none;
+}
 .btn {
   border: 2px solid #fff;
   border-radius: 4px;
