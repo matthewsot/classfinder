@@ -1,5 +1,11 @@
 ﻿@import "../shared.less";
 
+.row {
+    width:100%;
+    text-align:center;
+    padding:50px 0 50px 0;
+}
+
 #head-row {
     background-color:#fff;
     text-align:left;
@@ -24,90 +30,48 @@
         top:20px;
         margin:0;
         background-color:@green;
-        border:1px solid @green;
+        border:1px solid @green; 
     }
         #pre-login-btn:hover {
             background-color:#fff;
             color:@green;
         }
 
-.transparent-btn { //todo move this to shared.less?
-    background-color:rgba(0, 0, 0, 0.30);
-    text-decoration:none;
-    border-radius:0;
-    border:2px solid @green;
+.white-circle-btn {
+    background-color:#fff;
+    color:@green;
+    border-radius:30px;
+    width:150px;
+    height:40px;
+    line-height:40px;
+    border:none;
 }
-    .transparent-btn:hover {
-        background-color:rgba(0, 0, 0, 0.60);
+    .white-circle-btn:hover {
+        background-color:@green;
         color:#fff;
     }
 
-.row {
-    width:100%;
-    text-align:center;
-    padding:50px 0 50px 0;
-}
-
-.dark-row {
-    background-color:@dark;
-}
-
 #main-row {
-    background-image:url(/Content/Images/hero.background.jpg);
+    background-image:url(/Content/Images/Homepage/laptop.jpg);
     background-size:cover;
 
     position:relative;
-    height:400px;
+    height:600px;
 }
-    #main-row img {
-        position:absolute;
-        top:30px;
-        left:45px;
-        width:300px;
-    }
-    @action-bar-height: 60px;
-    #hero-action-bar {
-        position:absolute;
-        bottom:50px;
-        width:75%;
-        left:12.5%;
-        height:@action-bar-height;
+    #hero-label {
+        background-color:@green;
         color:#fff;
-    }
-        #hero-action-bar h1,
-        #hero-action-bar a {
-            position: absolute;
-
-            height: @action-bar-height;
-            line-height:@action-bar-height;
-
-            padding: 0;
-            font-size:25px;
-        }
-        #action-label {
-            border: 2px solid @green;
-            overflow:hidden;
-
-            background-color: @green;
-            left: 0;
-            width: 80%;
-            margin:-4px 0 0 0;
-            z-index:5;
-        }
-        #signup-btn {
-            right: 0;
-            bottom: 0;
-            width: 20%;
-            z-index:0;
-        }
-        #mobile-login-btn {
-            margin: 0;
-            display:none;
-        }
-    #desktop-login-btn {
+        width:70%;
+        margin-left:15%;
+        font-size:25px;
+        line-height:60px;
         position:absolute;
-        top:30px;
-        right:45px;
+        bottom:125px;
+    }
+    #hero-signup-btn {
+        .half-horiz;
+        position:absolute;
+        bottom: 35px;
     }
 
 #last-row {

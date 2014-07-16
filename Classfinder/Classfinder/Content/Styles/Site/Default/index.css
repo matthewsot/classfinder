@@ -85,6 +85,11 @@ input[type=email] {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
+.row {
+  width: 100%;
+  text-align: center;
+  padding: 50px 0 50px 0;
+}
 #head-row {
   background-color: #fff;
   text-align: left;
@@ -113,75 +118,47 @@ input[type=email] {
   background-color: #fff;
   color: #1ccfaf;
 }
-.transparent-btn {
-  background-color: rgba(0, 0, 0, 0.3);
-  text-decoration: none;
-  border-radius: 0;
-  border: 2px solid #1ccfaf;
+.white-circle-btn {
+  background-color: #fff;
+  color: #1ccfaf;
+  border-radius: 30px;
+  width: 150px;
+  height: 40px;
+  line-height: 40px;
+  border: none;
 }
-.transparent-btn:hover {
-  background-color: rgba(0, 0, 0, 0.6);
+.white-circle-btn:hover {
+  background-color: #1ccfaf;
   color: #fff;
-}
-.row {
-  width: 100%;
-  text-align: center;
-  padding: 50px 0 50px 0;
-}
-.dark-row {
-  background-color: #3b3b3b;
 }
 #main-row {
-  background-image: url(/Content/Images/hero.background.jpg);
+  background-image: url(/Content/Images/Homepage/laptop.jpg);
   background-size: cover;
   position: relative;
-  height: 400px;
+  height: 600px;
 }
-#main-row img {
-  position: absolute;
-  top: 30px;
-  left: 45px;
-  width: 300px;
-}
-#hero-action-bar {
-  position: absolute;
-  bottom: 50px;
-  width: 75%;
-  left: 12.5%;
-  height: 60px;
-  color: #fff;
-}
-#hero-action-bar h1,
-#hero-action-bar a {
-  position: absolute;
-  height: 60px;
-  line-height: 60px;
-  padding: 0;
-  font-size: 25px;
-}
-#action-label {
-  border: 2px solid #1ccfaf;
-  overflow: hidden;
+#hero-label {
   background-color: #1ccfaf;
-  left: 0;
-  width: 80%;
-  margin: -4px 0 0 0;
-  z-index: 5;
-}
-#signup-btn {
-  right: 0;
-  bottom: 0;
-  width: 20%;
-  z-index: 0;
-}
-#mobile-login-btn {
-  margin: 0;
-  display: none;
-}
-#desktop-login-btn {
+  color: #fff;
+  width: 70%;
+  margin-left: 15%;
+  font-size: 25px;
+  line-height: 60px;
   position: absolute;
-  top: 30px;
-  right: 45px;
+  bottom: 125px;
+}
+#hero-signup-btn {
+  /* but ewe. should use prefix-free */
+  position: relative;
+  left: 50%;
+  /* but ewe. should use prefix-free */
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  position: absolute;
+  bottom: 35px;
 }
 #last-row {
   color: #3b3b3b;
