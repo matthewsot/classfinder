@@ -230,6 +230,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\aesthetic.png" />
+    <Content Include="Content\Images\Bubbles\aesthetic.png" />
+    <Content Include="Content\Images\Bubbles\efficient.png" />
+    <Content Include="Content\Images\Bubbles\simplified.png" />
     <Content Include="Content\Images\efficient.png" />
     <Content Include="Content\Images\favicon.ico" />
     <Content Include="Content\Images\hero.background.jpg" />
