@@ -160,14 +160,14 @@ input[type=email] {
   position: absolute;
   bottom: 35px;
 }
-#mobile-login-btn {
-  display: none;
-}
 #last-row {
   color: #3b3b3b;
   padding: 50px 0 50px 0;
   font-weight: 400;
   background-color: #f4f4f4;
+}
+#last-row #mobile-actions {
+  display: none;
 }
 #last-row .info-box {
   width: 300px;
@@ -363,9 +363,18 @@ input[type=email] {
     transform: translateY(-50%);
   }
   #main-row {
-    height: 450px;
+    height: auto;
+    padding: 0;
+    background-color: #1ccfaf;
+    background-image: none;
+  }
+  #main-row #mobile-background {
+    width: 100%;
+    height: auto;
+    margin: 0;
   }
   #hero-label {
+    display: none;
     position: static;
     width: 100%;
     margin: 0;
@@ -374,22 +383,27 @@ input[type=email] {
     border-radius: 20px;
   }
   #hero-signup-btn {
-    /* but ewe. should use prefix-free */
-    position: relative;
-    left: 50%;
-    /* but ewe. should use prefix-free */
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-    margin-top: 65px;
+    display: none;
   }
   #desktop-login-btn {
     display: none;
   }
-  #mobile-login-btn {
+  #last-row {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  #last-row #mobile-actions {
     display: block;
+  }
+  #mobile-actions #mobile-hero-label {
+    background-color: #1ccfaf;
+    color: #fff;
+    width: 100%;
+    margin: 0;
+    font-size: 20px;
+    line-height: 75px;
+  }
+  #mobile-actions .white-circle-btn {
     /* but ewe. should use prefix-free */
     position: relative;
     left: 50%;
@@ -399,6 +413,7 @@ input[type=email] {
     -o-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
+    margin-top: 25px;
   }
   #wedge-content {
     left: 0 !important;

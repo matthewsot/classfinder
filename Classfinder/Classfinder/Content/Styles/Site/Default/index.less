@@ -73,9 +73,6 @@
         position:absolute;
         bottom: 35px;
     }
-    #mobile-login-btn {
-        display:none;
-    }
 
 #last-row {
     color:@dark;
@@ -83,6 +80,10 @@
     font-weight:400;
     background-color:#f4f4f4;
 }
+    #last-row #mobile-actions {
+        display:none;
+    }
+
     @info-box-width: 300px;
     @info-box-padding: 75px;
     #last-row .info-box {
@@ -272,9 +273,18 @@
         }
 
     #main-row {
-        height:450px;
+        height:auto;
+        padding:0;
+        background-color:@green;
+        background-image:none;
     }
+        #main-row #mobile-background {
+            width:100%;
+            height:auto;
+            margin:0;
+        }
         #hero-label {
+            display:none;
             position:static;
             width:100%;
             margin:0;
@@ -284,16 +294,31 @@
             //todo get a mobile mockup from adhiv
         }
         #hero-signup-btn {
-            .half-horiz;
-            margin-top:65px;
+            display:none;
         }
         #desktop-login-btn {
             display:none;
         }
-        #mobile-login-btn {
+
+    #last-row {
+        margin-top:0;
+        padding-top:0;
+    }
+        #last-row #mobile-actions {
             display:block;
-            .half-horiz;
         }
+            #mobile-actions #mobile-hero-label {
+                background-color:@green;
+                color:#fff;
+                width:100%;
+                margin:0;
+                font-size:20px;
+                line-height:75px;
+            }
+            #mobile-actions .white-circle-btn {
+                .half-horiz;
+                margin-top:25px;
+            }
 
     #wedge-content {
         left:0 !important;
