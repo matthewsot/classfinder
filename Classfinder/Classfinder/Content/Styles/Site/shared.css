@@ -27,6 +27,15 @@ a:hover {
   height: 60px;
   line-height: 60px;
 }
+.green-on-white {
+  color: #1ccfaf;
+  border-color: #1ccfaf;
+  background-color: #fff;
+}
+.green-on-white:hover {
+  background-color: #1ccfaf;
+  color: #fff;
+}
 .white-on-green {
   color: #fff;
   background-color: #1ccfaf;
