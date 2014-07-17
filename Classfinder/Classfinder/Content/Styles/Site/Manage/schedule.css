@@ -8,6 +8,10 @@ html {
 }
 a {
   text-decoration: none;
+  color: #1ccfaf;
+}
+a:hover {
+  color: #17ab91;
 }
 .btn {
   border: 2px solid #fff;
@@ -28,7 +32,7 @@ a {
   color: #fff;
 }
 .white-on-dark:hover {
-  color: #3b3b3b;
+  color: #616161;
 }
 .green-on-white {
   color: #1ccfaf;

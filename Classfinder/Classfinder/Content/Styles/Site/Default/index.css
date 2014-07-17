@@ -8,6 +8,10 @@ html {
 }
 a {
   text-decoration: none;
+  color: #1ccfaf;
+}
+a:hover {
+  color: #17ab91;
 }
 .btn {
   border: 2px solid #fff;
@@ -28,7 +32,7 @@ a {
   color: #fff;
 }
 .white-on-dark:hover {
-  color: #3b3b3b;
+  color: #616161;
 }
 .green-on-white {
   color: #1ccfaf;
@@ -161,7 +165,7 @@ input[type=email] {
   bottom: 35px;
 }
 #last-row {
-  color: #3b3b3b;
+  color: #616161;
   padding: 50px 0 50px 0;
   font-weight: 400;
   background-color: #f4f4f4;
@@ -190,7 +194,7 @@ input[type=email] {
   margin: 0;
 }
 #last-row .info-box h2 {
-  color: #3b3b3b;
+  color: #616161;
   font-size: 18px;
 }
 #last-row .info-box img {
