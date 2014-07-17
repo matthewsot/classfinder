@@ -229,19 +229,16 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Images\aesthetic.png" />
     <Content Include="Content\Images\Bubbles\aesthetic.png" />
     <Content Include="Content\Images\Bubbles\efficient.png" />
     <Content Include="Content\Images\Bubbles\simplified.png" />
-    <Content Include="Content\Images\efficient.png" />
     <Content Include="Content\Images\favicon.ico" />
     <Content Include="Content\Images\hero.background.jpg" />
+    <Content Include="Content\Images\Homepage\laptop.jpg" />
+    <Content Include="Content\Images\Homepage\logo.green.png" />
     <Content Include="Content\Images\laptop.png" />
     <Content Include="Content\Images\logo.favicon.png" />
     <Content Include="Content\Images\logo.png" />
-    <Content Include="Content\Images\logo.shadow.png" />
-    <Content Include="Content\Images\logo.shadow.small.png" />
-    <Content Include="Content\Images\simplified.png" />
     <Content Include="Content\Scripts\suffix.js" />
     <Content Include="Content\Scripts\Wedge\wedge.js" />
     <Content Include="Content\Scripts\Wedge\wedge.min.js">
