@@ -21,49 +21,35 @@ a {
     }
 
 .btn {
-    border: 2px solid #fff;
-    border-radius: 4px;
-
-    color:#fff;
+    border-radius: 3px;
 
     font-weight:400;
     font-size:25px;
-    padding:10px 40px 10px 40px;
+    padding:0;
 
     cursor:pointer;
     text-decoration:none;
+    text-align:center;
+    margin:0;
     display:block;
-}
 
-    .btn:hover {
-        background-color:#fff;
-        color:@green;
-    }
-
-.white-on-dark {
-    color:#fff;
+    width:125px;
+    height:60px;
+    line-height:60px;
 }
-    .white-on-dark:hover {
-        color:@dark;
-    }
-
-.green-on-white {
-    color:@green;
-    border-color:@green;
-    background-color:#fff;
-}
-    .green-on-white:hover {
-        background-color:@green;
-        color:#fff;
-    }
 
 .white-on-green {
-    color:#fff;
-    border-color:@green;
-    background-color:rgba(0, 0, 0, 0.3);
+    color: #fff;
+    background-color: @green;
+    /* Thanks! http://stackoverflow.com/questions/7622822/make-background-fade-out-in */
+    -moz-transition: background-color 0.1s linear;
+    -o-transition: background-color 0.1s linear;
+    -webkit-transition: background-color 0.1s linear;
+    transition: background-color 0.1s linear;
 }
     .white-on-green:hover {
-        background-color:rgba(0, 0, 0, 0.6);
+        background-color:@dark-green;
+        color:#fff;
     }
 
 input {

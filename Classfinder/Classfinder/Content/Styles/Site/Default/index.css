@@ -14,42 +14,31 @@ a:hover {
   color: #17ab91;
 }
 .btn {
-  border: 2px solid #fff;
-  border-radius: 4px;
-  color: #fff;
+  border-radius: 3px;
   font-weight: 400;
   font-size: 25px;
-  padding: 10px 40px 10px 40px;
+  padding: 0;
   cursor: pointer;
   text-decoration: none;
+  text-align: center;
+  margin: 0;
   display: block;
-}
-.btn:hover {
-  background-color: #fff;
-  color: #1ccfaf;
-}
-.white-on-dark {
-  color: #fff;
-}
-.white-on-dark:hover {
-  color: #616161;
-}
-.green-on-white {
-  color: #1ccfaf;
-  border-color: #1ccfaf;
-  background-color: #fff;
-}
-.green-on-white:hover {
-  background-color: #1ccfaf;
-  color: #fff;
+  width: 125px;
+  height: 60px;
+  line-height: 60px;
 }
 .white-on-green {
   color: #fff;
-  border-color: #1ccfaf;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #1ccfaf;
+  /* Thanks! http://stackoverflow.com/questions/7622822/make-background-fade-out-in */
+  -moz-transition: background-color 0.1s linear;
+  -o-transition: background-color 0.1s linear;
+  -webkit-transition: background-color 0.1s linear;
+  transition: background-color 0.1s linear;
 }
 .white-on-green:hover {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #17ab91;
+  color: #fff;
 }
 input {
   font-family: Lato;
@@ -106,29 +95,18 @@ input[type=email] {
   margin-left: 50px;
 }
 #desktop-login-btn {
-  padding: 0;
-  width: 125px;
-  height: 60px;
   line-height: 60px;
-  text-align: center;
   position: absolute;
   right: 50px;
   top: 20px;
-  margin: 0;
-  background-color: #1ccfaf;
-  border: 1px solid #1ccfaf;
-}
-#desktop-login-btn:hover {
-  background-color: #fff;
-  color: #1ccfaf;
 }
 .white-circle-btn {
   background-color: #fff;
   color: #1ccfaf;
   border-radius: 30px;
-  width: 150px;
-  height: 40px;
-  line-height: 40px;
+  width: 200px;
+  height: 70px;
+  line-height: 70px;
   border: none;
 }
 .white-circle-btn:hover {
@@ -140,6 +118,9 @@ input[type=email] {
   background-size: cover;
   position: relative;
   height: 600px;
+}
+#mobile-background {
+  display: none;
 }
 #hero-label {
   background-color: #1ccfaf;
