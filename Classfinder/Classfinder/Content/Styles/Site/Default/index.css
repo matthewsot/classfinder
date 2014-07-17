@@ -354,6 +354,7 @@ input[type=email] {
     background-image: none;
   }
   #main-row #mobile-background {
+    display: block;
     width: 100%;
     height: auto;
     margin: 0;
