@@ -95,19 +95,21 @@ input[type=email] {
 #head-row {
   background-color: #fff;
   text-align: left;
-  height: 100px;
+  height: 75px;
   padding: 0;
 }
 #head-row img {
   height: 40px;
-  margin-top: 30px;
+  margin-top: 17.5px;
   margin-left: 50px;
 }
 #desktop-login-btn {
   line-height: 60px;
   position: absolute;
   right: 50px;
-  top: 20px;
+  top: 12.5px;
+  height: 50px;
+  line-height: 50px;
 }
 .white-circle-btn {
   background-color: #fff;
@@ -139,7 +141,7 @@ input[type=email] {
   font-size: 25px;
   line-height: 60px;
   position: absolute;
-  bottom: 125px;
+  bottom: 250px;
 }
 #hero-signup-btn {
   /* but ewe. should use prefix-free */
@@ -152,7 +154,7 @@ input[type=email] {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   position: absolute;
-  bottom: 35px;
+  bottom: 150px;
 }
 #last-row {
   color: #616161;
