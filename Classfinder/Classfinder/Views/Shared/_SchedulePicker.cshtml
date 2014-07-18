@@ -17,6 +17,7 @@
 
     <script type="text/javascript">
         var schedPickerPeriod = 1;
+        var currClassId = -1;
 
         $(".period-num").click(function () {
             $("#selected-class").text("");
@@ -32,11 +33,15 @@
 
             $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + schedPickerPeriod, function(data) {
                 $("#selected-class").text(data.name);
+                currClassId = data.id;
+                $("#results").children("div[data-class-id='" + data.id + "']").addClass("selected-result");
             });
         });
 
-        $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + schedPickerPeriod, function(data) {
+        $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + schedPickerPeriod, function (data) {
             $("#selected-class").text(data.name);
+            currClassId = data.id;
+            $("#results").children("div[data-class-id='" + data.id + "']").addClass("selected-result");
         });
     </script>
     
@@ -101,11 +106,17 @@
 
                     for (var i = 0; i < classes.length; i++) {
                         var clss = classes[i];
-                        $("#results").append("<div>" + clss.name + "</div>");
+                        if (clss.id == currClassId) {
+                            $("#results").append('<div data-class-id="' + clss.id + '" class="selected-result">' + clss.name + "</div>");
+                        } else {
+                            $("#results").append('<div data-class-id="' + clss.id + '">' + clss.name + "</div>");
+                        }
                     }
 
                     $("#results").children("div").click(function () {
                         addClass($(this).text());
+                        $("#results").children("div").removeClass("selected-result");
+                        $(this).addClass("selected-result");
                     });
                 }
             </script>

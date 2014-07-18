@@ -65,7 +65,8 @@ namespace Classfinder.Controllers
 
             return Ok(new ClassModel
             {
-                name = classInPeriod.Name
+                name = classInPeriod.Name,
+                id = classInPeriod.Id
             });
         }
 
@@ -97,6 +98,7 @@ namespace Classfinder.Controllers
         public class ClassModel
         {
             public string name { get; set; }
+            public int id { get; set; }
         }
 
         [HttpGet]

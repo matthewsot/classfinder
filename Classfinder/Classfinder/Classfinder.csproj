@@ -239,6 +239,7 @@
     <Content Include="Content\Images\laptop.png" />
     <Content Include="Content\Images\logo.favicon.png" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Scripts\prefix-free.min.js" />
     <Content Include="Content\Scripts\suffix.js" />
     <Content Include="Content\Scripts\Wedge\wedge.js" />
     <Content Include="Content\Scripts\Wedge\wedge.min.js">

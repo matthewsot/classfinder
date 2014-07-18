@@ -438,6 +438,10 @@ body {
   background-color: #1ccfaf;
   color: #fff;
 }
+#results div.selected-result {
+  background-color: #1ccfaf;
+  color: #fff;
+}
 #nav-list a:first-child {
   background-color: #1ccfaf;
   color: #fff;
