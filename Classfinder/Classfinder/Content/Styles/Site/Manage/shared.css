@@ -63,8 +63,24 @@ input[type=password],
 input[type=email] {
   height: 50px;
   border: 1px solid #1ccfaf;
+  border-radius: 3px;
   text-align: center;
   color: #1ccfaf;
+  -moz-transition: background-color 0.1s linear;
+  -o-transition: background-color 0.1s linear;
+  -webkit-transition: background-color 0.1s linear;
+  transition: background-color 0.1s linear;
+}
+input[type=text]:hover,
+input[type=text]:focus,
+input[type=password]:hover,
+input[type=password]:focus,
+input[type=email]:hover,
+input[type=email]:focus {
+  border: 1px solid #17ab91 !important;
+}
+.selected-input {
+  border: 1px solid #17ab91 !important;
 }
 .half-vert {
   position: relative;
@@ -118,7 +134,7 @@ body {
   margin-left: 12.5%;
 }
 #header-row {
-  border-bottom: 1px solid #8b8b8b;
+  border-bottom: 1px solid #acacac;
   position: relative;
   height: 100px;
   margin-top: 50px;
@@ -142,7 +158,7 @@ body {
   text-align: right;
 }
 #curr-page-options #curr-page-label {
-  color: #8b8b8b;
+  color: #acacac;
   font-size: 25px;
   padding-bottom: 5px;
 }
@@ -166,7 +182,7 @@ body {
   line-height: 40px;
   height: 40px;
   width: 100%;
-  color: #8b8b8b;
+  color: #acacac;
   text-decoration: none;
   border-bottom: 1px solid #1ccfaf;
   border-right: 1px solid #1ccfaf;

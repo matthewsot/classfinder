@@ -63,8 +63,24 @@ input[type=password],
 input[type=email] {
   height: 50px;
   border: 1px solid #1ccfaf;
+  border-radius: 3px;
   text-align: center;
   color: #1ccfaf;
+  -moz-transition: background-color 0.1s linear;
+  -o-transition: background-color 0.1s linear;
+  -webkit-transition: background-color 0.1s linear;
+  transition: background-color 0.1s linear;
+}
+input[type=text]:hover,
+input[type=text]:focus,
+input[type=password]:hover,
+input[type=password]:focus,
+input[type=email]:hover,
+input[type=email]:focus {
+  border: 1px solid #17ab91 !important;
+}
+.selected-input {
+  border: 1px solid #17ab91 !important;
 }
 .half-vert {
   position: relative;
@@ -193,14 +209,14 @@ input[type=email] {
   width: 100%;
 }
 #last-row .info-box p {
-  color: #8b8b8b;
+  color: #acacac;
   font-size: 18px;
 }
 #footer {
   font-weight: 400;
   margin-top: 700px;
   font-size: 20px;
-  color: #8b8b8b;
+  color: #acacac;
 }
 #footer .hashtag {
   margin-top: 20px;
@@ -222,7 +238,7 @@ input[type=email] {
   width: 500px;
   height: 400px;
   background-color: #fff;
-  color: #8b8b8b;
+  color: #acacac;
   border-radius: 5px;
 }
 #login-popup h1 {
@@ -251,11 +267,6 @@ input[type=email] {
   margin-top: 15px;
   margin-left: 150px;
   font-weight: 300;
-  border: 1px solid #1ccfaf;
-}
-#login-popup a {
-  text-decoration: none;
-  color: #1ccfaf;
 }
 @media all and (max-width: 1200px) {
   #last-row .info-box {
@@ -277,7 +288,7 @@ input[type=email] {
     font-size: 15px;
   }
   #last-row .info-box p {
-    color: #8b8b8b;
+    color: #acacac;
     font-size: 15px;
   }
 }
@@ -309,7 +320,7 @@ input[type=email] {
     font-size: 13px;
   }
   #last-row .info-box p {
-    color: #8b8b8b;
+    color: #acacac;
     font-size: 13px;
   }
 }

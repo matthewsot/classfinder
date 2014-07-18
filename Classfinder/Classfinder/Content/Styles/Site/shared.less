@@ -1,8 +1,8 @@
 ﻿@green: #1ccfaf;
 @dark-green: #17ab91;
 @dark: #616161;
-@light: #8b8b8b;
-@off-white: #f4f4f4;
+@light: #acacac;
+@off-white:#f4f4f4;
 
 body, html {
     width:100%;
@@ -48,14 +48,15 @@ a {
         color:#fff;
     }
 
+@fade-animation: 0.1s linear;
 .white-on-green {
     color: #fff;
     background-color: @green;
     /* Thanks! http://stackoverflow.com/questions/7622822/make-background-fade-out-in */
-    -moz-transition: background-color 0.1s linear;
-    -o-transition: background-color 0.1s linear;
-    -webkit-transition: background-color 0.1s linear;
-    transition: background-color 0.1s linear;
+    -moz-transition: background-color @fade-animation;
+    -o-transition: background-color @fade-animation;
+    -webkit-transition: background-color @fade-animation;
+    transition: background-color @fade-animation;
 }
     .white-on-green:hover {
         background-color:@dark-green;
@@ -70,14 +71,32 @@ input {
 input:focus, textarea:focus { //Thanks! https://stackoverflow.com/questions/3779577/how-to-get-rid-of-text-box-selection-highlight-on-chrome-safari
     outline: none;
 }
+
 input[type=text],
 input[type=password],
 input[type=email] {
-    height:50px;
-    border:1px solid @green;
-    text-align:center;
-    color:@green;
+    height: 50px;
+    border: 1px solid @green;
+    border-radius: 3px;
+    text-align: center;
+    color: @green;
+
+    -moz-transition: background-color @fade-animation;
+    -o-transition: background-color @fade-animation;
+    -webkit-transition: background-color @fade-animation;
+    transition: background-color @fade-animation;
 }
+    input[type=text]:hover,
+    input[type=text]:focus,
+    input[type=password]:hover,
+    input[type=password]:focus,
+    input[type=email]:hover,
+    input[type=email]:focus {
+        .selected-input;
+    }
+    .selected-input {
+        border:1px solid @dark-green !important; //technically input[type=blah] is more specific, but I don't want to copy/paste all that again. Yay for !important!
+    }
 
 .circle(@size) {
     height:@size;

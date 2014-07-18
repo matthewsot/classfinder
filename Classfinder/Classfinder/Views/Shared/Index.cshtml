@@ -3,12 +3,12 @@
 }
 
 @section head {
-    <link href="~/Content/Styles/Site/Default/index.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Styles/Site/Default/index.min.css" rel="stylesheet" type="text/css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="~/Content/Scripts/Wedge/wedge.min.js"></script>
 }
 <div class="row" id="head-row">
-    <img src="~/Content/Images/Homepage/logo.green.png" />
+    <img src="~/Content/Images/Homepage/logo.green.png" alt="classfinder" />
     <a href="#" id="desktop-login-btn" class="btn white-on-green">log in</a>
 </div>
 
@@ -83,7 +83,7 @@
         <br />
         <label for="login-remember">Remember me</label> <input name="RememberMe" type="checkbox" id="login-remember" value="true" checked /> <!-- Thanks! http://stackoverflow.com/questions/6441654/html-input-checkbox-return-on-instead-of-true-when-submitting-form -->
         <br />
-        <input type="submit" id="login-btn" value="let's go -->" class="btn green-on-white" />
+        <input type="submit" id="login-btn" value="let's go -->" class="btn white-on-green" />
     </form>
     <br />
     <span>don't have an account? sign up <a href="~/Welcome/SignUp">here</a></span>
@@ -107,4 +107,13 @@
     if (window.location.hash.indexOf("login") != -1 || @(ViewBag.ShowLogin.ToString().ToLower())) {
         $("#desktop-login-btn").click();
     }
+
+    $("input[type=text],input[type=password],input[type=email]").on("keyup", function() {
+        if (!$(this).hasClass("selected-input") && $(this).val() != "") {
+            $(this).addClass("selected-input");
+        }
+        else if ($(this).hasClass("selected-input") && $(this).val() == "") {
+            $(this).removeClass("selected-input");
+        }
+    });
 </script>
