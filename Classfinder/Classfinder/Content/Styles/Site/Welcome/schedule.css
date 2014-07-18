@@ -220,10 +220,11 @@ button {
 #add-class-label {
   color: #616161;
   text-align: left;
-  margin-top: 20px;
+  margin-top: 27px;
   margin-bottom: 0;
   padding-left: 30px;
   font-size: 30px;
+  font-weight: 700;
 }
 #no-class-btn {
   position: absolute;
@@ -251,41 +252,43 @@ button {
   padding: 0;
   padding-left: 5px;
   border-radius: 0;
+  border: none;
 }
 #teacher-input {
+  z-index: 1;
   left: 0;
-  border: none;
-  border-right: 1px solid #1ccfaf;
 }
 #subject-input {
+  z-index: 5;
+  border-left: 1px solid #1ccfaf !important;
   left: 35%;
-  border: none;
 }
 #add-class-btn {
-  background-color: #1ccfaf;
-  color: #fff;
   position: absolute;
-  right: -1px;
-  top: -1px;
-  height: 52px;
+  right: 0;
+  top: 0;
+  height: 100%;
   width: 30%;
-}
-#add-class-btn:hover {
-  background-color: #fff;
-  color: #1ccfaf;
 }
 #results-container {
   width: 100%;
-  border-top: 1px solid #1ccfaf;
+  margin-top: 25px;
+  text-align: left;
 }
 #results-label {
-  font-size: 25px;
-  font-weight: 300;
+  font-size: 20px;
+  font-weight: 700;
+  color: #616161;
+  margin-left: 25px;
 }
 #results {
   font-size: 20px;
   text-align: left;
   margin-left: 15px;
+  display: flex;
+  display: flexbox;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 #results div {
   cursor: pointer;

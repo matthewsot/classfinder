@@ -30,7 +30,8 @@ namespace Classfinder.Controllers
         [AllowAnonymous]
         public IHttpActionResult SearchClasses(string school, int period, string searchTerm)
         {
-            var classes = db.Classes.Where(@class => @class.Name.Contains(searchTerm) && @class.Period == period && (@class.School == school || @class.School == null));
+            var classes = db.Classes.Where(@class => @class.Name.Contains(searchTerm) && @class.Period == period && (@class.School == school || @class.School == null)).ToList();
+            classes.RemoveAll(@class => @class.Name == "No Class");
 
             return Ok(classes.Select(@class => new
             {
