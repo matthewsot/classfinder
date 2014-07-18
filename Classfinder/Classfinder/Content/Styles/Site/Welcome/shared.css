@@ -62,9 +62,7 @@ input:focus,
 textarea:focus {
   outline: none;
 }
-input[type=text],
-input[type=password],
-input[type=email] {
+.pretty-input {
   height: 50px;
   border: 1px solid #1ccfaf;
   border-radius: 3px;
@@ -75,12 +73,8 @@ input[type=email] {
   -webkit-transition: background-color 0.1s linear;
   transition: background-color 0.1s linear;
 }
-input[type=text]:hover,
-input[type=text]:focus,
-input[type=password]:hover,
-input[type=password]:focus,
-input[type=email]:hover,
-input[type=email]:focus {
+.pretty-input:hover,
+.pretty-input:focus {
   border: 1px solid #17ab91 !important;
 }
 .selected-input {

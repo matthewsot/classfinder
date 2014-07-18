@@ -5,9 +5,28 @@
     height: @picker-height;
     position:relative;
 }
+    @header-height:75px;
     #schedule-picker-header {
-
+        width:100%;
+        background-color:@dark;
+        height:@header-height;
+        line-height:@header-height;
+        text-align:left;
     }
+        #schedule-picker-header h1 {
+            font-size:35px;
+            color:#fff;
+            font-weight:300;
+        }
+        #selected-class-label {
+            margin-left:25px;
+        }
+        #selected-class {
+            position:absolute;
+            right:25px;
+            top:0;
+            margin:0;
+        }
 
     #period-selector {
         width:15%;
@@ -15,10 +34,10 @@
         font-size:25px;
         position:absolute;
         left:0;
-        top:0;
+        top:@header-height;
         margin:0;
     }
-        @period-box-height: (.1428571428571428 * @picker-height);
+        @period-box-height: (.1428571428571428 * (@picker-height - @header-height));
         #period-selector .period-num {
             cursor:pointer;
             width:100%;
@@ -30,7 +49,7 @@
             color:#fff;
         }
             #period-selector .selected {
-                background-color:@green;
+                background-color:@dark-green;
                 color:#fff;
             }
 
@@ -38,41 +57,43 @@
             position:absolute;
             left:15%;
             width:85%;
-            top:0;
+            top:@header-height;
+            background-color:@off-white;
+            height:@picker-height - @header-height;
         }
-            #selected-class-box {
-                border-top: 1px solid @green;
-                height: 100px;
-                position: relative;
+            #add-class-label {
+                color:@dark;
+                text-align:left;
+                margin-top:20px;
+                margin-bottom:0;
+                padding-left:30px;
+                font-size:30px;
             }
-                #selected-class-box div {
-                    position: absolute;
-                    padding: 20px;
-                }
-                #selected-class-label {
-                    font-size: 25px;
-                    border-right: 1px solid @green;
-                    border-bottom: 1px solid @green;
-                }
-                #selected-class {
-                    position: absolute;
-                    bottom: 0;
-                    right: 0;
-                    font-size: 40px;
-                    margin-right: 15px;
-                }
-    
+            #no-class-btn {
+                position:absolute;
+                right:30px;
+                top:15px;
+                font-size:25px;
+
+                height:50px;
+                line-height:50px;
+
+                width:150px;
+                font-weight:300;
+            }
 
             #class-search-box {
-                margin-top: 20px;
+                margin-top: 40px;
                 width: 100%;
-                border-top: 1px solid @green;
-                height: 50px;
+                height: 100px;
+                line-height:100px;
                 position: relative;
             }
                 #class-search-box input {
+                    background-color:#fff;
                     position:absolute;
                     width:35%;
+                    height:100%;
                     text-align:left;
                     padding:0;
                     padding-left:5px;
@@ -80,12 +101,12 @@
                 }
                     #teacher-input {
                         left:0;
-                        border:0;
+                        border:none;
+                        border-right:1px solid @green;
                     }
                     #subject-input {
-                        border:0;
-                        border-left:1px solid @green;
                         left:35%;
+                        border:none;
                     }
 
                 #add-class-btn {
