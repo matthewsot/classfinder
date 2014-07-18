@@ -168,7 +168,11 @@ namespace Classfinder.Controllers
 
             db.SaveChanges();
 
-            return Ok("GOOD");
+            return Ok(new
+            {
+                good = true,
+                id = schedule.FirstOrDefault(@class => @class.Period == period).Id
+            });
         }
 
         protected override void Dispose(bool disposing)

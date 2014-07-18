@@ -77,13 +77,13 @@
     <span>@(ViewBag.LoginError ?? "")</span>
     <form action="/Account/Login?ReturnUrl=@(ViewBag.ReturnUrl ?? "")" method="POST" id="login-form">
         @Html.AntiForgeryToken()
-        <input name="UserName" type="text" id="login-username" placeholder="username" />
+        <input name="UserName" type="text" id="login-username" placeholder="username" class="pretty-input" />
         <br />
-        <input name="Password" type="password" id="login-password" placeholder="password" />
+        <input name="Password" type="password" id="login-password" placeholder="password" class="pretty-input" />
         <br />
         <label for="login-remember">Remember me</label> <input name="RememberMe" type="checkbox" id="login-remember" value="true" checked /> <!-- Thanks! http://stackoverflow.com/questions/6441654/html-input-checkbox-return-on-instead-of-true-when-submitting-form -->
         <br />
-        <input type="submit" id="login-btn" value="let's go -->" class="btn white-on-green" />
+        <input type="submit" id="login-btn" value="let's go -->" class="white-on-green btn" />
     </form>
     <br />
     <span>don't have an account? sign up <a href="~/Welcome/SignUp">here</a></span>

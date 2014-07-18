@@ -65,7 +65,7 @@
                     return className;
                 }
 
-                $("#teacher-input, #subject-input").keyup(function () {
+                $("#teacher-input, #subject-input").on("keyup", function () {
                     $.getJSON("/API/Classes/" + school + "/" + schedPickerPeriod + "/" + encodeURIComponent(getClassName()), function (data) {
                         fillTableWithClasses(data);
                     });
@@ -79,7 +79,8 @@
                         $.post("/API/Schedule/" + userId + "/" + semester + "/" + schedPickerPeriod, {
                             name: className
                         }, function (data) {
-                            if (data == "GOOD") {
+                            if (data.good == true) {
+                                currClassId = data.id;
                                 $("#selected-class").text(className);
                                 $("#class-input").val("");
                             }
@@ -92,6 +93,11 @@
 
                 $("#add-class-btn").click(function () {
                     addClass(getClassName());
+                });
+
+                $("#no-class-btn").click(function() {
+                    addClass("No Class");
+                    $("#results").children("div").removeClass("selected-result");
                 });
             </script>
         </div>
@@ -119,6 +125,8 @@
                         $(this).addClass("selected-result");
                     });
                 }
+
+                $("#teacher-input").trigger("keyup");
             </script>
         </div>
     </div>

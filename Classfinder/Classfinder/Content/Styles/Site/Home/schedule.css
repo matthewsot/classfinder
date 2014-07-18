@@ -13,7 +13,8 @@ a {
 a:hover {
   color: #287062;
 }
-button {
+button,
+input[type=submit] {
   border: none;
   cursor: pointer;
 }
