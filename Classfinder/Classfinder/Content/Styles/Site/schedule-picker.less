@@ -131,28 +131,24 @@
                     margin-left:25px;
                 }
                 #results {
-                    font-size:20px;
-                    text-align:left;
-                    margin-left:15px;
-                    display:flex;
-                    display:flexbox;
-                    flex-wrap:wrap;
-                    justify-content:flex-start;
+                    font-size: 20px;
+                    text-align: left;
+                    margin-left: 15px;
+                    display: flex;
+                    display: flexbox;
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
                 }
                     #results div {
-                        
-                        cursor:pointer;
-                        text-align:left;
-                        height:50px;
-                        line-height:50px;
-                        float:left;
-                        width:30%;
-                        //TODO: sometimes the things run over O:
-                        overflow-x:visible;
+                        cursor: pointer;
+                        padding: 5px;
+                        border: 1px solid @green;
+                        border-radius: 3px;
+                        margin: 5px;
+
+                        transition: background-color @fade-animation;
                     }
-                        #results div:nth-child(3n - 1) {
-                            text-align:center;
-                        }
-                        #results div:nth-child(3n) {
-                            text-align:right;
+                        #results div:hover {
+                            background-color:@green;
+                            color:#fff;
                         }

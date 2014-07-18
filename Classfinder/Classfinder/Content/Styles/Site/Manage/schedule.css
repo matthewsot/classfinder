@@ -428,18 +428,15 @@ body {
 }
 #results div {
   cursor: pointer;
-  text-align: left;
-  height: 50px;
-  line-height: 50px;
-  float: left;
-  width: 30%;
-  overflow-x: visible;
+  padding: 5px;
+  border: 1px solid #1ccfaf;
+  border-radius: 3px;
+  margin: 5px;
+  transition: background-color 0.1s linear;
 }
-#results div:nth-child(3n - 1) {
-  text-align: center;
-}
-#results div:nth-child(3n) {
-  text-align: right;
+#results div:hover {
+  background-color: #1ccfaf;
+  color: #fff;
 }
 #nav-list a:first-child {
   background-color: #1ccfaf;
