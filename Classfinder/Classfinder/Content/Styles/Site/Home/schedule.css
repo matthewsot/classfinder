@@ -13,6 +13,10 @@ a {
 a:hover {
   color: #287062;
 }
+button {
+  border: none;
+  cursor: pointer;
+}
 .btn {
   border-radius: 3px;
   font-weight: 400;
@@ -173,10 +177,10 @@ input[type=email]:focus {
 #classmates td:last-child {
   text-align: right;
   padding-right: 25px;
-  color: #a6a6a6;
+  color: #acacac;
 }
 #header-row {
-  color: #7c7c7c;
+  color: #616161;
   font-size: 25px;
 }
 #header-row td {
@@ -241,11 +245,11 @@ input[type=email]:focus {
   font-size: 25px;
   top: 60px;
   right: 5%;
-  color: #acacac;
+  color: #616161;
   margin: 0;
 }
 #table-container {
-  background-color: #ededed;
+  background-color: #f4f4f4;
   border-radius: 15px;
   min-height: 300px;
   position: absolute;
@@ -401,7 +405,7 @@ input[type=email]:focus {
   }
   body,
   html {
-    background-color: #ededed;
+    background-color: #f4f4f4;
   }
   #table-container {
     border-radius: 0;

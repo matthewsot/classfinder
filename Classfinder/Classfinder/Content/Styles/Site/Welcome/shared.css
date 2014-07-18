@@ -13,6 +13,10 @@ a {
 a:hover {
   color: #17ab91;
 }
+button {
+  border: none;
+  cursor: pointer;
+}
 .btn {
   border-radius: 3px;
   font-weight: 400;
@@ -145,19 +149,9 @@ body {
   background-color: #1ccfaf;
 }
 button {
-  cursor: pointer;
   font-size: 30px;
-  font-weight: 300;
   height: 50px;
   width: 300px;
-  border: 1px solid #1ccfaf;
-  background-color: transparent;
-  color: #1ccfaf;
-  font-family: Lato;
-}
-button:hover {
-  background-color: #1ccfaf;
-  color: #fff;
 }
 @media screen and (max-width: 800px) {
   #progress-bar {

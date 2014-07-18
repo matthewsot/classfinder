@@ -13,6 +13,10 @@ a {
 a:hover {
   color: #17ab91;
 }
+button {
+  border: none;
+  cursor: pointer;
+}
 .btn {
   border-radius: 3px;
   font-weight: 400;
@@ -292,19 +296,21 @@ body {
   }
 }
 #schedule-picker-container {
-  border: 1px solid #1ccfaf;
   height: 600px;
+  position: relative;
 }
 #period-selector {
-  width: 80%;
-  margin: 20px 10%;
-  height: 50px;
+  width: 15%;
+  height: 100%;
   font-size: 25px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
 }
 #period-selector .period-num {
   cursor: pointer;
-  line-height: 50px;
-  width: 50px;
+  width: 100%;
   /* but ewe. should use prefix-free */
   position: relative;
   left: 50%;
@@ -314,15 +320,21 @@ body {
   -o-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
+  height: 85.71428571px;
+  line-height: 85.71428571px;
+  margin: 0;
+  background-color: #1ccfaf;
+  color: #fff;
 }
 #period-selector .selected {
   background-color: #1ccfaf;
-  border-radius: 50px;
   color: #fff;
 }
-#period-selector div {
-  float: left;
-  width: 14.28571428571428%;
+#schedule-picker-content {
+  position: absolute;
+  left: 15%;
+  width: 85%;
+  top: 0;
 }
 #selected-class-box {
   border-top: 1px solid #1ccfaf;
@@ -358,6 +370,7 @@ body {
   text-align: left;
   padding: 0;
   padding-left: 5px;
+  border-radius: 0;
 }
 #teacher-input {
   left: 0;

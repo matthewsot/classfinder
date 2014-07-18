@@ -1,13 +1,18 @@
 ﻿@using Microsoft.AspNet.Identity
 <div id="schedule-picker-container">
+    <div id="schedule-picker-header">
+        <h1 id="selected-class-label">Your Class:</h1>
+        <h1 id="selected-class"></h1>
+    </div>
+    
     <div id="period-selector">
-        <div><div class="period-num selected">1</div></div>
-        <div><div class="period-num">2</div></div>
-        <div><div class="period-num">3</div></div>
-        <div><div class="period-num">4</div></div>
-        <div><div class="period-num">5</div></div>
-        <div><div class="period-num">6</div></div>
-        <div><div class="period-num">7</div></div>
+        <div class="period-num selected">1</div>
+        <div class="period-num">2</div>
+        <div class="period-num">3</div>
+        <div class="period-num">4</div>
+        <div class="period-num">5</div>
+        <div class="period-num">6</div>
+        <div class="period-num">7</div>
     </div>
 
     <script type="text/javascript">
@@ -34,76 +39,74 @@
             $("#selected-class").text(data.name);
         });
     </script>
+    
+    <div id="schedule-picker-content">
 
-    <div id="selected-class-box">
-        <div id="selected-class-label">Your Class:</div>
-        <div id="selected-class"></div>
-    </div>
+        <div id="class-search-box">
+            <input id="teacher-input" type="text" placeholder="  Teacher Name" />
+            <input id="subject-input" type="text" placeholder="  Subject" />
 
-    <div id="class-search-box">
-        <input id="teacher-input" type="text" placeholder="  Teacher Name" />
-        <input id="subject-input" type="text" placeholder="  Subject" />
+            <button id="add-class-btn">ADD CLASS</button>
+            <script type="text/javascript">
+                function getClassName() {
+                    var teacher = $("#teacher-input").val().trim();
+                    var subject = $("#subject-input").val().trim();
 
-        <button id="add-class-btn">ADD CLASS</button>
-        <script type="text/javascript">
-            function getClassName() {
-                var teacher = $("#teacher-input").val().trim();
-                var subject = $("#subject-input").val().trim();
+                    var className = teacher;
+                    if (subject != "") className += ", " + subject;
 
-                var className = teacher;
-                if (subject != "") className += ", " + subject;
-
-                return className;
-            }
-
-            $("#teacher-input, #subject-input").keyup(function () {
-                $.getJSON("/API/Classes/" + school + "/" + schedPickerPeriod + "/" + encodeURIComponent(getClassName()), function (data) {
-                    fillTableWithClasses(data);
-                });
-            });
-
-            function addClass(className) {
-                if (className == "") {
-                    alert("Please enter a class");
+                    return className;
                 }
-                else {
-                    $.post("/API/Schedule/" + userId + "/" + semester + "/" + schedPickerPeriod, {
-                        name: className
-                    }, function(data) {
-                        if(data == "GOOD") {
-                            $("#selected-class").text(className);
-                            $("#class-input").val("");
-                        }
+
+                $("#teacher-input, #subject-input").keyup(function () {
+                    $.getJSON("/API/Classes/" + school + "/" + schedPickerPeriod + "/" + encodeURIComponent(getClassName()), function (data) {
+                        fillTableWithClasses(data);
+                    });
+                });
+
+                function addClass(className) {
+                    if (className == "") {
+                        alert("Please enter a class");
+                    }
+                    else {
+                        $.post("/API/Schedule/" + userId + "/" + semester + "/" + schedPickerPeriod, {
+                            name: className
+                        }, function (data) {
+                            if (data == "GOOD") {
+                                $("#selected-class").text(className);
+                                $("#class-input").val("");
+                            }
+                        });
+                    }
+
+                    var teacher = $("#teacher-input").val(""); //todo: make sure this works
+                    var subject = $("#subject-input").val("");
+                }
+
+                $("#add-class-btn").click(function () {
+                    addClass(getClassName());
+                });
+            </script>
+        </div>
+
+        <div id="results-container">
+            <h1 id="results-label">Recorded <span id="period-label">1st</span> Period Classes:</h1>
+            <div id="results"></div>
+
+            <script type="text/javascript">
+                function fillTableWithClasses(classes) {
+                    $("#results").html("");
+
+                    for (var i = 0; i < classes.length; i++) {
+                        var clss = classes[i];
+                        $("#results").append("<div>" + clss.name + "</div>");
+                    }
+
+                    $("#results").children("div").click(function () {
+                        addClass($(this).text());
                     });
                 }
-
-                var teacher = $("#teacher-input").val(""); //todo: make sure this works
-                var subject = $("#subject-input").val("");
-            }
-
-            $("#add-class-btn").click(function() {
-                addClass(getClassName());
-            });
-        </script>
-    </div>
-
-    <div id="results-container">
-        <h1 id="results-label">Recorded <span id="period-label">1st</span> Period Classes:</h1>
-        <div id="results"></div>
-
-        <script type="text/javascript">
-            function fillTableWithClasses(classes) {
-                $("#results").html("");
-
-                for (var i = 0; i < classes.length; i++) {
-                    var clss = classes[i];
-                    $("#results").append("<div>" + clss.name + "</div>");
-                }
-
-                $("#results").children("div").click(function () {
-                    addClass($(this).text());
-                });
-            }
-        </script>
+            </script>
+        </div>
     </div>
 </div>

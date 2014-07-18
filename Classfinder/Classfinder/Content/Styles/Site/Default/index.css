@@ -13,6 +13,10 @@ a {
 a:hover {
   color: #17ab91;
 }
+button {
+  border: none;
+  cursor: pointer;
+}
 .btn {
   border-radius: 3px;
   font-weight: 400;
