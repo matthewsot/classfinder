@@ -24,6 +24,8 @@
             schedPickerPeriod = parseInt($(this).text());
             $("#class-input").keydown();
 
+            //meh. I shouldn't use such a generic "selected" class for this
+            //redo this with sched-period-selected or use polymer or something, idk
             $(".period-num").removeClass("selected");
             $(this).addClass("selected");
 
@@ -78,7 +80,7 @@
                         alert("Please enter a class");
                     }
                     else {
-                        $.post("/API/Schedule/" + userId + "/" + semester + "/" + schedPickerPeriod, {
+                        $.post("/API/Schedule/" + semester + "/" + schedPickerPeriod, {
                             name: className
                         }, function (data) {
                             if (data.good == true) {
