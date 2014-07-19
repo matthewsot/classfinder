@@ -23,6 +23,11 @@ namespace Classfinder.Controllers
     {
         public string Email { get; set; }
     }
+    public class ChangePasswordModel
+    {
+        public string OldPassword { get; set; }
+        public string NewPassword { get; set; }
+    }
 
     [Authorize]
     public class AccountAPIController : ApiController
@@ -90,6 +95,25 @@ namespace Classfinder.Controllers
 
                 smtpServer.Send(mail);
                 return Ok("GOOD");
+            }
+        }
+
+        [HttpPost]
+        [Route("API/Account/ChangePassword")]
+        public async Task<IHttpActionResult> ChangePassword(ChangePasswordModel model)
+        {
+            using (var userManager = new UserManager<UserAccount>(
+                    new Microsoft.AspNet.Identity.EntityFramework.UserStore<UserAccount>(db)))
+            {
+                var result = await userManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+                if (result.Succeeded)
+                {
+                    return Ok("GOOD");
+                }
+                else
+                {
+                    return Ok("ERROR");
+                }
             }
         }
 

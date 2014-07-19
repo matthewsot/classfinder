@@ -264,6 +264,12 @@
     <Content Include="Content\Styles\Site\Home\shared.min.css">
       <DependentUpon>shared.css</DependentUpon>
     </Content>
+    <Content Include="Content\Styles\Site\Manage\password.css">
+      <DependentUpon>password.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\Manage\password.min.css">
+      <DependentUpon>password.css</DependentUpon>
+    </Content>
     <Content Include="Content\Styles\Site\Manage\schedule.css">
       <DependentUpon>schedule.less</DependentUpon>
     </Content>
@@ -375,6 +381,10 @@
     <Content Include="Content\Styles\Site\Manage\schedule.css.map">
       <DependentUpon>schedule.css</DependentUpon>
     </Content>
+    <Content Include="Content\Styles\Site\Manage\password.less" />
+    <Content Include="Content\Styles\Site\Manage\password.css.map">
+      <DependentUpon>password.css</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <Content Include="Views\Welcome\SignUp.cshtml" />
     <Content Include="Views\Welcome\_Setup.cshtml" />
@@ -385,6 +395,7 @@
     <Content Include="Views\Shared\_SchedulePicker.cshtml" />
     <Content Include="Views\Manage\Schedule.cshtml" />
     <Content Include="Views\Manage\_Layout.cshtml" />
+    <Content Include="Views\Manage\Password.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Default\" />

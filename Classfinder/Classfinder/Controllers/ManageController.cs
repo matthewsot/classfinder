@@ -7,6 +7,8 @@ namespace Classfinder.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        CfDb db = new CfDb();
+
         // GET: Manage
         public ActionResult Index()
         {
@@ -21,6 +23,21 @@ namespace Classfinder.Controllers
                 ViewBag.School = user.School;
                 return View();
             }
+        }
+
+        public ActionResult Password()
+        {
+            return View();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && db != null)
+            {
+                db.Dispose();
+                db = null;
+            }
+            base.Dispose(disposing);
         }
     }
 }
