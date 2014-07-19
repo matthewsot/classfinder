@@ -31,7 +31,7 @@ namespace Classfinder.Controllers
         {
             //If users change their username, sometimes User.Identity.GetUserName() doesn't always return the latest username
             var user = db.Users.Find(User.Identity.GetUserId());
-            return Redirect("/Schedule/" + user.Id);
+            return Redirect("/Schedule/" + user.UserName);
         }
 
         [HttpGet]
