@@ -36,6 +36,8 @@
                 currClassId = data.id;
                 $("#results").children("div[data-class-id='" + data.id + "']").addClass("selected-result");
             });
+
+            $("#results").text("");
         });
 
         $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + schedPickerPeriod, function (data) {
