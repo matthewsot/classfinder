@@ -27,14 +27,14 @@ namespace Classfinder.Controllers
         }
 
         [HttpGet]
-        [Route("API/Classes/{school}/{period}/{searchTerm}")]
+        [Route("API/Classes/{school}/{period}")]
         [AllowAnonymous]
-        public IHttpActionResult SearchClasses(string school, int period, string searchTerm)
+        public IHttpActionResult GetAllClasses(string school, int period)
         {
-            var classes = db.Classes.Where(@class => @class.Name.Contains(searchTerm) && @class.Period == period && (@class.School == school || @class.School == null)).ToList();
+            var classes = db.Classes.Where(@class => @class.Period == period && (@class.School == school || @class.School == null)).ToList();
             classes.RemoveAll(@class => @class.Name == "No Class");
 
-            return Ok(classes.Select(@class => new
+            return Ok(classes.Take(25).Select(@class => new
             {
                 name = @class.Name,
                 id = @class.Id,
@@ -42,13 +42,14 @@ namespace Classfinder.Controllers
         }
 
         [HttpGet]
-        [Route("API/Classes/{period}")]
+        [Route("API/Classes/{school}/{period}/{searchTerm}")]
         [AllowAnonymous]
-        public IHttpActionResult SearchClasses(int period)
+        public IHttpActionResult SearchClasses(string school, int period, string searchTerm)
         {
-            var classes = db.Classes.Where(@class => @class.Period == period).Take(10);
+            var classes = db.Classes.Where(@class => @class.Name.Contains(searchTerm) && @class.Period == period && (@class.School == school || @class.School == null)).ToList();
+            classes.RemoveAll(@class => @class.Name == "No Class");
 
-            return Ok(classes.Select(@class => new
+            return Ok(classes.Take(25).Select(@class => new
             {
                 name = @class.Name,
                 id = @class.Id,

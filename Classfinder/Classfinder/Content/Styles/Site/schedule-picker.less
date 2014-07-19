@@ -121,7 +121,7 @@
             
             #results-container {
                 width:100%;
-                margin-top:25px;
+                margin-top:0;
                 text-align:left;
             }
                 #results-label {
@@ -129,6 +129,7 @@
                     font-weight:700;
                     color:@dark;
                     margin-left:25px;
+                    margin-bottom:5px;
                 }
                 #results {
                     font-size: 20px;
@@ -138,6 +139,9 @@
                     display: flexbox;
                     flex-wrap: wrap;
                     justify-content: flex-start;
+
+                    overflow:hidden;
+                    max-height:280px;
                 }
                     #results div {
                         cursor: pointer;

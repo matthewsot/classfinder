@@ -22,7 +22,7 @@
         $(".period-num").click(function () {
             $("#selected-class").text("");
             schedPickerPeriod = parseInt($(this).text());
-            $("#class-input").keydown();
+            $("#teacher-input").keyup();
 
             //meh. I shouldn't use such a generic "selected" class for this
             //redo this with sched-period-selected or use polymer or something, idk
