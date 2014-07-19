@@ -32,6 +32,10 @@ namespace Classfinder.Controllers
     {
         public string NewUsername { get; set; }
     }
+    public class ChangeNameModel
+    {
+        public string NewName { get; set; }
+    }
 
     [Authorize]
     public class AccountAPIController : ApiController
@@ -123,7 +127,7 @@ namespace Classfinder.Controllers
 
         [HttpPost]
         [Route("API/Account/ChangeUsername")]
-        public async Task<IHttpActionResult> ChangeUsername(ChangeUsernameModel model)
+        public IHttpActionResult ChangeUsername(ChangeUsernameModel model)
         {
             //todo: they don't all use the db, there's no need to init it for everything
             model.NewUsername = model.NewUsername.Trim();
@@ -136,6 +140,20 @@ namespace Classfinder.Controllers
             }
             user.UserName = model.NewUsername;
             db.SaveChanges();
+            return Ok("GOOD");
+        }
+
+        [HttpPost]
+        [Route("API/Account/ChangeName")]
+        public IHttpActionResult ChangeName(ChangeNameModel model)
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+
+            if (string.IsNullOrWhiteSpace(model.NewName)) return Ok("WHITESPACE");
+
+            user.RealName = model.NewName;
+            db.SaveChanges();
+
             return Ok("GOOD");
         }
 

@@ -40,6 +40,16 @@ namespace Classfinder.Controllers
             }
         }
 
+        public ActionResult Name()
+        {
+            using (var db = new CfDb())
+            {
+                var user = db.Users.Find(User.Identity.GetUserId());
+                ViewBag.Name = user.RealName;
+                return View();
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && db != null)

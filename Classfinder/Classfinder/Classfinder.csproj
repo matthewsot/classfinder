@@ -407,6 +407,7 @@
     <Content Include="Views\Manage\_Layout.cshtml" />
     <Content Include="Views\Manage\Password.cshtml" />
     <Content Include="Views\Manage\Username.cshtml" />
+    <Content Include="Views\Manage\Name.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Default\" />

@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Schedule";
+    ViewBag.CurrPage = "Modify Schedule";
+    Layout = "_Layout.cshtml";
+}
+
+@section head {
+    <link href="~/Content/Styles/Site/Manage/name.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/Scripts/suffix.js"></script>
+}
+
+<h1>Your current name is: <span id="current-name">@(ViewBag.Name)</span></h1>
+
+<input type="text" placeholder="New Name" id="new-name" class="pretty-input" />
+
+<script type="text/javascript">
+    $("#save-changes-link").click(function() {
+        var newName = $("#new-name").val();
+        if (newName.trim() == "") {
+            alert("Please enter a full name");
+            return;
+        }
+
+        $.post("/API/Account/ChangeName", {
+            'NewName': newName
+        }, function(data) {
+            if (data == "GOOD") {
+                alert("Great, name changed!");
+                $("#new-name").val("");
+                $("#current-name").text(newName);
+            } else {
+                alert("Please enter a full name");
+            }
+        });
+    });
+</script>
