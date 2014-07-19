@@ -26,38 +26,43 @@
 
 @if (ViewBag.StepNum == 2)
 {
-<p id="explanation">
-    &nbsp;&nbsp;&nbsp; Enter in: Teacher name, subject
-    <br>
-    If you don't have a class that period, list "No Class"
-</p>
+    <p id="explanation">
+        Please enter your first semester schedule
+    </p>
 }
 else {
-<p id="explanation">
-    Please make any changes necessary for your second semester schedule
-</p>
+    <p id="explanation">
+        Please make any changes necessary for your second semester schedule
+    </p>
 }
 
 @Html.Partial("_SchedulePicker")
 
 <br />
-<button id="previous-button" class="white-on-green" style="display:none;">&lt;- Previous</button>
-<button id="next-button" class="white-on-green">Next -&gt;</button>
+
+@*<button id="previous-button" class="white-on-green btn" style="display:none;">&lt;- Previous</button>*@
+<button id="next-button" class="white-on-green btn">Next -&gt;</button>
 
 <script type="text/javascript">
     $("#next-button").click(function() {
         if (semester == 1) {
-            window.location.href = "/Welcome/Schedule/2";
+            $.getJSON("/API/Schedule/CopyFromSemester/1/ToSemester/2", function (data) {
+                if (data.good == true) {
+                    window.location.href = "/Welcome/Schedule/2";
+                } else {
+                    alert("Woops, there was an error o.0");
+                }
+            });
         } else {
             window.location.href = "/Welcome/Complete";
         }
     });
     
-    $("#previous-button").click(function() {
-        if (semester == 2) {
-            window.location.href = "/Welcome/Schedule/1";
-        }
-    });
+    //$("#previous-button").click(function() {
+    //    if (semester == 2) {
+    //        window.location.href = "/Welcome/Schedule/1";
+    //    }
+    //});
 
     if (semester == 2) {
         $("#previous-button").show();

@@ -12,8 +12,8 @@
 
 <div id="signup-box">
     <div class="signup-row">
-        <input type="text" placeholder="First Name" id="first-name" />
-        <input type="text" placeholder="Last Name" id="last-name" spellcheck="false" />
+        <input type="text" placeholder="First Name" id="first-name" class="pretty-input" />
+        <input type="text" placeholder="Last Name" id="last-name" spellcheck="false" class="pretty-input" />
     </div>
     
     <div id="grad-years" class="signup-row">
@@ -31,18 +31,18 @@
     </script>
     
     <div class="signup-row">
-        <input type="text" placeholder="Username" id="username" spellcheck="false" />
-        <input type="email" placeholder="Email (Optional)" id="email" />
+        <input type="text" placeholder="Username" id="username" spellcheck="false" class="pretty-input" />
+        <input type="email" placeholder="Email (Optional)" id="email" class="pretty-input" />
     </div>
     
     <div class="signup-row">
-        <input type="password" placeholder="Password" id="password" />
-        <input type="password" placeholder="Confirm Password" id="confirmation-password" />
+        <input type="password" placeholder="Password" id="password" class="pretty-input" />
+        <input type="password" placeholder="Confirm Password" id="confirmation-password" class="pretty-input" />
     </div>
 </div>
 
 <br/>
-<button id="next-button">Next -></button>
+<button id="next-button" class="white-on-green btn">Next -></button>
 
 <form action="/Account/Login" method="POST" style="display:none;" id="login-form">
     @Html.AntiForgeryToken()
@@ -75,6 +75,10 @@
             alert("Please enter a username!");
             errorsExist = true;
         }
+        if (username.indexOf(" ") != -1) {
+            alert("Please don't use spaces in your username");
+            errorsExist = true;
+        }
 
         var password = $("#password").val();
         if (password != $("#confirmation-password").val()) {
@@ -95,6 +99,8 @@
                     $("#login-password").val(password);
 
                     $("#login-form").submit();
+                } else if (response.indexOf("Username") != -1) {
+                    alert("That username is already taken. Please choose another one.");
                 }
             });
         }

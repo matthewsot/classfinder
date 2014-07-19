@@ -264,6 +264,12 @@
     <Content Include="Content\Styles\Site\Home\shared.min.css">
       <DependentUpon>shared.css</DependentUpon>
     </Content>
+    <Content Include="Content\Styles\Site\Manage\name.css">
+      <DependentUpon>name.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\Manage\name.min.css">
+      <DependentUpon>name.css</DependentUpon>
+    </Content>
     <Content Include="Content\Styles\Site\Manage\username.css">
       <DependentUpon>username.less</DependentUpon>
     </Content>
@@ -394,6 +400,10 @@
     <Content Include="Content\Styles\Site\Manage\username.less" />
     <Content Include="Content\Styles\Site\Manage\username.css.map">
       <DependentUpon>username.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\Manage\name.less" />
+    <Content Include="Content\Styles\Site\Manage\name.css.map">
+      <DependentUpon>name.css</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <Content Include="Views\Welcome\SignUp.cshtml" />

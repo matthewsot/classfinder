@@ -42,13 +42,13 @@ namespace Classfinder.Controllers
                 user.SignUpLevel = (int) SignUpLevel.SecondSemesterScheduleEntered;
             }
 
-            if (semester == 2 && !user.SecondSemester.Any())
-            {
-                foreach (var @class in user.FirstSemester)
-                {
-                    user.SecondSemester.Add(@class);
-                }
-            }
+            //if (semester == 2 && !user.SecondSemester.Any())
+            //{
+            //    foreach (var @class in user.FirstSemester)
+            //    {
+            //        user.SecondSemester.Add(@class);
+            //    }
+            //}
 
             db.SaveChanges();
 

@@ -57,7 +57,7 @@ namespace Classfinder.Controllers
                 if (model.Password.Length <= 6) errors.Add("Password");
                 if (!(model.GradYear <= 2018 && model.GradYear >= 2015)) errors.Add("GradYear");
                 if (model.FullName != null && model.FullName.Length > 50) errors.Add("FullName");
-                if (db.Users.Count(usr => usr.UserName == model.Username) > 0) errors.Add("Username");
+                if (db.Users.Any(usr => usr.UserName == model.Username)) errors.Add("Username");
 
                 if (errors.Count > 0)
                 {
