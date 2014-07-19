@@ -3,36 +3,25 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         
+        //First we compile all the LESS files to .css
         less: {
             options: {
-                paths: [
-                    /*"Classfinder/Classfinder/Content/Styles",
-                    "Classfinder/Classfinder/Content/Styles/Site",
-                    "Classfinder/Classfinder/Content/Styles/Site/Default",
-                    "Classfinder/Classfinder/Content/Styles/Site/Home",
-                    "Classfinder/Classfinder/Content/Styles/Site/Manage",
-                    "Classfinder/Classfinder/Content/Styles/Site/Welcome",*/
-                ],
-                cleancss: false,
+                cleancss: false, //we'll minify it later, so that it will output a separate file
                 sourceMap: true,
-                modifyVars: {
-                    imgPath: '"http://mycdn.com/path/to/images"',
-                    bgColor: 'red'
-                }
             },
             dynamic_mappings: {
-                files: [
-                    {
-                        expand: true,     // Enable dynamic expansion.
-                        cwd: 'Classfinder/Classfinder/Content/Styles/',     // Src matches are relative to this path.
-                        src: ['**/*.less'], // Actual pattern(s) to match.
-                        dest: 'Classfinder/Classfinder/Content/Styles/',   // Destination path prefix.
-                        ext: '.css',   // Dest filepaths will have this extension.
-                        extDot: 'first'   // Extensions in filenames begin after the first dot
-                    },
-                ],
+                files: [{
+                    expand: true,
+                    cwd: 'Classfinder/Classfinder/Content/Styles/',
+                    src: ['**/*.less'],
+                    dest: 'Classfinder/Classfinder/Content/Styles/',
+                    ext: '.css',
+                    extDot: 'first'
+                }],
             },
         },
+        
+        //Then minify them to .min.css
         cssmin: {
             minify: {
                 expand: true,
