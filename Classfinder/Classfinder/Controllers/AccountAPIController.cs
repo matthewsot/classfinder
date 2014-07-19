@@ -28,6 +28,10 @@ namespace Classfinder.Controllers
         public string OldPassword { get; set; }
         public string NewPassword { get; set; }
     }
+    public class ChangeUsernameModel
+    {
+        public string NewUsername { get; set; }
+    }
 
     [Authorize]
     public class AccountAPIController : ApiController
@@ -115,6 +119,24 @@ namespace Classfinder.Controllers
                     return Ok("ERROR");
                 }
             }
+        }
+
+        [HttpPost]
+        [Route("API/Account/ChangeUsername")]
+        public async Task<IHttpActionResult> ChangeUsername(ChangeUsernameModel model)
+        {
+            //todo: they don't all use the db, there's no need to init it for everything
+            model.NewUsername = model.NewUsername.Trim();
+
+            var user = db.Users.Find(User.Identity.GetUserId());
+
+            if (db.Users.Any(usr => usr.UserName == model.NewUsername))
+            {
+                return Ok("EXISTING");
+            }
+            user.UserName = model.NewUsername;
+            db.SaveChanges();
+            return Ok("GOOD");
         }
 
         protected override void Dispose(bool disposing)

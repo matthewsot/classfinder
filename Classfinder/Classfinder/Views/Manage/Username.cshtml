@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Schedule";
+    ViewBag.CurrPage = "Modify Schedule";
+    Layout = "_Layout.cshtml";
+}
+
+@section head {
+    <link href="~/Content/Styles/Site/Manage/username.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/Scripts/suffix.js"></script>
+}
+
+<h1>Your current username is: <span id="current-username">@(ViewBag.Username)</span></h1>
+
+<input type="text" placeholder="New Username" id="new-username" class="pretty-input" />
+
+<script type="text/javascript">
+    $("#save-changes-link").click(function() {
+        var newUsername = $("#new-username").val().trim();
+
+        $.post("/API/Account/ChangeUsername", {
+            'NewUsername': newUsername
+        }, function(data) {
+            if (data == "GOOD") {
+                alert("Great, username changed!");
+                $("#new-username").val("");
+                $("#current-username").text(newUsername);
+            } else {
+                alert("Sorry, that username already exists.");
+            }
+        });
+    });
+</script>

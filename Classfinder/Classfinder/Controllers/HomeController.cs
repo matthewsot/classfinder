@@ -29,7 +29,9 @@ namespace Classfinder.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return Redirect("/Schedule/" + User.Identity.GetUserName());
+            //If users change their username, sometimes User.Identity.GetUserName() doesn't always return the latest username
+            var user = db.Users.Find(User.Identity.GetUserId());
+            return Redirect("/Schedule/" + user.Id);
         }
 
         [HttpGet]

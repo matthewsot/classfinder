@@ -264,6 +264,12 @@
     <Content Include="Content\Styles\Site\Home\shared.min.css">
       <DependentUpon>shared.css</DependentUpon>
     </Content>
+    <Content Include="Content\Styles\Site\Manage\username.css">
+      <DependentUpon>username.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Styles\Site\Manage\username.min.css">
+      <DependentUpon>username.css</DependentUpon>
+    </Content>
     <Content Include="Content\Styles\Site\Manage\password.css">
       <DependentUpon>password.less</DependentUpon>
     </Content>
@@ -385,6 +391,10 @@
     <Content Include="Content\Styles\Site\Manage\password.css.map">
       <DependentUpon>password.css</DependentUpon>
     </Content>
+    <Content Include="Content\Styles\Site\Manage\username.less" />
+    <Content Include="Content\Styles\Site\Manage\username.css.map">
+      <DependentUpon>username.css</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <Content Include="Views\Welcome\SignUp.cshtml" />
     <Content Include="Views\Welcome\_Setup.cshtml" />
@@ -396,6 +406,7 @@
     <Content Include="Views\Manage\Schedule.cshtml" />
     <Content Include="Views\Manage\_Layout.cshtml" />
     <Content Include="Views\Manage\Password.cshtml" />
+    <Content Include="Views\Manage\Username.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Default\" />
