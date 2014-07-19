@@ -245,7 +245,6 @@
     <Content Include="Content\Scripts\Wedge\wedge.min.js">
       <DependentUpon>wedge.js</DependentUpon>
     </Content>
-    <Content Include="Content\Styles\bootstrap.css" />
     <Content Include="Content\Styles\bootstrap.min.css" />
     <Content Include="Content\Styles\Site\Default\index.css">
       <DependentUpon>index.less</DependentUpon>
