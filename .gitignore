@@ -172,8 +172,21 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
 Classfinder/Classfinder.sln.ide/edb.chk
 Classfinder/Classfinder.sln.ide/edbres00001.jrs
 Classfinder/Classfinder.sln.ide/edbres00002.jrs
 Classfinder/Classfinder.sln.ide/storage.ide
 Classfinder/Classfinder/Web.Release.config
+
+# Ignore compiled LESS -> CSS files
+
+Classfinder/Classfinder/Content/Styles/*.min.css
+Classfinder/Classfinder/Content/Styles/*.css
+Classfinder/Classfinder/Content/Styles/*.css.map
+
+# Include CSS-only files
+# Thanks! https://stackoverflow.com/questions/1279533/is-there-a-way-to-tell-git-to-only-include-certain-files-instead-of-ignoring-cer
+
+!Classfinder/Classfinder/Content/Styles/bootstrap.min.css
+!Classfinder/Classfinder/Content/Styles/Site.css
