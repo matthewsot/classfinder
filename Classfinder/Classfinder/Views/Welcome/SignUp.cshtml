@@ -85,6 +85,10 @@
             alert("Your password and confirmation password don't match.");
             errorsExist = true;
         }
+        if (password.length < 6) {
+            alert("Your password must be at least 6 characters.");
+            errorsExist = true;
+        }
 
         if(!errorsExist) {
             $.post("/API/Account/SignUp", {
