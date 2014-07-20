@@ -71,7 +71,7 @@
     </div>
 </div>
 
-<div id="login-popup" style="display:none;">
+<div id="login-popup" style="display:none;" class="popup">
     <h1>log in</h1>
     <!-- TODO: validate over API -->
     <span>@(ViewBag.LoginError ?? "")</span>
@@ -91,17 +91,28 @@
     <span>forgot your password? click <a href="#resetpass" id="reset-pass-link">here</a></span>
 </div>
 
+<div id="forgot-pass-popup" style="display:none;" class="popup">
+    <h1>forgot password</h1>
+
+    <input name="email" id="forgot-pass-email" class="pretty-input" placeholder="email" />
+    <br />
+
+    <button id="forgot-pass-btn" class="white-on-green btn">Reset Password</button>
+</div>
+
 <script type="text/javascript">
     $("#desktop-login-btn").click(function () {
-        initWedge('login-popup', 'div');
+        wedge.show('login-popup', 'div');
     });
 
     $("#mobile-login-btn").click(function() {
-        initWedge('login-popup', 'div');
+        wedge.show('login-popup', 'div');
     });
 
     $("#reset-pass-link").click(function() {
-
+        wedge.close(function() {
+            wedge.show('forgot-pass-popup', 'div');
+        });
     });
 
     if (window.location.hash.indexOf("login") != -1 || @(ViewBag.ShowLogin.ToString().ToLower())) {

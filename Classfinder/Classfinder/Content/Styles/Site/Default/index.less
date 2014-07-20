@@ -130,14 +130,14 @@
         .half-horiz;
     }
 
-#login-popup {
+.popup {
     width:500px;
     height:400px;
     background-color:#fff;
     color:@light;
     border-radius:5px;
 }
-    #login-popup h1 {
+    .popup h1 {
         font-weight:300;
         width:80%;
         margin-left:10%;
@@ -146,14 +146,17 @@
         font-size:35px;
         border-bottom:2px solid @green;
     }
-    #login-username, #login-password {
+    #login-username,
+    #login-password,
+    #forgot-pass-email {
         height:40px;
         margin:10px;
     }
     #login-password {
         margin-bottom:15px;
     }
-    #login-btn {
+    #login-btn,
+    #forgot-pass-btn {
         height:50px;
         line-height:50px;
         width:200px;
@@ -315,17 +318,20 @@
         margin-left:0 !important;
         width:100% !important;
     }
-    #login-popup {
+    .popup {
         width:100%;
     }
-        #login-username, #login-password {
+        #login-username,
+        #login-password,
+        #forgot-pass-email {
             width:70%;
             left:15%;
         }
         #login-password {
             margin-bottom:15px;
         }
-        #login-btn {
+        #login-btn,
+        #forgot-pass-btn {
             height:50px;
             width:55%;
             margin-left:22.5%;
