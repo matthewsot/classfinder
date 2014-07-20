@@ -78,7 +78,7 @@
 </div>
 
 <script type="text/javascript">
-    var userId = "@(User.Identity.GetUserId())";
+    var userId = "@(ViewBag.UserId)";
     var semester = 1;
 
     $(".period-box").click(function () {

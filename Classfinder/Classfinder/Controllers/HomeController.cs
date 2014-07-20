@@ -47,6 +47,7 @@ namespace Classfinder.Controllers
             }
 
             ViewBag.RealName = user.RealName;
+            ViewBag.UserId = user.Id;
 
             if (User.Identity.IsAuthenticated)
             {
