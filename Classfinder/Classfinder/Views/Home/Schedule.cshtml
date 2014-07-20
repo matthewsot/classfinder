@@ -102,7 +102,11 @@
 
             for (var i = 0; i < data.classmates.length; i++) {
                 var classmate = data.classmates[i];
-                $("#classmates").append('<tr><td><a href=\"/Schedule/' + encodeURIComponent(classmate.userName) + "\">" + classmate.realName + '</a></td><td>' + classmate.grade + "</td></tr>");
+                var newLink = document.createElement("a");
+                newLink.setAttribute('href', '/Schedule/' + encodeURIComponent(classmate.userName)); //Thanks! http://www.peterbe.com/plog/createelement-a
+                newLink.textContent = classmate.realName;
+
+                $("#classmates").append('<tr><td>' + newLink.outerHTML + '</td><td>' + classmate.grade + "</td></tr>");
             }
         });
     });
