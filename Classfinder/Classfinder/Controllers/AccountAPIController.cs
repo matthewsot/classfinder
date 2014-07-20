@@ -21,7 +21,7 @@ namespace Classfinder.Controllers
 
     public class ResetPassModel
     {
-        public string Email { get; set; }
+        public string Username { get; set; }
     }
     public class ChangePasswordModel
     {
@@ -73,8 +73,8 @@ namespace Classfinder.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        [Route("API/Account/ResetPassword/{username}")]
-        public async Task<IHttpActionResult> ResetPassword(string username)
+        [Route("API/Account/ResetPassword/")]
+        public async Task<IHttpActionResult> ResetPassword(ResetPassModel model)
         {
             using (var userManager = new UserManager<UserAccount>(
                 new Microsoft.AspNet.Identity.EntityFramework.UserStore<UserAccount>(db)))
@@ -85,7 +85,7 @@ namespace Classfinder.Controllers
                     userManager.UserTokenProvider = new DataProtectorTokenProvider<UserAccount>(Startup.DataProtectionProvider.Create("PasswordReset"));
                 }
 
-                var user = db.Users.FirstOrDefault(u => u.UserName == username);
+                var user = db.Users.FirstOrDefault(u => u.UserName == model.Username);
 
                 if (user == null) return Ok("NO USER");
                 if (user.Email == null) return Ok("NO EMAIL");

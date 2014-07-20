@@ -94,7 +94,7 @@
 <div id="forgot-pass-popup" style="display:none;" class="popup">
     <h1>forgot password</h1>
 
-    <input name="email" id="forgot-pass-email" class="pretty-input" placeholder="email" />
+    <input id="forgot-pass-username" class="pretty-input" placeholder="username" />
     <br />
 
     <button id="forgot-pass-btn" class="white-on-green btn">Reset Password</button>
@@ -112,6 +112,26 @@
     $("#reset-pass-link").click(function() {
         wedge.close(function() {
             wedge.show('forgot-pass-popup', 'div');
+        });
+    });
+
+    $("#forgot-pass-btn").click(function() {
+        var username = $("#forgot-pass-username").val();
+
+        $.post("/API/Account/ResetPassword", {
+            "Username": username
+        }, function(data) {
+            if (data == "NO USER") {
+                alert("Sorry, but we couldn't find any user with that username. Please contact matthewsot@outlook.com for help.");
+            } else if (data == "NO EMAIL") {
+                alert("Sorry, but that user doesn't have an email associated with their name. Please contact matthewsot@outlook.com for help.");
+            } else if (data == "GOOD") {
+                alert("Thanks, we've sent an email to that user with more instructions. Please make sure to check your junk mail, or email matthewsot@outlook.com for help");
+            } else {
+                alert("Sorry, something went wrong. Contact matthewsot@outlook.com for help");
+            }
+            $("#forgot-pass-username").val("");
+            wedge.close();
         });
     });
 
