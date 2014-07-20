@@ -13,7 +13,7 @@
 
 <div id="left-bar">
     <div id="img-row">
-        <a href="/Schedule/@(User.Identity.GetUserName())">
+        <a href="/Schedule/@(ViewBag.UserName)">
             <img src="~/Content/Images/logo.png" id="desktop-logo" alt="classfinder" />
             <img src="~/Content/Images/logo.favicon.png" id="mobile-logo" alt="cf" />
         </a>
@@ -60,7 +60,7 @@
         </div>
 
         <h2 id="viewing-label">Viewing:</h2>
-        <h1 id="viewing-name">@(ViewBag.UserName)'s Schedule</h1>
+        <h1 id="viewing-name">@(ViewBag.RealName)'s Schedule</h1>
     </div>
 
     <div id="table-container">

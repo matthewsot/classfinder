@@ -46,7 +46,8 @@ namespace Classfinder.Controllers
                 //TODO: handle user-not-found errors
             }
 
-            ViewBag.UserName = user.RealName;
+            ViewBag.RealName = user.RealName;
+            ViewBag.UserName = user.UserName;
 
             ViewBag.FirstSemester = CheckAndFillWithNoClass(user.FirstSemester).OrderBy(@class => @class.Period);
             ViewBag.SecondSemester = CheckAndFillWithNoClass(user.SecondSemester).OrderBy(@class => @class.Period);
