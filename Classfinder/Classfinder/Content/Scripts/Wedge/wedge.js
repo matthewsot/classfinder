@@ -134,18 +134,20 @@ var wedge = (function () {
     };
 
     wedge.close = function (callback) {
-        var _this = this;
-        this.animator.animateOut(this.overlayId, this.contentId, function () {
-            if (_this.type == 'div') {
-                $('#' + _this.link).appendTo($('body'));
-                $('#' + _this.link).hide();
+        //var _this = this;
+        wedge.animator.animateOut(wedge.overlayId, wedge.contentId, function () {
+            if (wedge.type == 'div') {
+                $('#' + wedge.link).appendTo($('body'));
+                $('#' + wedge.link).hide();
             }
-            $('#' + _this.overlayId).unbind('click', close);
-            $(document).unbind("keyup", _this.keyUpHandler);
+            $('#' + wedge.overlayId).unbind('click', close);
+            $(document).unbind("keyup", wedge.keyUpHandler);
 
-            $('#' + _this.overlayId).stop().remove();
-            $('#' + _this.contentId).stop().remove();
-            callback();
+            $('#' + wedge.overlayId).stop().remove();
+            $('#' + wedge.contentId).stop().remove();
+            if (typeof callback === "function") {
+                callback();
+            }
         });
     };
     return wedge;
