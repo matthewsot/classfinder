@@ -1,9 +1,0 @@
-﻿@using Microsoft.AspNet.Identity
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<script type="text/javascript">
-    window.location.href = "/Schedule/" + encodeURIComponent("@(User.Identity.GetUserName())");
-</script>

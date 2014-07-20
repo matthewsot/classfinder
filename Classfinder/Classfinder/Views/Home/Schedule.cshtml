@@ -14,8 +14,8 @@
 <div id="left-bar">
     <div id="img-row">
         <a href="/Schedule/@(User.Identity.GetUserName())">
-            <img src="~/Content/Images/logo.png" id="desktop-logo" />
-            <img src="~/Content/Images/logo.favicon.png" id="mobile-logo" />
+            <img src="~/Content/Images/logo.png" id="desktop-logo" alt="classfinder" />
+            <img src="~/Content/Images/logo.favicon.png" id="mobile-logo" alt="cf" />
         </a>
     </div>
 
@@ -46,6 +46,8 @@
     <div id="top-left">
         <h1 id="period-name"></h1>
         <h2 id="student-count"></h2>
+        
+        <h2 id="semester-chooser"><a href="#sem1" data-semester="1" class="curr-semester">Semester 1</a> | <a href="#sem2" data-semester="2">Semester 2</a></h2>
     </div>
     <div id="top-right">
         <div id="options">
@@ -76,6 +78,7 @@
 
 <script type="text/javascript">
     var userId = "@(User.Identity.GetUserId())";
+    var semester = 1;
 
     $(".period-box").click(function () {
         $(".period-box").removeClass("selected");
@@ -91,7 +94,7 @@
 
         $("#classmates").html("");
 
-        $.getJSON("/API/Classmates/" + userId + "/1/" + period, function (data) {
+        $.getJSON("/API/Classmates/" + userId + "/" + semester + "/" + period, function (data) {
             $("#student-count").text(data.classmates.length + " students");
             if (data.classmates.length == 1) {
                 $("#student-count").text("1 student");
@@ -106,6 +109,45 @@
 
     $(".period-box-mobile").click(function () {
         $(".period-box[data-period=" + $(this).attr("data-period") + "]").click();
+    });
+
+    $("#semester-chooser").children("a").click(function() {
+        $(".curr-semester").removeClass("curr-semester");
+        $(this).addClass("curr-semester");
+
+        semester = parseInt($(this).attr("data-semester"));
+
+        $.getJSON("/API/Schedule/" + userId + "/" + semester, function(data) {
+            for (var currPeriod = 1; currPeriod <= 7; currPeriod++) {
+                var periodDiv = $('.period-box[data-period="' + currPeriod + '"]');
+                var mobileDiv = $('.period-box-mobile[data-period="' + currPeriod + '"]');
+
+                var returnedClassesWithPeriod = data.filter(function (val) {
+                    return val.period == currPeriod;
+                });
+
+                if (returnedClassesWithPeriod.length == 0) {
+                    periodDiv.text(currPeriod + " | No Class | N/A");
+                    mobileDiv.text(currPeriod + " | No Class | N/A");
+                    continue;
+                } else {
+                    var currClass = returnedClassesWithPeriod[0];
+                    var parts = currClass.name.split(',');
+
+                    var toText = currPeriod + " | " + parts[parts.length - 1] + " | ";
+                    if (parts.length == 1) {
+                        toText += "N/A";
+                    } else {
+                        toText += parts[0];
+                    }
+
+                    periodDiv.text(toText);
+                    mobileDiv.text(toText);
+                }
+            }
+
+            $(".selected").click();
+        });
     });
 
     $(".period-box").first().click();
