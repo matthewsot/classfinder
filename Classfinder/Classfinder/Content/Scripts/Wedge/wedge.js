@@ -44,7 +44,7 @@ var wedge = (function () {
     }
     wedge.keyUpHandler = function (e) {
         if (e.keyCode == 27) {
-            this.close();
+            wedge.close();
         }
     };
 
