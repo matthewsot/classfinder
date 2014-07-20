@@ -72,7 +72,7 @@ namespace Classfinder.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet]
+        [HttpPost]
         [Route("API/Account/ResetPassword/")]
         public async Task<IHttpActionResult> ResetPassword(ResetPassModel model)
         {
