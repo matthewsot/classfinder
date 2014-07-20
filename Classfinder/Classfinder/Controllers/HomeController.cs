@@ -47,7 +47,12 @@ namespace Classfinder.Controllers
             }
 
             ViewBag.RealName = user.RealName;
-            ViewBag.UserName = user.UserName;
+
+            if (User.Identity.IsAuthenticated)
+            {
+                var loggedInUser = db.Users.Find(User.Identity.GetUserId());
+                ViewBag.UserName = loggedInUser.UserName;
+            }
 
             ViewBag.FirstSemester = CheckAndFillWithNoClass(user.FirstSemester).OrderBy(@class => @class.Period);
             ViewBag.SecondSemester = CheckAndFillWithNoClass(user.SecondSemester).OrderBy(@class => @class.Period);

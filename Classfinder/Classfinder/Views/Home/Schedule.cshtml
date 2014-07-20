@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "Schedule";
+    var logoLink = ViewBag.UserName == null ? "/" : "/Schedule/" + ViewBag.UserName;
 }
 
 @section head {
@@ -13,7 +14,7 @@
 
 <div id="left-bar">
     <div id="img-row">
-        <a href="/Schedule/@(ViewBag.UserName)">
+        <a href="@(logoLink)">
             <img src="~/Content/Images/logo.png" id="desktop-logo" alt="classfinder" />
             <img src="~/Content/Images/logo.favicon.png" id="mobile-logo" alt="cf" />
         </a>
