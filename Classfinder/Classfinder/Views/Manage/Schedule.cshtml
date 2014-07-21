@@ -13,8 +13,8 @@
 }
 
 <script type="text/javascript">
-    var school = "@ViewBag.School";
-    var userId = "@User.Identity.GetUserId()";
+    var school = '@Ajax.JavaScriptStringEncode(ViewBag.School)';
+    var userId = '@Ajax.JavaScriptStringEncode(User.Identity.GetUserId())';
     var semester = 1;
 </script>
 
