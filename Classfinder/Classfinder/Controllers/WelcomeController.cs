@@ -21,7 +21,7 @@ namespace Classfinder.Controllers
         {
             if (User != null && User.Identity.IsAuthenticated)
             {
-                
+                return RedirectToAction("Index", controllerName: "Home");
             }
             return View();
         }
