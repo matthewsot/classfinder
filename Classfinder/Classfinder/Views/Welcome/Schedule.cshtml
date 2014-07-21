@@ -16,9 +16,9 @@
     </style>
     <script type="text/javascript">
         //needed for the schedule picker
-        var school = "@ViewBag.School";
-        var userId = "@(User.Identity.GetUserId())";
-        var semester = @(ViewBag.Semester);
+        var school = '@Ajax.JavaScriptStringEncode(ViewBag.School)';
+        var userId = '@Ajax.JavaScriptStringEncode(User.Identity.GetUserId())';
+        var semester = @ViewBag.Semester;
     </script>
 }
 
