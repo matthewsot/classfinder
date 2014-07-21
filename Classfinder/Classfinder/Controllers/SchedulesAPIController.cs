@@ -5,6 +5,12 @@ using Microsoft.AspNet.Identity;
 
 namespace Classfinder.Controllers
 {
+    public class ClassModel
+    {
+        public string name { get; set; }
+        public int id { get; set; }
+    }
+
     [Authorize]
     public class SchedulesAPIController : ApiController
     {
@@ -95,12 +101,6 @@ namespace Classfinder.Controllers
                     grade = 12 - (student.GradYear - 2015)
                 })
             });
-        }
-
-        public class ClassModel
-        {
-            public string name { get; set; }
-            public int id { get; set; }
         }
 
         [HttpGet]
