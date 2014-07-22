@@ -229,6 +229,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BingSiteAuth.xml" />
     <Content Include="Content\Images\Bubbles\aesthetic.png" />
     <Content Include="Content\Images\Bubbles\efficient.png" />
     <Content Include="Content\Images\Bubbles\simplified.png" />
