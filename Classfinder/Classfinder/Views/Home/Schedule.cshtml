@@ -26,9 +26,10 @@
 
     @foreach (Class @class in ViewBag.FirstSemester)
     {
+        var isHiddenPeriod = (@class.Period == 1 || @class.Period == 7) && @class.Name == "No Class";
         var parts = @class.Name.Split(',');
 
-        <div class="period-box" data-period="@(@class.Period)">
+        <div class="period-box@(isHiddenPeriod ? " hidden-period" : "")" data-period="@(@class.Period)">
             @(@class.Period) | @(parts.Last().Trim()) | @(parts.Count() == 1 ? "N/A" : parts.First().Trim())
         </div>
     }
@@ -134,9 +135,15 @@
                 if (returnedClassesWithPeriod.length == 0) {
                     periodDiv.text(currPeriod + " | No Class | N/A");
                     mobileDiv.text(currPeriod + " | No Class | N/A");
+                    if (currPeriod == 1 || currPeriod == 7) {
+                        periodDiv.addClass("hidden-period");
+                    } else {
+                        periodDiv.removeClass("hidden-period");
+                    }
                     continue;
                 } else {
                     var currClass = returnedClassesWithPeriod[0];
+                    var isHiddenPeriod = (currPeriod == 1 || currPeriod == 7) && currClass.name == "No Class";
                     var parts = currClass.name.split(',');
 
                     var toText = currPeriod + " | " + parts[parts.length - 1] + " | ";
@@ -148,6 +155,12 @@
 
                     periodDiv.text(toText);
                     mobileDiv.text(toText);
+
+                    if (isHiddenPeriod) {
+                        periodDiv.addClass("hidden-period");
+                    } else {
+                        periodDiv.removeClass("hidden-period");
+                    }
                 }
             }
 
