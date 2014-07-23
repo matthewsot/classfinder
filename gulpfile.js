@@ -4,9 +4,9 @@ var sourcemaps = require('gulp-sourcemaps');
 var minifyCSS = require('gulp-minify-css');
 
 gulp.task('default', function() {
-    gulp.src('Classfinder/Classfinder/Content/Styles/**/*.less')
+    gulp.src('./Classfinder/Classfinder/Content/Styles/**/*.less')
         .pipe(sourcemaps.init())
         .pipe(less())
-        .pipe(sourcemaps.write('Classfinder/Classfinder/Content/Styles'))
-        .pipe(gulp.dest(''));
+        .pipe(sourcemaps.write(''))
+        .pipe(gulp.dest('./Classfinder/Classfinder/Content/Styles'));
 });
