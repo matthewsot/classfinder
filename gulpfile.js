@@ -5,13 +5,15 @@ var minifyCSS = require('gulp-minify-css');
 var rename = require("gulp-rename");
 var gulpignore = require('gulp-ignore');
 
-gulp.task('default', function() {
+gulp.task('compile-less', function () {
     gulp.src('./Classfinder/Classfinder/Content/Styles/**/*.less')
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./Classfinder/Classfinder/Content/Styles'));
-    
+});
+
+gulp.task('minify-css', function() {
     gulp.src('./Classfinder/Classfinder/Content/Styles/**/*.css')
         .pipe(gulpignore.exclude(/.*\.min\.css$/, minifyCSS()))
         .pipe(rename({
@@ -19,3 +21,5 @@ gulp.task('default', function() {
         }))
         .pipe(gulp.dest('./Classfinder/Classfinder/Content/Styles'));
 });
+
+gulp.task('default', [ 'compile-less', 'minify-css' ]);
