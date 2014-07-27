@@ -36,7 +36,12 @@
             $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + schedPickerPeriod, function(data) {
                 $("#selected-class").text(data.name);
                 currClassId = data.id;
-                $("#results").children("div[data-class-id='" + data.id + "']").addClass("selected-result");
+                $(".selected-result").removeClass("selected-result");
+                if (data.name.toLowerCase() == "no class") {
+                    $("#no-class-btn").addClass("selected-result");
+                } else {
+                    $("#results").children("div[data-class-id='" + data.id + "']").addClass("selected-result");
+                }
             });
 
             $("#results").text("");
@@ -45,13 +50,18 @@
         $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + schedPickerPeriod, function (data) {
             $("#selected-class").text(data.name);
             currClassId = data.id;
-            $("#results").children("div[data-class-id='" + data.id + "']").addClass("selected-result");
+            $(".selected-result").removeClass("selected-result");
+            if (data.name.toLowerCase() == "no class") {
+                $("#no-class-btn").addClass("selected-result");
+            } else {
+                $("#results").children("div[data-class-id='" + data.id + "']").addClass("selected-result");
+            }
         });
     </script>
     
     <div id="schedule-picker-content">
         <h1 id="add-class-label">Add a Class</h1>
-        <a href="#no-class" id="no-class-btn" class="default button">No Class</a>
+        <a href="#no-class" id="no-class-btn" class="transparent default button">No Class</a>
 
         <div id="class-search-box">
             <input id="teacher-input" type="text" placeholder="  Teacher" />
@@ -101,7 +111,8 @@
 
                 $("#no-class-btn").click(function() {
                     addClass("No Class");
-                    $("#results").children("div").removeClass("selected-result");
+                    $(".selected-result").removeClass("selected-result");
+                    $(this).addClass("selected-result");
                 });
             </script>
         </div>
@@ -117,15 +128,15 @@
                     for (var i = 0; i < classes.length; i++) {
                         var clss = classes[i];
                         if (clss.id == currClassId) {
-                            $("#results").append('<div data-class-id="' + clss.id + '" class="selected-result">' + clss.name + "</div>");
+                            $("#results").append('<div data-class-id="' + clss.id + '" class="selected-result transparent">' + clss.name + "</div>");
                         } else {
-                            $("#results").append('<div data-class-id="' + clss.id + '">' + clss.name + "</div>");
+                            $("#results").append('<div data-class-id="' + clss.id + '" class="transparent">' + clss.name + "</div>");
                         }
                     }
 
                     $("#results").children("div").click(function () {
                         addClass($(this).text());
-                        $("#results").children("div").removeClass("selected-result");
+                        $(".selected-result").removeClass("selected-result");
                         $(this).addClass("selected-result");
                     });
                 }

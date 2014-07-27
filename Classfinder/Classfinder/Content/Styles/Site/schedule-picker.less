@@ -81,16 +81,7 @@
 
                 width:150px;
                 font-weight:300;
-
-                border: 1px solid @green;
-
-                background-color:transparent;
-                color:@green;
             }
-                #no-class-btn:hover {
-                    background-color:@green;
-                    color:#fff;
-                }
 
             #class-search-box {
                 margin-top: 40px;
@@ -152,23 +143,25 @@
                     overflow:hidden;
                     max-height:280px;
                 }
-                    /* todo build this off of btn? */
-                    #results div {
-                        cursor: pointer;
-                        padding: 5px;
-                        border: 1px solid @green;
-                        border-radius: 3px;
-                        margin: 5px;
 
-                        transition: background-color @fade-animation;
-                        //transition: color @fade-animation;
-                    }
-                        #results div:hover {
-                            background-color:@green;
-                            color:#fff;
-                        }
+.transparent {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid @green;
+    border-radius: 3px;
+    margin: 5px;
+    background-color:transparent;
 
-                    #results div.selected-result {
-                        background-color:@green;
-                        color:#fff;
-                    }
+    transition: background-color @fade-animation;
+
+    color:@green;
+}
+    .transparent:hover {
+        background-color:@green;
+        color:#fff;
+    }
+
+.selected-result {
+    background-color:@green;
+    color:#fff;
+}
