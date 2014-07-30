@@ -14,6 +14,7 @@ namespace Classfinder.Controllers
     {
         public string Password { get; set; }
         public int GradYear { get; set; }
+        public string School { get; set; }
         public string FullName { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
@@ -64,7 +65,7 @@ namespace Classfinder.Controllers
                     return Ok(string.Join(",", errors) + ",");
                 }
 
-                var user = new UserAccount { UserName = model.Username, RealName = model.FullName, Email = model.Email, GradYear = model.GradYear, SignUpLevel = ((int)SignUpLevel.Registered), School = "Lynbrook" };
+                var user = new UserAccount { UserName = model.Username, RealName = model.FullName, Email = model.Email, GradYear = model.GradYear, SignUpLevel = ((int)SignUpLevel.Registered), School = model.School };
 
                 var result = await userManager.CreateAsync(user, model.Password);
                 return Ok(result.Succeeded ? "GOOD" : string.Join(",", errors));

@@ -15,8 +15,15 @@
         <input type="text" placeholder="First Name" id="first-name" class="pretty-input" />
         <input type="text" placeholder="Last Name" id="last-name" spellcheck="false" class="pretty-input" />
     </div>
+
+    <div id="schools" class="button-row signup-row">
+        <div class="selected">Lynbrook</div>
+        <div>Cupertino</div>
+        <div>Monta Vista</div>
+        <div>Homestead</div>
+    </div>
     
-    <div id="grad-years" class="signup-row">
+    <div id="grad-years" class="button-row signup-row">
         <div class="selected">2018</div>
         <div>2017</div>
         <div>2016</div>
@@ -24,10 +31,15 @@
     </div>
     
     <script type="text/javascript">
+        $("#schools").children("div").click(function () {
+            $("#schools").children("div").removeClass("selected");
+            $(this).addClass("selected");
+        });
+
         $("#grad-years").children("div").click(function() {
             $("#grad-years").children("div").removeClass("selected");
             $(this).addClass("selected");
-        })
+        });
     </script>
     
     <div class="signup-row">
@@ -68,6 +80,8 @@
             errorsExist = true;
         }
 
+        var school = $("#schools").children(".selected").first().text();
+
         var email = $("#email").val();
 
         var username = $("#username").val().trim(); //remember to trim usernames
@@ -85,8 +99,8 @@
             alert("Your password and confirmation password don't match.");
             errorsExist = true;
         }
-        if (password.length < 6) {
-            alert("Your password must be at least 6 characters.");
+        if (password.length <= 6) {
+            alert("Your password must be greater than 6 characters.");
             errorsExist = true;
         }
 
@@ -96,7 +110,8 @@
                 "GradYear": gradYear,
                 "FullName": fullName,
                 "Username": username,
-                "Email": email
+                "Email": email,
+                "School": school
             }, function(response) {
                 if (response == "GOOD") {
                     $("#login-username").val(username);

@@ -13,12 +13,12 @@
         width:49%;
     }
 
-#grad-years {
+.button-row {
     width:100%;
     border:none;
 }
 //this is so sketch
-    #grad-years div {
+    .button-row div {
         cursor:pointer;
 
         font-size:30px;
@@ -38,27 +38,31 @@
 
         transition: border-color @fade-animation;
     }
-        #grad-years div:hover {
+        .button-row div:hover {
             border-color:@dark-green;
         }
-    #grad-years div.selected {
+    .button-row div.selected {
         background-color:@green;
         color:#fff;
     }
-    #grad-years div:first-child {
+    .button-row div:first-child {
         left:0;
     }
-    #grad-years div:nth-child(2) {
+    .button-row div:nth-child(2) {
         left:25.3%;
         margin-right:1px;
     }
-    #grad-years div:nth-child(3) {
+    .button-row div:nth-child(3) {
         right:25.3%;
         margin-left:1px;
     }
-    #grad-years div:last-child {
+    .button-row div:last-child {
         right:0;
     }
+
+#schools div {
+    font-size:25px;
+}
 
 .signup-row {
     margin-top:10px;
@@ -83,7 +87,7 @@
 }
 
 
-@media all and (max-width:972px) {
+@media all and (max-width:1005px) {
     #signup-box {
         width:100%;
         margin:0;
@@ -92,28 +96,6 @@
             width:99.5%;
             display:block;
             margin-top:10px;
-        }
-
-    #grad-years {
-        height:50px;
-        width:98%;
-    }
-        #grad-years div {
-            width:23%;
-        }
-        #grad-years div:first-child {
-            left:1%;
-        }
-        #grad-years div:nth-child(2) {
-            left:25.8%;
-            margin-right:1px;
-        }
-        #grad-years div:nth-child(3) {
-            right:25.8%;
-            margin-left:1px;
-        }
-        #grad-years div:last-child {
-            right:1%;
         }
 
     .signup-row {
@@ -128,6 +110,29 @@
         }
         .signup-row input:last-child{
             position:static;
+        }
+
+    .button-row {
+        height:50px;
+        width:98%;
+        margin-bottom:0;
+    }
+        .button-row div {
+            width:23%;
+        }
+        .button-row div:first-child {
+            left:1%;
+        }
+        .button-row div:nth-child(2) {
+            left:25.8%;
+            margin-right:1px;
+        }
+        .button-row div:nth-child(3) {
+            right:25.8%;
+            margin-left:1px;
+        }
+        .button-row div:last-child {
+            right:1%;
         }
 
     #next-button {
