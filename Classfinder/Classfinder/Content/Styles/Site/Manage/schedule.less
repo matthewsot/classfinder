@@ -36,3 +36,73 @@
     margin-top:25px;
     width:100%;
 }
+
+@media all and (max-width:500px) {
+    #contents-container {
+        width:100%;
+        margin-left:0;
+    }
+
+    #schedule-picker-container {
+        width:100%;
+        height:auto;
+    }
+
+    #period-selector {
+        width:100%;
+        height:50px;
+        font-size:25px;
+        position:absolute;
+        left:0;
+        top:75px;
+    }
+        #period-selector .period-num {
+            left:25px; //todo something's setting like a 25px padding
+            float:left;
+            cursor:pointer;
+            width:14.28571428571428%;
+            height:50px;
+            line-height:50px;
+            background-color:@green;
+            color:#fff;
+        }
+            #period-selector .selected {
+                background-color:@dark-green;
+                color:#fff;
+            }
+    #selected-class-label {
+        display:none;
+    }
+    #selected-class {
+        width:100%;
+        text-align:center;
+        right:0;
+    }
+
+    #schedule-picker-content {
+        width:100%;
+        left:0;
+        margin-top:50px;
+        height:auto;
+    }
+
+    #add-class-label {
+        text-align:center;
+    }
+    #no-class-btn {
+        .half-horiz;
+    }
+
+    #class-search-box input {
+        position:static;
+        width:100%;
+    }
+    #add-class-btn {
+        .half-horiz;
+    }
+
+    #results-container {
+        margin-top:150px;
+        padding-bottom:100px;
+    }
+}

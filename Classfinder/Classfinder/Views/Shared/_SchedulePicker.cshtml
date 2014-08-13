@@ -74,8 +74,10 @@
                     var subject = $("#subject-input").val().trim();
 
                     var className = teacher;
-                    if (subject != "") className += ", " + subject;
 
+                    if (subject != "" && teacher != "") className += ", ";
+
+                    className += subject;
                     return className;
                 }
 
