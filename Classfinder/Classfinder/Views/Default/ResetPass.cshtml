@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "RestPass";
+}
+
+<h2>Rest Your Password</h2>
+
+<form action="/ResetPassword" method="POST">
+    <input type="hidden" value="@(ViewBag.Token)" name="token" />
+    <input type="hidden" value="@(ViewBag.UserID)" name="userId" />
+    <input type="password" name="newPassword" placeholder="New Password..." />
+    <input type="submit" class="button" />
+</form>

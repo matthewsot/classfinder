@@ -418,10 +418,9 @@
     <Content Include="Views\Manage\Password.cshtml" />
     <Content Include="Views\Manage\Username.cshtml" />
     <Content Include="Views\Manage\Name.cshtml" />
+    <Content Include="Views\Default\ResetPass.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Default\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Content\Fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\Fonts\glyphicons-halflings-regular.ttf" />

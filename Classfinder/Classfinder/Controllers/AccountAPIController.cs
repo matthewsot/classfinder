@@ -38,6 +38,13 @@ namespace Classfinder.Controllers
         public string NewName { get; set; }
     }
 
+    public class ResetPasswordModel
+    {
+        public string token { get; set; }
+        public string userId { get; set; }
+        public string newPassword { get; set; }
+    }
+
     [Authorize]
     public class AccountAPIController : ApiController
     {
@@ -100,12 +107,28 @@ namespace Classfinder.Controllers
                 mail.Subject = "Reset Your Password";
                 mail.Body = "Please visit http://classfinder.me/ResetPass?token=" +
                             HttpUtility.UrlEncode(await userManager.GeneratePasswordResetTokenAsync(user.Id)) +
-                            " to reset your Classfinder password.";
+                            "&userId=" + HttpUtility.UrlEncode(user.Id) + " to reset your Classfinder password.";
 
                 smtpServer.Send(mail);
                 return Ok("GOOD");
             }
         }
+
+        //[AllowAnonymous]
+        //[HttpPost]
+        //[Route("API/Account/DoResetPassword/")]
+        //public async Task<IHttpActionResult> DoResetPassword(ResetPasswordModel model)
+        //{
+        //    using (var userManager = new UserManager<UserAccount>(
+        //        new Microsoft.AspNet.Identity.EntityFramework.UserStore<UserAccount>(db)))
+        //    {
+        //        //Thanks! http://stackoverflow.com/questions/19539579/how-to-implement-a-tokenprovider-in-asp-net-identity-1-1-nightly-build
+        //        if (Startup.DataProtectionProvider != null)
+        //        {
+        //            userManager.UserTokenProvider = new DataProtectorTokenProvider<UserAccount>(Startup.DataProtectionProvider.Create("PasswordReset"));
+        //        }
+        //    }
+        //}
 
         [HttpPost]
         [Route("API/Account/ChangePassword")]
