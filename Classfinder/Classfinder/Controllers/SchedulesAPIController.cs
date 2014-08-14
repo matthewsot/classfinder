@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 using Classfinder.Models;
 using Microsoft.AspNet.Identity;
@@ -15,6 +16,19 @@ namespace Classfinder.Controllers
     public class SchedulesAPIController : ApiController
     {
         private CfDb db = new CfDb();
+
+        //[HttpGet]
+        //[Route("API/GetProblemChildren")]
+        //[AllowAnonymous]
+        //public IHttpActionResult GetProblemChildren()
+        //{
+        //    var allProblems = new List<UserAccount>();
+        //    for (var i = 1; i <= 7; i++)
+        //    {
+        //        allProblems.AddRange(db.Users.Where(user => user.FirstSemester.Count(@class => @class.Period == i) > 1));
+        //    }
+        //    return Ok(allProblems.Select(person => person.Id));
+        //}
 
         [HttpGet]
         [Route("API/Schedule/{userId}/{semester}")]
@@ -94,12 +108,13 @@ namespace Classfinder.Controllers
             return Ok(new
             {
                 name = classInPeriod.Name,
-                classmates = classmates.Select(student => new
-                {
-                    realName = student.RealName,
-                    userName = student.UserName,
-                    grade = 12 - (student.GradYear - 2015)
-                })
+                classmates = classmates.Where(mate => mate.School == user.School)
+                                       .Select(student => new
+                                        {
+                                            realName = student.RealName,
+                                            userName = student.UserName,
+                                            grade = 12 - (student.GradYear - 2015)
+                                        })
             });
         }
 
