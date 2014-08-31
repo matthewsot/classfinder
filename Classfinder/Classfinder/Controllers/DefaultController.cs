@@ -59,5 +59,11 @@ namespace Classfinder.Controllers
             ViewBag.UserID = userId;
             return View();
         }
+
+        [Route("ThankYou")]
+        public ActionResult ThankYou()
+        {
+            return View();
+        }
     }
 }

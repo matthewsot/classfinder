@@ -240,6 +240,7 @@
     <Content Include="Content\Images\laptop.png" />
     <Content Include="Content\Images\logo.favicon.png" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\stars.jpg" />
     <Content Include="Content\Scripts\prefix-free.min.js" />
     <Content Include="Content\Scripts\suffix.js" />
     <Content Include="Content\Scripts\Wedge\wedge.js" />
@@ -419,6 +420,7 @@
     <Content Include="Views\Manage\Username.cshtml" />
     <Content Include="Views\Manage\Name.cshtml" />
     <Content Include="Views\Default\ResetPass.cshtml" />
+    <Content Include="Views\Default\ThankYou.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
