@@ -9,7 +9,7 @@
         <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
         <link href="~/Content/Styles/Site/Default/thankyou.css" rel="stylesheet" />
     </head>
-    <body>
+    <body data-stellar-background-ratio="0.5">
         <h1 class="title">Thank You!</h1>
 
         <h3>To the Homestead Class of 2017 Officers</h3>
@@ -46,5 +46,22 @@
         <h3>Adhiv, Matthew, and Will</h3>
 
         <a href="http://classfinder.me" target="_blank"><img src="~/Content/Images/logo.png" alt="classfinder" /></a>
-</body>
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js"></script>
+        <script type="text/javascript">
+            var stellarDestroyed = true;
+            window.onresize = function () {
+                if (window.innerWidth <= 500) {
+                    $.stellar("destroy");
+                    stellarDestroyed = true;
+                } else if(stellarDestroyed) {
+                    $.stellar();
+                    stellarDestroyed = false;
+                }
+            };
+
+            window.onresize();
+        </script>
+    </body>
 </html>
