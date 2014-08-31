@@ -1,0 +1,85 @@
+﻿/* Seriously guys, thanks so much for the support this year :D */
+/* An extra shoutout to all the users, you guys are awesome! */
+
+/* If you'd like to help build Classfinder, checkout our Github page */
+/* https://github.com/matthewsot/classfinder */
+
+body, html {
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    background-image: url('/Content/Images/stars.jpg'); /* from https://www.youtube.com/watch?v=Cmqz-TeuaNM */
+    background-size:cover;
+    color: #fff;
+    font-weight: 400;
+    padding-bottom: 50px;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 55px;
+    color: #1ccfaf;
+}
+
+h2 {
+    font-size: 45px;
+    color: #1ccfaf;
+}
+
+h3 {
+    font-size: 25px;
+    color: #fff;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.title {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+
+.bubbles {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+    .bubbles .bubble {
+        width: 30%;
+        text-align: center;
+        display: inline-block;
+        position: relative;
+    }
+        .bubbles .bubble:first-child {
+            float: left;
+        }
+        .bubbles .bubble:nth-child(2) {
+            float: none;
+        }
+        .bubbles .bubble:last-child {
+            float: right;
+        }
+
+img {
+    margin-top: 25px;
+    border: none;
+}
+
+a {
+    border: none;
+    text-decoration: none;
+}
+
+@media all and (max-width:450px) {
+    .bubbles .bubble {
+        display:block;
+        margin: 0 auto;
+    }
+    .bubbles .bubble:nth-child(n) {
+        float: none;
+    }
+}
