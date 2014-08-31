@@ -254,6 +254,7 @@
     <Content Include="Content\Styles\Site\Default\index.min.css">
       <DependentUpon>index.css</DependentUpon>
     </Content>
+    <Content Include="Content\Styles\Site\Default\thankyou.css" />
     <Content Include="Content\Styles\Site\Home\schedule.css">
       <DependentUpon>schedule.less</DependentUpon>
     </Content>
