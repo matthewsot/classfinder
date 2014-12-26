@@ -408,6 +408,7 @@
     <Content Include="Content\Styles\Site\Manage\name.css.map">
       <DependentUpon>name.css</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\classfinder.me - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <Content Include="Views\Welcome\SignUp.cshtml" />
     <Content Include="Views\Welcome\_Setup.cshtml" />
