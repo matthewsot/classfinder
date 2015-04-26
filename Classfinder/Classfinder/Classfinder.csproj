@@ -223,6 +223,7 @@
       <DependentUpon>201407112343348_Schools.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountAPIModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Database.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
