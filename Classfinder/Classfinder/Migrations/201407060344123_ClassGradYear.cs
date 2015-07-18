@@ -3,7 +3,7 @@ namespace Classfinder.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Class : DbMigration
+    public partial class ClassGradYear : DbMigration
     {
         public override void Up()
         {
