@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Classfinder.Models;
 using Microsoft.AspNet.Identity;
@@ -13,13 +11,28 @@ namespace Classfinder.Controllers
     {
         private CfDb db = new CfDb();
 
-        private ICollection<Class> CheckAndFillWithNoClass(ICollection<Class> schedule)
+        private ICollection<Class> CheckAndFillWithNoClass(ICollection<Class> schedule, string school)
         {
             for (var i = 1; i <= 7; i++)
             {
-                if (!schedule.Any(@class => @class.Period == i))
+                if (schedule.All(@class => @class.Period != i))
                 {
-                    schedule.Add(db.Classes.First(@class => @class.Name == "No Class" && @class.Period == i));
+                    var noClass =
+                        db.Classes.FirstOrDefault(
+                            @class => @class.Name == "No Class" && @class.Period == i && @class.School == school);
+                    
+                    if (noClass == null)
+                    {
+                        noClass = new Class()
+                        {
+                            Name = "No Class",
+                            Period = i,
+                            School = school
+                        };
+                        db.Classes.Add(noClass);
+                    }
+
+                    schedule.Add(noClass);
                 }
             }
             db.SaveChanges();
@@ -56,8 +69,8 @@ namespace Classfinder.Controllers
                 ViewBag.UserName = loggedInUser.UserName;
             }
 
-            ViewBag.FirstSemester = CheckAndFillWithNoClass(user.FirstSemester).OrderBy(@class => @class.Period);
-            ViewBag.SecondSemester = CheckAndFillWithNoClass(user.SecondSemester).OrderBy(@class => @class.Period);
+            ViewBag.FirstSemester = CheckAndFillWithNoClass(user.FirstSemester, user.School).OrderBy(@class => @class.Period);
+            ViewBag.SecondSemester = CheckAndFillWithNoClass(user.SecondSemester, user.School).OrderBy(@class => @class.Period);
 
             return View();
         }

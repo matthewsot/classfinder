@@ -88,7 +88,7 @@
                 });
 
                 function addClass(className) {
-                    if (className == "") {
+                    if (className === "") {
                         alert("Please enter a class");
                     }
                     else {
@@ -99,6 +99,8 @@
                                 currClassId = data.id;
                                 $("#selected-class").text(className);
                                 $("#class-input").val("");
+
+                                setSelectedResult(className, data.id);
                             }
                         });
                     }
@@ -109,6 +111,12 @@
 
                 $("#add-class-btn").click(function () {
                     addClass(getClassName());
+                });
+
+                $("#subject-input").keydown(function(e) {
+                    if (e.which === 13) {
+                        $("#add-class-btn").click();
+                    }
                 });
 
                 $("#no-class-btn").click(function() {
@@ -124,24 +132,36 @@
             <div id="results"></div>
 
             <script type="text/javascript">
+                function setSelectedResult(name, id) {
+                    if (name === "No Class") return;
+
+                    $(".selected-result").removeClass("selected-result");
+
+                    var found = $("#results div[data-class-id=\"" + id + "\"]");
+                    if (found.length > 0) {
+                        found.addClass("selected-result");
+                        $("#results").prepend(found);
+                    } else {
+                        $("#results").prepend('<div data-class-id="' + id + '" class="result selected-result transparent">' + name + "</div>");
+                    }
+                }
+
                 function fillTableWithClasses(classes) {
                     $("#results").html("");
 
                     for (var i = 0; i < classes.length; i++) {
                         var clss = classes[i];
                         if (clss.id == currClassId) {
-                            $("#results").append('<div data-class-id="' + clss.id + '" class="selected-result transparent">' + clss.name + "</div>");
+                            $("#results").prepend('<div data-class-id="' + clss.id + '" class="result selected-result transparent">' + clss.name + "</div>");
                         } else {
-                            $("#results").append('<div data-class-id="' + clss.id + '" class="transparent">' + clss.name + "</div>");
+                            $("#results").append('<div data-class-id="' + clss.id + '" class="result transparent">' + clss.name + "</div>");
                         }
                     }
-
-                    $("#results").children("div").click(function () {
-                        addClass($(this).text());
-                        $(".selected-result").removeClass("selected-result");
-                        $(this).addClass("selected-result");
-                    });
                 }
+
+                $("#results").on("click", ".result", function () {
+                    addClass($(this).text());
+                });
 
                 $("#teacher-input").trigger("keyup");
             </script>
