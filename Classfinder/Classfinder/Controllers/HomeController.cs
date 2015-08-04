@@ -70,7 +70,27 @@ namespace Classfinder.Controllers
             }
 
             ViewBag.FirstSemester = CheckAndFillWithNoClass(user.FirstSemester, user.School).OrderBy(@class => @class.Period);
-            ViewBag.SecondSemester = CheckAndFillWithNoClass(user.SecondSemester, user.School).OrderBy(@class => @class.Period);
+            //ViewBag.SecondSemester = CheckAndFillWithNoClass(user.SecondSemester, user.School).OrderBy(@class => @class.Period);
+
+            ViewBag.Description = "";
+            foreach (var @class in user.FirstSemester)
+            {
+                if (@class.Name == "No Class") continue;
+                var teacher = @class.Name.Contains(",") ? @class.Name.Substring(0, @class.Name.LastIndexOf(',')) : "";
+                if (teacher.Trim().Length > 0)
+                {
+                    ViewBag.Description += @class.Period + ": " + @class.Name.Split(',').Last().Trim() + " - " + teacher + ", ";
+                }
+                else
+                {
+                    ViewBag.Description += @class.Period + ": " + @class.Name.Split(',').Last().Trim() + ", ";
+                }
+            }
+
+            if (ViewBag.Description.Length > 2)
+            {
+                ViewBag.Description = ViewBag.Description.Substring(0, ViewBag.Description.Length - 2).Trim();
+            }
 
             return View();
         }

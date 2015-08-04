@@ -22,7 +22,7 @@
         $(".period-num").click(function () {
             $("#selected-class").text("");
             schedPickerPeriod = parseInt($(this).text());
-            $("#teacher-input").keyup();
+            $("#subject-input").keyup();
 
             //meh. I shouldn't use such a generic "selected" class for this
             //redo this with sched-period-selected or use polymer or something, idk
@@ -30,7 +30,7 @@
             $(this).addClass("selected");
 
             $("#period-label").text(suffix(schedPickerPeriod));
-            var teacher = $("#teacher-input").val(""); //todo: make sure this works
+            var teacher = ""; //$("#teacher-input").val(""); //todo: make sure this works
             var subject = $("#subject-input").val("");
 
             $.getJSON("/API/Schedule/" + userId + "/" + semester + "/" + schedPickerPeriod, function(data) {
@@ -64,13 +64,13 @@
         <a href="#no-class" id="no-class-btn" class="transparent default button">No Class</a>
 
         <div id="class-search-box">
-            <input id="teacher-input" type="text" placeholder="  Teacher" />
-            <input id="subject-input" type="text" placeholder="  Subject" />
+            @*<input id="teacher-input" type="text" placeholder="  Teacher" />*@
+            <input id="subject-input" style="width: 63%; left: 20px;" type="text" placeholder="  Subject" />
 
             <button id="add-class-btn" class="default button">Add Class</button>
             <script type="text/javascript">
                 function getClassName() {
-                    var teacher = $("#teacher-input").val().trim();
+                    var teacher = "";//$("#teacher-input").val().trim();
                     var subject = $("#subject-input").val().trim();
 
                     var className = teacher;
@@ -105,7 +105,7 @@
                         });
                     }
 
-                    var teacher = $("#teacher-input").val(""); //todo: make sure this works
+                    var teacher = "";//$("#teacher-input").val(""); //todo: make sure this works
                     var subject = $("#subject-input").val("");
                 }
 
@@ -163,7 +163,7 @@
                     addClass($(this).text());
                 });
 
-                $("#teacher-input").trigger("keyup");
+                $("#subject-input").trigger("keyup");
             </script>
         </div>
     </div>

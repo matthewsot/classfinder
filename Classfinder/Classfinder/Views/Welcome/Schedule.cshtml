@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Schedule";
     Layout = "_Setup.cshtml";
-    ViewBag.Semester = ViewBag.StepNum - 1;
+    ViewBag.Semester = 1;
 }
 
 @section head {
@@ -11,7 +11,7 @@
     @Styles.Render("~/Content/Styles/Site/Welcome/schedule.css")
     <style type="text/css">
         #progress {
-            width: @(ViewBag.StepNum * 25)%;
+            width: @(ViewBag.StepNum * 33)%;
         }
     </style>
     <script type="text/javascript">
@@ -45,17 +45,17 @@ else {
 
 <script type="text/javascript">
     $("#next-button").click(function() {
-        if (semester == 1) {
-            $.getJSON("/API/Schedule/CopyFromSemester/1/ToSemester/2", function (data) {
-                if (data.good == true) {
-                    window.location.href = "/Welcome/Schedule/2";
-                } else {
-                    alert("Woops, there was an error o.0");
-                }
-            });
-        } else {
+        //if (semester == 1) {
+        //    $.getJSON("/API/Schedule/CopyFromSemester/1/ToSemester/2", function (data) {
+        //        if (data.good == true) {
+        //            window.location.href = "/Welcome/Schedule/2";
+        //        } else {
+        //            alert("Woops, there was an error o.0");
+        //        }
+        //    });
+        //} else {
             window.location.href = "/Welcome/Complete";
-        }
+        //}
     });
     
     //$("#previous-button").click(function() {

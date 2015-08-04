@@ -71,8 +71,9 @@
     </div>
 </div>
 
-<div id="login-popup" style="display:none;" class="popup">
+<div id="login-popup" style="display:none;height: 450px;" class="popup">
     <h1>log in</h1>
+    <p style="width: 80%; margin: 0 auto; color: rgb(34, 34, 34);">Note: we've removed all accounts from last year, please sign up again if your username/password isn't working!</p>
     <!-- TODO: validate over API -->
     <span>@(ViewBag.LoginError ?? "")</span>
     <form action="/Account/Login?ReturnUrl=@(ViewBag.ReturnUrl ?? "")" method="POST" id="login-form">

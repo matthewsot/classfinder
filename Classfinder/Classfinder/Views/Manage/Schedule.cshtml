@@ -18,29 +18,29 @@
     var semester = 1;
 </script>
 
-<div id="semester-picker">
+@*<div id="semester-picker">
     <span id="semester-one" data-semester="1" class="selected-semester">Semester 1</span> | <span id="semester-two" data-semester="2">Semester 2</span>
     <br/>
     <a href="#" id="copy-link">copy classes from Semester <span id="semester-num-from">1</span> to Semester <span id="semester-num-to">2</span></a>
-</div>
+</div>*@
 
 @Html.Partial("~/Views/Shared/_SchedulePicker.cshtml")
 
 <script type="text/javascript">
-    $("#semester-one, #semester-two").click(function() {
-        semester = parseInt($(this).attr("data-semester"));
-        $("#semester-picker").children("span").removeClass("selected-semester");
-        $(this).addClass("selected-semester");
-        $("#period-selector").children().first().click();
-    });
+    //$("#semester-one, #semester-two").click(function() {
+    //    semester = parseInt($(this).attr("data-semester"));
+    //    $("#semester-picker").children("span").removeClass("selected-semester");
+    //    $(this).addClass("selected-semester");
+    //    $("#period-selector").children().first().click();
+    //});
 
-    $("#copy-link").click(function() {
-        $.getJSON("/API/Schedule/CopyFromSemester/" + $("#semester-num-from").text() + "/ToSemester/" + $("#semester-num-to").text(), function (data) {
-            if (data.good == true) {
-                $("#period-selector").children(".selected").first().click();
-            } else {
-                alert("Woops, there was an error o.0");
-            }
-        });
-    });
+    //$("#copy-link").click(function() {
+    //    $.getJSON("/API/Schedule/CopyFromSemester/" + $("#semester-num-from").text() + "/ToSemester/" + $("#semester-num-to").text(), function (data) {
+    //        if (data.good == true) {
+    //            $("#period-selector").children(".selected").first().click();
+    //        } else {
+    //            alert("Woops, there was an error o.0");
+    //        }
+    //    });
+    //});
 </script>
